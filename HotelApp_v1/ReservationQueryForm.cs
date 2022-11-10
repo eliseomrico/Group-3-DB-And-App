@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -34,7 +35,6 @@ namespace HotelApp_v1
         private void changeTextBoxesReadOnlyStatus(bool enable) // makes text boxes read-only or not read-only
         {
             textBox_res_emp_id.ReadOnly = enable;
-            textBox_res_cust_id.ReadOnly = enable;
             textBox_res_loc_id.ReadOnly = enable;
             textBox_res_room_num.ReadOnly = enable;
             dateTimePicker_start.Enabled = !enable;
@@ -44,7 +44,6 @@ namespace HotelApp_v1
         {
             comboBox_res_id.Text = "";
             textBox_res_emp_id.Clear();
-            textBox_res_cust_id.Clear();
             textBox_res_loc_id.Clear();
             textBox_res_room_num.Clear();
             dateTimePicker_start.Value = DateTime.Now;
@@ -79,10 +78,41 @@ namespace HotelApp_v1
 
             emptyTextBoxes(); // clears texts from text boxes
             changeCreateButtonsVisibility(false);
+
             changeButtonsEnabled(false);
             button_search.Enabled = false;
             button_submit_create.Enabled = true;
             changeCancelButton(true);
+
+            // Marcel's Code Here
+
+            textBox_res_emp_id.ReadOnly = false;
+            textBox_res_loc_id.ReadOnly = false;
+            textBox_res_room_num.ReadOnly = false;
+            comboBox_res_id.Visible = false;
+            textBox_res_id.Visible= true;
+            comboBox_cust_id.Focus();
+
+            // Load Cust IDs into ComboBox
+
+            SqlConnection sqlConnection = new SqlConnection("Data Source=ELISEORICOCE42;Initial Catalog=TestDatabase;Integrated Security=SSPI");
+            
+            try
+            {
+                sqlConnection.Open();
+                SqlCommand cmd = new SqlCommand("SELECT cust_id,cust_fname,cust_lname FROM CUSTOMER",sqlConnection);
+                SqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    comboBox_cust_id.Items.Add(dr[0].ToString()+" - " + dr[1].ToString() + " " + dr[2].ToString());
+                }
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+
         }
 
         private void button_submit_create_Click(object sender, EventArgs e)
