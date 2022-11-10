@@ -1,2 +1,3 @@
-.vs
-HotelApp_v1/bin/Debug
+.vs/
+HotelApp_v1/bin/Debug/
+HotelApp_v1/obj/Debug/
