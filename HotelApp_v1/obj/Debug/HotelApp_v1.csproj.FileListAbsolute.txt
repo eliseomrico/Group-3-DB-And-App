@@ -34,3 +34,5 @@ C:\Users\matt\MatthewOlivarez\StMU\Fall 2022\Databases\HotelApp_v3\HotelApp_v1\o
 C:\Users\matt\MatthewOlivarez\StMU\Fall 2022\Databases\HotelApp_v3\HotelApp_v1\obj\Debug\HotelApp_v1.ViewCustomers.resources
 C:\Users\matt\MatthewOlivarez\StMU\Fall 2022\Databases\HotelApp_v3\HotelApp_v1\obj\Debug\HotelApp_v1.ViewLocations.resources
 C:\Users\matt\MatthewOlivarez\StMU\Fall 2022\Databases\HotelApp_v3\HotelApp_v1\obj\Debug\HotelApp_v1.ViewReservations.resources
+C:\Users\matt\MatthewOlivarez\StMU\Fall 2022\Databases\HotelApp_v3\HotelApp_v1\obj\Debug\HotelApp_v1.Transactions.resources
+C:\Users\matt\MatthewOlivarez\StMU\Fall 2022\Databases\HotelApp_v3\HotelApp_v1\obj\Debug\HotelApp_v1.ViewTransactions.resources

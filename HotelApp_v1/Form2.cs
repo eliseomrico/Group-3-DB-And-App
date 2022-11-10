@@ -77,6 +77,7 @@ namespace HotelApp_v1
             checkInForm1.Visible = false;
             viewCustomers1.Visible = false;
             viewLocations1.Visible = false;
+            viewTransactions1.Visible = false;
         }
 
         private void button_home_page_cust_search_Click(object sender, EventArgs e)
@@ -92,6 +93,7 @@ namespace HotelApp_v1
             checkOutForm1.Visible = false;
             checkInForm1.Visible = false;
             viewLocations1.Visible = false;
+            viewTransactions1.Visible = false;
         }
 
         private void button_home_page_checkin_Click(object sender, EventArgs e)
@@ -107,6 +109,7 @@ namespace HotelApp_v1
             checkOutForm1.Visible = false;
             viewCustomers1.Visible = false;
             viewLocations1.Visible = false;
+            viewTransactions1.Visible = false;
         }
 
         private void button_home_page_check_out_Click(object sender, EventArgs e)
@@ -122,6 +125,7 @@ namespace HotelApp_v1
             checkInForm1.Visible = false;
             viewCustomers1.Visible = false;
             viewLocations1.Visible = false;
+            viewTransactions1.Visible = false;
         }
 
         private void button_home_page_search_res_Click(object sender, EventArgs e)
@@ -137,6 +141,7 @@ namespace HotelApp_v1
             checkInForm1.Visible = false;
             viewCustomers1.Visible = false;
             viewLocations1.Visible = false;
+            viewTransactions1.Visible = false;
         }
 
         private void button_home_page_login_Click(object sender, EventArgs e)
@@ -152,6 +157,7 @@ namespace HotelApp_v1
             checkInForm1.Visible = false;
             viewCustomers1.Visible = false;
             viewLocations1.Visible = false;
+            viewTransactions1.Visible = false;
         }
 
         private void button_home_page_employees_Click(object sender, EventArgs e)
@@ -167,6 +173,7 @@ namespace HotelApp_v1
             checkInForm1.Visible = false;
             viewCustomers1.Visible = false;
             viewLocations1.Visible = false;
+            viewTransactions1.Visible = false;
         }
 
         private void button_home_page_locations_Click(object sender, EventArgs e)
@@ -175,6 +182,20 @@ namespace HotelApp_v1
             //locationsForm.ShowDialog();
 
             viewLocations1.Visible = true;
+            roomAvailability1.Visible = false;
+            employees1.Visible = false;
+            employeeLoginForm1.Visible = false;
+            viewReservations1.Visible = false;
+            checkOutForm1.Visible = false;
+            checkInForm1.Visible = false;
+            viewCustomers1.Visible = false;
+            viewTransactions1.Visible = false;
+        }
+
+        private void button_transactions_Click(object sender, EventArgs e)
+        {
+            viewTransactions1.Visible = true;
+            viewLocations1.Visible = false;
             roomAvailability1.Visible = false;
             employees1.Visible = false;
             employeeLoginForm1.Visible = false;

@@ -43,7 +43,9 @@ namespace HotelApp_v1
             this.button_home_page_room_avail = new System.Windows.Forms.Button();
             this.button_home_page_search_res = new System.Windows.Forms.Button();
             this.spacerPanel = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panelChildForm = new System.Windows.Forms.Panel();
+            this.button_transactions = new System.Windows.Forms.Button();
+            this.viewTransactions1 = new HotelApp_v1.ViewTransactions();
             this.viewReservations1 = new HotelApp_v1.ViewReservations();
             this.roomAvailability1 = new HotelApp_v1.RoomAvailability();
             this.viewCustomers1 = new HotelApp_v1.ViewCustomers();
@@ -54,7 +56,7 @@ namespace HotelApp_v1
             this.employeeLoginForm1 = new HotelApp_v1.EmployeeLoginForm();
             this.NavPanel.SuspendLayout();
             this.spacerPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.spacerPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // NavPanel
@@ -208,7 +210,7 @@ namespace HotelApp_v1
             this.button_home_page_cust_search.Name = "button_home_page_cust_search";
             this.button_home_page_cust_search.Size = new System.Drawing.Size(250, 60);
             this.button_home_page_cust_search.TabIndex = 3;
-            this.button_home_page_cust_search.Text = "Customer Search";
+            this.button_home_page_cust_search.Text = "Customers";
             this.button_home_page_cust_search.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.button_home_page_cust_search.UseVisualStyleBackColor = false;
             this.button_home_page_cust_search.Click += new System.EventHandler(this.button_home_page_cust_search_Click);
@@ -228,7 +230,7 @@ namespace HotelApp_v1
             this.button_home_page_room_avail.Name = "button_home_page_room_avail";
             this.button_home_page_room_avail.Size = new System.Drawing.Size(250, 60);
             this.button_home_page_room_avail.TabIndex = 2;
-            this.button_home_page_room_avail.Text = "Room Availability";
+            this.button_home_page_room_avail.Text = "Rooms";
             this.button_home_page_room_avail.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.button_home_page_room_avail.UseVisualStyleBackColor = false;
             this.button_home_page_room_avail.Click += new System.EventHandler(this.button_home_page_room_avail_Click);
@@ -248,7 +250,7 @@ namespace HotelApp_v1
             this.button_home_page_search_res.Name = "button_home_page_search_res";
             this.button_home_page_search_res.Size = new System.Drawing.Size(250, 60);
             this.button_home_page_search_res.TabIndex = 1;
-            this.button_home_page_search_res.Text = "Reservation Search";
+            this.button_home_page_search_res.Text = "Reservations";
             this.button_home_page_search_res.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.button_home_page_search_res.UseVisualStyleBackColor = false;
             this.button_home_page_search_res.Click += new System.EventHandler(this.button_home_page_search_res_Click);
@@ -256,6 +258,7 @@ namespace HotelApp_v1
             // spacerPanel
             // 
             this.spacerPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(78)))), ((int)(((byte)(79)))));
+            this.spacerPanel.Controls.Add(this.button_transactions);
             this.spacerPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.spacerPanel.Location = new System.Drawing.Point(0, 0);
             this.spacerPanel.Margin = new System.Windows.Forms.Padding(2);
@@ -264,82 +267,111 @@ namespace HotelApp_v1
             this.spacerPanel.TabIndex = 0;
             this.spacerPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.spacerPanel_Paint);
             // 
-            // pictureBox1
+            // panelChildForm
             // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(304, 11);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(595, 518);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
+            this.panelChildForm.BackColor = System.Drawing.Color.Transparent;
+            this.panelChildForm.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panelChildForm.BackgroundImage")));
+            this.panelChildForm.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panelChildForm.Location = new System.Drawing.Point(304, 11);
+            this.panelChildForm.Margin = new System.Windows.Forms.Padding(4);
+            this.panelChildForm.Name = "panelChildForm";
+            this.panelChildForm.Size = new System.Drawing.Size(595, 518);
+            this.panelChildForm.TabIndex = 3;
+            // 
+            // button_transactions
+            // 
+            this.button_transactions.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(78)))), ((int)(((byte)(79)))));
+            this.button_transactions.FlatAppearance.BorderSize = 0;
+            this.button_transactions.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_transactions.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_transactions.ForeColor = System.Drawing.Color.White;
+            this.button_transactions.Location = new System.Drawing.Point(0, 0);
+            this.button_transactions.Name = "button_transactions";
+            this.button_transactions.Size = new System.Drawing.Size(250, 60);
+            this.button_transactions.TabIndex = 23;
+            this.button_transactions.Text = "Transactions";
+            this.button_transactions.UseVisualStyleBackColor = false;
+            this.button_transactions.Click += new System.EventHandler(this.button_transactions_Click);
+            // 
+            // viewTransactions1
+            // 
+            this.viewTransactions1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.viewTransactions1.Location = new System.Drawing.Point(250, 0);
+            this.viewTransactions1.Name = "viewTransactions1";
+            this.viewTransactions1.Size = new System.Drawing.Size(692, 545);
+            this.viewTransactions1.TabIndex = 4;
+            this.viewTransactions1.Visible = false;
             // 
             // viewReservations1
             // 
+            this.viewReservations1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.viewReservations1.Location = new System.Drawing.Point(250, 0);
             this.viewReservations1.Name = "viewReservations1";
             this.viewReservations1.Size = new System.Drawing.Size(692, 545);
-            this.viewReservations1.TabIndex = 2;
+            this.viewReservations1.TabIndex = 5;
             this.viewReservations1.Visible = false;
             // 
             // roomAvailability1
             // 
+            this.roomAvailability1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.roomAvailability1.Location = new System.Drawing.Point(250, 0);
             this.roomAvailability1.Name = "roomAvailability1";
             this.roomAvailability1.Size = new System.Drawing.Size(692, 545);
-            this.roomAvailability1.TabIndex = 3;
+            this.roomAvailability1.TabIndex = 6;
             this.roomAvailability1.Visible = false;
             // 
             // viewCustomers1
             // 
+            this.viewCustomers1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.viewCustomers1.Location = new System.Drawing.Point(250, 0);
             this.viewCustomers1.Name = "viewCustomers1";
             this.viewCustomers1.Size = new System.Drawing.Size(692, 545);
-            this.viewCustomers1.TabIndex = 4;
+            this.viewCustomers1.TabIndex = 7;
             this.viewCustomers1.Visible = false;
             // 
             // checkInForm1
             // 
+            this.checkInForm1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.checkInForm1.Location = new System.Drawing.Point(250, 0);
             this.checkInForm1.Name = "checkInForm1";
             this.checkInForm1.Size = new System.Drawing.Size(692, 545);
-            this.checkInForm1.TabIndex = 5;
+            this.checkInForm1.TabIndex = 8;
             this.checkInForm1.Visible = false;
             // 
             // checkOutForm1
             // 
+            this.checkOutForm1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.checkOutForm1.Location = new System.Drawing.Point(250, 0);
             this.checkOutForm1.Name = "checkOutForm1";
             this.checkOutForm1.Size = new System.Drawing.Size(692, 545);
-            this.checkOutForm1.TabIndex = 6;
+            this.checkOutForm1.TabIndex = 9;
             this.checkOutForm1.Visible = false;
             // 
             // viewLocations1
             // 
+            this.viewLocations1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.viewLocations1.Location = new System.Drawing.Point(250, 0);
             this.viewLocations1.Name = "viewLocations1";
             this.viewLocations1.Size = new System.Drawing.Size(692, 545);
-            this.viewLocations1.TabIndex = 7;
+            this.viewLocations1.TabIndex = 10;
             this.viewLocations1.Visible = false;
             // 
             // employees1
             // 
+            this.employees1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.employees1.Location = new System.Drawing.Point(250, 0);
             this.employees1.Name = "employees1";
             this.employees1.Size = new System.Drawing.Size(692, 545);
-            this.employees1.TabIndex = 8;
+            this.employees1.TabIndex = 11;
             this.employees1.Visible = false;
             // 
             // employeeLoginForm1
             // 
+            this.employeeLoginForm1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.employeeLoginForm1.Location = new System.Drawing.Point(250, 0);
             this.employeeLoginForm1.Name = "employeeLoginForm1";
             this.employeeLoginForm1.Size = new System.Drawing.Size(692, 545);
-            this.employeeLoginForm1.TabIndex = 9;
+            this.employeeLoginForm1.TabIndex = 12;
             this.employeeLoginForm1.Visible = false;
             // 
             // Form2
@@ -356,7 +388,8 @@ namespace HotelApp_v1
             this.Controls.Add(this.viewCustomers1);
             this.Controls.Add(this.roomAvailability1);
             this.Controls.Add(this.viewReservations1);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.viewTransactions1);
+            this.Controls.Add(this.panelChildForm);
             this.Controls.Add(this.NavPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -365,7 +398,7 @@ namespace HotelApp_v1
             this.Load += new System.EventHandler(this.Form1_Load);
             this.NavPanel.ResumeLayout(false);
             this.spacerPanel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.spacerPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -381,10 +414,12 @@ namespace HotelApp_v1
         private Button button_home_page_search_res;
         private Button button_home_page_log_out;
         private Panel spacerPanel2;
-        private PictureBox pictureBox1;
         private Button button_home_page_login;
         private Button button_home_page_employees;
         private Button button_home_page_locations;
+        private Panel panelChildForm;
+        private Button button_transactions;
+        private ViewTransactions viewTransactions1;
         private ViewReservations viewReservations1;
         private RoomAvailability roomAvailability1;
         private ViewCustomers viewCustomers1;

@@ -1,6 +1,6 @@
 ﻿namespace HotelApp_v1
 {
-    partial class ViewLocations
+    partial class ViewTransactions
     {
         /// <summary> 
         /// Required designer variable.
@@ -29,13 +29,15 @@
         private void InitializeComponent()
         {
             this.panel2 = new System.Windows.Forms.Panel();
-            this.textBox_zip_code = new System.Windows.Forms.TextBox();
+            this.transactions1 = new HotelApp_v1.Transactions();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.dateTimePicker_end = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker_start = new System.Windows.Forms.DateTimePicker();
             this.button_manage_locations = new System.Windows.Forms.Button();
             this.button_home = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.locations1 = new HotelApp_v1.Locations();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -43,25 +45,65 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
-            this.panel2.Controls.Add(this.locations1);
-            this.panel2.Controls.Add(this.textBox_zip_code);
+            this.panel2.Controls.Add(this.transactions1);
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.label6);
+            this.panel2.Controls.Add(this.dateTimePicker_end);
+            this.panel2.Controls.Add(this.dateTimePicker_start);
             this.panel2.Controls.Add(this.button_manage_locations);
             this.panel2.Controls.Add(this.button_home);
             this.panel2.Controls.Add(this.dataGridView1);
-            this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.label8);
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(692, 545);
-            this.panel2.TabIndex = 25;
+            this.panel2.TabIndex = 26;
             // 
-            // textBox_zip_code
+            // transactions1
             // 
-            this.textBox_zip_code.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_zip_code.Location = new System.Drawing.Point(322, 124);
-            this.textBox_zip_code.Name = "textBox_zip_code";
-            this.textBox_zip_code.Size = new System.Drawing.Size(227, 27);
-            this.textBox_zip_code.TabIndex = 27;
+            this.transactions1.Location = new System.Drawing.Point(0, 0);
+            this.transactions1.Name = "transactions1";
+            this.transactions1.Size = new System.Drawing.Size(692, 545);
+            this.transactions1.TabIndex = 33;
+            this.transactions1.Visible = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.White;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(359, 137);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(70, 20);
+            this.label1.TabIndex = 32;
+            this.label1.Text = "End Date";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.White;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(8, 132);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(76, 20);
+            this.label6.TabIndex = 31;
+            this.label6.Text = "Start Date";
+            // 
+            // dateTimePicker_end
+            // 
+            this.dateTimePicker_end.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker_end.Location = new System.Drawing.Point(435, 132);
+            this.dateTimePicker_end.Name = "dateTimePicker_end";
+            this.dateTimePicker_end.Size = new System.Drawing.Size(227, 27);
+            this.dateTimePicker_end.TabIndex = 30;
+            // 
+            // dateTimePicker_start
+            // 
+            this.dateTimePicker_start.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker_start.Location = new System.Drawing.Point(90, 132);
+            this.dateTimePicker_start.Name = "dateTimePicker_start";
+            this.dateTimePicker_start.Size = new System.Drawing.Size(227, 27);
+            this.dateTimePicker_start.TabIndex = 29;
             // 
             // button_manage_locations
             // 
@@ -74,7 +116,7 @@
             this.button_manage_locations.Name = "button_manage_locations";
             this.button_manage_locations.Size = new System.Drawing.Size(346, 44);
             this.button_manage_locations.TabIndex = 26;
-            this.button_manage_locations.Text = "Manage Locations";
+            this.button_manage_locations.Text = "Manage Transactions";
             this.button_manage_locations.UseVisualStyleBackColor = false;
             this.button_manage_locations.Click += new System.EventHandler(this.button_manage_locations_Click);
             // 
@@ -103,42 +145,23 @@
             this.dataGridView1.Size = new System.Drawing.Size(692, 325);
             this.dataGridView1.TabIndex = 15;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.White;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(204, 127);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(70, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Zip Code";
-            // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.BackColor = System.Drawing.Color.White;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(97, 38);
+            this.label8.Location = new System.Drawing.Point(154, 39);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(494, 28);
+            this.label8.Size = new System.Drawing.Size(354, 28);
             this.label8.TabIndex = 14;
-            this.label8.Text = "Choose desired location to view rooms and room types";
+            this.label8.Text = "Choose date range to view transactions";
             // 
-            // locations1
-            // 
-            this.locations1.Location = new System.Drawing.Point(0, 0);
-            this.locations1.Name = "locations1";
-            this.locations1.Size = new System.Drawing.Size(692, 545);
-            this.locations1.TabIndex = 28;
-            this.locations1.Visible = false;
-            // 
-            // ViewLocations
+            // ViewTransactions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panel2);
-            this.Name = "ViewLocations";
+            this.Name = "ViewTransactions";
             this.Size = new System.Drawing.Size(692, 545);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -153,9 +176,11 @@
         private System.Windows.Forms.Button button_manage_locations;
         private System.Windows.Forms.Button button_home;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox_zip_code;
-        private Locations locations1;
+        private System.Windows.Forms.DateTimePicker dateTimePicker_end;
+        private System.Windows.Forms.DateTimePicker dateTimePicker_start;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label6;
+        private Transactions transactions1;
     }
 }

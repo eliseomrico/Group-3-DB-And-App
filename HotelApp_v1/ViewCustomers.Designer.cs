@@ -97,7 +97,7 @@
             this.button_home.Name = "button_home";
             this.button_home.Size = new System.Drawing.Size(346, 44);
             this.button_home.TabIndex = 24;
-            this.button_home.Text = "Back";
+            this.button_home.Text = "Home";
             this.button_home.UseVisualStyleBackColor = false;
             this.button_home.Click += new System.EventHandler(this.button_home_Click);
             // 
