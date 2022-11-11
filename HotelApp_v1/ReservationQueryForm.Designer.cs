@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.panel2 = new System.Windows.Forms.Panel();
+            this.textBox_res_id = new System.Windows.Forms.TextBox();
+            this.comboBox_cust_id = new System.Windows.Forms.ComboBox();
             this.button_cancel = new System.Windows.Forms.Button();
             this.button_submit_create = new System.Windows.Forms.Button();
             this.button_submit_edit = new System.Windows.Forms.Button();
@@ -51,8 +53,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.comboBox_cust_id = new System.Windows.Forms.ComboBox();
-            this.textBox_res_id = new System.Windows.Forms.TextBox();
+            this.sqlConnection1 = new System.Data.SqlClient.SqlConnection();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -84,10 +85,33 @@
             this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.label7);
             this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(519, 443);
             this.panel2.TabIndex = 23;
+            // 
+            // textBox_res_id
+            // 
+            this.textBox_res_id.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_res_id.Location = new System.Drawing.Point(47, 102);
+            this.textBox_res_id.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox_res_id.Name = "textBox_res_id";
+            this.textBox_res_id.ReadOnly = true;
+            this.textBox_res_id.Size = new System.Drawing.Size(171, 23);
+            this.textBox_res_id.TabIndex = 34;
+            this.textBox_res_id.Visible = false;
+            // 
+            // comboBox_cust_id
+            // 
+            this.comboBox_cust_id.BackColor = System.Drawing.Color.White;
+            this.comboBox_cust_id.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.comboBox_cust_id.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox_cust_id.FormattingEnabled = true;
+            this.comboBox_cust_id.Location = new System.Drawing.Point(46, 193);
+            this.comboBox_cust_id.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBox_cust_id.Name = "comboBox_cust_id";
+            this.comboBox_cust_id.Size = new System.Drawing.Size(171, 23);
+            this.comboBox_cust_id.TabIndex = 33;
             // 
             // button_cancel
             // 
@@ -98,7 +122,7 @@
             this.button_cancel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_cancel.ForeColor = System.Drawing.Color.White;
             this.button_cancel.Location = new System.Drawing.Point(415, 407);
-            this.button_cancel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button_cancel.Margin = new System.Windows.Forms.Padding(2);
             this.button_cancel.Name = "button_cancel";
             this.button_cancel.Size = new System.Drawing.Size(104, 36);
             this.button_cancel.TabIndex = 32;
@@ -116,7 +140,7 @@
             this.button_submit_create.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_submit_create.ForeColor = System.Drawing.Color.White;
             this.button_submit_create.Location = new System.Drawing.Point(207, 407);
-            this.button_submit_create.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button_submit_create.Margin = new System.Windows.Forms.Padding(2);
             this.button_submit_create.Name = "button_submit_create";
             this.button_submit_create.Size = new System.Drawing.Size(104, 36);
             this.button_submit_create.TabIndex = 31;
@@ -134,7 +158,7 @@
             this.button_submit_edit.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_submit_edit.ForeColor = System.Drawing.Color.White;
             this.button_submit_edit.Location = new System.Drawing.Point(311, 407);
-            this.button_submit_edit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button_submit_edit.Margin = new System.Windows.Forms.Padding(2);
             this.button_submit_edit.Name = "button_submit_edit";
             this.button_submit_edit.Size = new System.Drawing.Size(104, 36);
             this.button_submit_edit.TabIndex = 30;
@@ -147,7 +171,7 @@
             // 
             this.dateTimePicker_end.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimePicker_end.Location = new System.Drawing.Point(320, 349);
-            this.dateTimePicker_end.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dateTimePicker_end.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePicker_end.Name = "dateTimePicker_end";
             this.dateTimePicker_end.Size = new System.Drawing.Size(171, 23);
             this.dateTimePicker_end.TabIndex = 29;
@@ -156,7 +180,7 @@
             // 
             this.dateTimePicker_start.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimePicker_start.Location = new System.Drawing.Point(320, 281);
-            this.dateTimePicker_start.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dateTimePicker_start.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePicker_start.Name = "dateTimePicker_start";
             this.dateTimePicker_start.Size = new System.Drawing.Size(171, 23);
             this.dateTimePicker_start.TabIndex = 28;
@@ -169,7 +193,7 @@
             this.button_search.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_search.ForeColor = System.Drawing.Color.White;
             this.button_search.Location = new System.Drawing.Point(104, 407);
-            this.button_search.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button_search.Margin = new System.Windows.Forms.Padding(2);
             this.button_search.Name = "button_search";
             this.button_search.Size = new System.Drawing.Size(104, 36);
             this.button_search.TabIndex = 27;
@@ -186,7 +210,7 @@
             this.button_delete.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_delete.ForeColor = System.Drawing.Color.White;
             this.button_delete.Location = new System.Drawing.Point(415, 407);
-            this.button_delete.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button_delete.Margin = new System.Windows.Forms.Padding(2);
             this.button_delete.Name = "button_delete";
             this.button_delete.Size = new System.Drawing.Size(104, 36);
             this.button_delete.TabIndex = 26;
@@ -203,7 +227,7 @@
             this.button_edit.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_edit.ForeColor = System.Drawing.Color.White;
             this.button_edit.Location = new System.Drawing.Point(311, 407);
-            this.button_edit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button_edit.Margin = new System.Windows.Forms.Padding(2);
             this.button_edit.Name = "button_edit";
             this.button_edit.Size = new System.Drawing.Size(104, 36);
             this.button_edit.TabIndex = 25;
@@ -219,7 +243,7 @@
             this.button_create.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_create.ForeColor = System.Drawing.Color.White;
             this.button_create.Location = new System.Drawing.Point(207, 407);
-            this.button_create.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button_create.Margin = new System.Windows.Forms.Padding(2);
             this.button_create.Name = "button_create";
             this.button_create.Size = new System.Drawing.Size(104, 36);
             this.button_create.TabIndex = 24;
@@ -235,7 +259,7 @@
             this.button_home.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_home.ForeColor = System.Drawing.Color.White;
             this.button_home.Location = new System.Drawing.Point(0, 407);
-            this.button_home.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button_home.Margin = new System.Windows.Forms.Padding(2);
             this.button_home.Name = "button_home";
             this.button_home.Size = new System.Drawing.Size(104, 36);
             this.button_home.TabIndex = 23;
@@ -250,7 +274,7 @@
             this.comboBox_res_id.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox_res_id.FormattingEnabled = true;
             this.comboBox_res_id.Location = new System.Drawing.Point(46, 101);
-            this.comboBox_res_id.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBox_res_id.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox_res_id.Name = "comboBox_res_id";
             this.comboBox_res_id.Size = new System.Drawing.Size(171, 23);
             this.comboBox_res_id.TabIndex = 16;
@@ -271,7 +295,7 @@
             // 
             this.textBox_res_emp_id.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox_res_emp_id.Location = new System.Drawing.Point(320, 102);
-            this.textBox_res_emp_id.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox_res_emp_id.Margin = new System.Windows.Forms.Padding(2);
             this.textBox_res_emp_id.Name = "textBox_res_emp_id";
             this.textBox_res_emp_id.ReadOnly = true;
             this.textBox_res_emp_id.Size = new System.Drawing.Size(171, 23);
@@ -281,7 +305,7 @@
             // 
             this.textBox_res_loc_id.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox_res_loc_id.Location = new System.Drawing.Point(320, 193);
-            this.textBox_res_loc_id.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox_res_loc_id.Margin = new System.Windows.Forms.Padding(2);
             this.textBox_res_loc_id.Name = "textBox_res_loc_id";
             this.textBox_res_loc_id.ReadOnly = true;
             this.textBox_res_loc_id.Size = new System.Drawing.Size(171, 23);
@@ -291,7 +315,7 @@
             // 
             this.textBox_res_room_num.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox_res_room_num.Location = new System.Drawing.Point(46, 283);
-            this.textBox_res_room_num.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox_res_room_num.Margin = new System.Windows.Forms.Padding(2);
             this.textBox_res_room_num.Name = "textBox_res_room_num";
             this.textBox_res_room_num.ReadOnly = true;
             this.textBox_res_room_num.Size = new System.Drawing.Size(171, 23);
@@ -381,35 +405,16 @@
             this.label7.TabIndex = 6;
             this.label7.Text = "Reservation End Date";
             // 
-            // comboBox_cust_id
+            // sqlConnection1
             // 
-            this.comboBox_cust_id.BackColor = System.Drawing.Color.White;
-            this.comboBox_cust_id.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.comboBox_cust_id.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox_cust_id.FormattingEnabled = true;
-            this.comboBox_cust_id.Location = new System.Drawing.Point(46, 193);
-            this.comboBox_cust_id.Margin = new System.Windows.Forms.Padding(2);
-            this.comboBox_cust_id.Name = "comboBox_cust_id";
-            this.comboBox_cust_id.Size = new System.Drawing.Size(171, 23);
-            this.comboBox_cust_id.TabIndex = 33;
-            // 
-            // textBox_res_id
-            // 
-            this.textBox_res_id.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_res_id.Location = new System.Drawing.Point(47, 102);
-            this.textBox_res_id.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox_res_id.Name = "textBox_res_id";
-            this.textBox_res_id.ReadOnly = true;
-            this.textBox_res_id.Size = new System.Drawing.Size(171, 23);
-            this.textBox_res_id.TabIndex = 34;
-            this.textBox_res_id.Visible = false;
+            this.sqlConnection1.FireInfoMessageEventOnUserErrors = false;
             // 
             // ReservationQueryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panel2);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ReservationQueryForm";
             this.Size = new System.Drawing.Size(519, 443);
             this.panel2.ResumeLayout(false);
@@ -445,5 +450,6 @@
         private System.Windows.Forms.Button button_cancel;
         private System.Windows.Forms.ComboBox comboBox_cust_id;
         private System.Windows.Forms.TextBox textBox_res_id;
+        private System.Data.SqlClient.SqlConnection sqlConnection1;
     }
 }

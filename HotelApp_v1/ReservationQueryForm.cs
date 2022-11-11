@@ -55,6 +55,42 @@ namespace HotelApp_v1
             button_edit.Enabled = enable;
             button_delete.Enabled = enable;
         }
+        private string getReservationID()
+        {
+                // Authored By: Marcel Rico
+                string resID = "";
+
+                SqlConnection conn = new SqlConnection("Data Source=ELISEORICOCE42;Initial Catalog=TestDatabase;Integrated Security=SSPI");
+
+                try
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("SELECT MAX(res_no) FROM RESERVATION", conn);
+                    SqlDataReader dr = cmd.ExecuteReader();
+
+                    while (dr.Read())
+                    {
+
+                        if (DBNull.Value.Equals(dr[0]))
+                        {
+                            resID = "1";
+                            Console.WriteLine(dr[0]);
+                        }
+                        else
+                        {
+                            resID = (int.Parse(dr[0].ToString()) + 1).ToString();
+                        }
+
+                    }
+
+                }
+                catch
+                {
+
+                }
+
+                return resID;
+        }
 
 
         // form buttons below
@@ -90,6 +126,7 @@ namespace HotelApp_v1
             textBox_res_loc_id.ReadOnly = false;
             textBox_res_room_num.ReadOnly = false;
             comboBox_res_id.Visible = false;
+            textBox_res_id.Text = getReservationID();
             textBox_res_id.Visible= true;
             comboBox_cust_id.Focus();
 
