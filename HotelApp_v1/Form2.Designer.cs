@@ -30,6 +30,7 @@ namespace HotelApp_v1
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
             this.NavPanel = new System.Windows.Forms.Panel();
             this.button_home_page_login = new System.Windows.Forms.Button();
@@ -43,17 +44,19 @@ namespace HotelApp_v1
             this.button_home_page_room_avail = new System.Windows.Forms.Button();
             this.button_home_page_search_res = new System.Windows.Forms.Button();
             this.spacerPanel = new System.Windows.Forms.Panel();
-            this.panelChildForm = new System.Windows.Forms.Panel();
             this.button_transactions = new System.Windows.Forms.Button();
-            this.viewTransactions1 = new HotelApp_v1.ViewTransactions();
-            this.viewReservations1 = new HotelApp_v1.ViewReservations();
-            this.roomAvailability1 = new HotelApp_v1.RoomAvailability();
-            this.viewCustomers1 = new HotelApp_v1.ViewCustomers();
-            this.checkInForm1 = new HotelApp_v1.CheckInForm();
-            this.checkOutForm1 = new HotelApp_v1.CheckOutForm();
-            this.viewLocations1 = new HotelApp_v1.ViewLocations();
-            this.employees1 = new HotelApp_v1.Employees();
+            this.panelChildForm = new System.Windows.Forms.Panel();
+            this.sqlConnection1 = new System.Data.SqlClient.SqlConnection();
             this.employeeLoginForm1 = new HotelApp_v1.EmployeeLoginForm();
+            this.employees1 = new HotelApp_v1.Employees();
+            this.viewLocations1 = new HotelApp_v1.ViewLocations();
+            this.checkOutForm1 = new HotelApp_v1.CheckOutForm();
+            this.checkInForm1 = new HotelApp_v1.CheckInForm();
+            this.viewCustomers1 = new HotelApp_v1.ViewCustomers();
+            this.roomAvailability1 = new HotelApp_v1.RoomAvailability();
+            this.viewReservations1 = new HotelApp_v1.ViewReservations();
+            this.viewTransactions1 = new HotelApp_v1.ViewTransactions();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.NavPanel.SuspendLayout();
             this.spacerPanel2.SuspendLayout();
             this.spacerPanel.SuspendLayout();
@@ -267,17 +270,6 @@ namespace HotelApp_v1
             this.spacerPanel.TabIndex = 0;
             this.spacerPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.spacerPanel_Paint);
             // 
-            // panelChildForm
-            // 
-            this.panelChildForm.BackColor = System.Drawing.Color.Transparent;
-            this.panelChildForm.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panelChildForm.BackgroundImage")));
-            this.panelChildForm.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.panelChildForm.Location = new System.Drawing.Point(304, 11);
-            this.panelChildForm.Margin = new System.Windows.Forms.Padding(4);
-            this.panelChildForm.Name = "panelChildForm";
-            this.panelChildForm.Size = new System.Drawing.Size(595, 518);
-            this.panelChildForm.TabIndex = 3;
-            // 
             // button_transactions
             // 
             this.button_transactions.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(78)))), ((int)(((byte)(79)))));
@@ -293,59 +285,42 @@ namespace HotelApp_v1
             this.button_transactions.UseVisualStyleBackColor = false;
             this.button_transactions.Click += new System.EventHandler(this.button_transactions_Click);
             // 
-            // viewTransactions1
+            // panelChildForm
             // 
-            this.viewTransactions1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.viewTransactions1.Location = new System.Drawing.Point(250, 0);
-            this.viewTransactions1.Name = "viewTransactions1";
-            this.viewTransactions1.Size = new System.Drawing.Size(692, 545);
-            this.viewTransactions1.TabIndex = 4;
-            this.viewTransactions1.Visible = false;
+            this.panelChildForm.BackColor = System.Drawing.Color.Transparent;
+            this.panelChildForm.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panelChildForm.BackgroundImage")));
+            this.panelChildForm.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panelChildForm.Location = new System.Drawing.Point(304, 11);
+            this.panelChildForm.Margin = new System.Windows.Forms.Padding(4);
+            this.panelChildForm.Name = "panelChildForm";
+            this.panelChildForm.Size = new System.Drawing.Size(595, 518);
+            this.panelChildForm.TabIndex = 3;
             // 
-            // viewReservations1
+            // sqlConnection1
             // 
-            this.viewReservations1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.viewReservations1.Location = new System.Drawing.Point(250, 0);
-            this.viewReservations1.Name = "viewReservations1";
-            this.viewReservations1.Size = new System.Drawing.Size(692, 545);
-            this.viewReservations1.TabIndex = 5;
-            this.viewReservations1.Visible = false;
+            this.sqlConnection1.ConnectionString = "Data Source=ESCO-PC\\SQLEXPRESS01;Initial Catalog=HOTEL_TEST;Integrated Security=T" +
+    "rue";
+            this.sqlConnection1.FireInfoMessageEventOnUserErrors = false;
             // 
-            // roomAvailability1
+            // employeeLoginForm1
             // 
-            this.roomAvailability1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.roomAvailability1.Location = new System.Drawing.Point(250, 0);
-            this.roomAvailability1.Name = "roomAvailability1";
-            this.roomAvailability1.Size = new System.Drawing.Size(692, 545);
-            this.roomAvailability1.TabIndex = 6;
-            this.roomAvailability1.Visible = false;
+            this.employeeLoginForm1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.employeeLoginForm1.Location = new System.Drawing.Point(250, 0);
+            this.employeeLoginForm1.Name = "employeeLoginForm1";
+            this.employeeLoginForm1.Size = new System.Drawing.Size(692, 545);
+            this.employeeLoginForm1.TabIndex = 12;
+            this.employeeLoginForm1.Visible = false;
+            this.employeeLoginForm1.Load += new System.EventHandler(this.employeeLoginForm1_Load);
             // 
-            // viewCustomers1
+            // employees1
             // 
-            this.viewCustomers1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.viewCustomers1.Location = new System.Drawing.Point(250, 0);
-            this.viewCustomers1.Name = "viewCustomers1";
-            this.viewCustomers1.Size = new System.Drawing.Size(692, 545);
-            this.viewCustomers1.TabIndex = 7;
-            this.viewCustomers1.Visible = false;
-            // 
-            // checkInForm1
-            // 
-            this.checkInForm1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.checkInForm1.Location = new System.Drawing.Point(250, 0);
-            this.checkInForm1.Name = "checkInForm1";
-            this.checkInForm1.Size = new System.Drawing.Size(692, 545);
-            this.checkInForm1.TabIndex = 8;
-            this.checkInForm1.Visible = false;
-            // 
-            // checkOutForm1
-            // 
-            this.checkOutForm1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.checkOutForm1.Location = new System.Drawing.Point(250, 0);
-            this.checkOutForm1.Name = "checkOutForm1";
-            this.checkOutForm1.Size = new System.Drawing.Size(692, 545);
-            this.checkOutForm1.TabIndex = 9;
-            this.checkOutForm1.Visible = false;
+            this.employees1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.employees1.Location = new System.Drawing.Point(250, 0);
+            this.employees1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.employees1.Name = "employees1";
+            this.employees1.Size = new System.Drawing.Size(692, 545);
+            this.employees1.TabIndex = 11;
+            this.employees1.Visible = false;
             // 
             // viewLocations1
             // 
@@ -356,23 +331,65 @@ namespace HotelApp_v1
             this.viewLocations1.TabIndex = 10;
             this.viewLocations1.Visible = false;
             // 
-            // employees1
+            // checkOutForm1
             // 
-            this.employees1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.employees1.Location = new System.Drawing.Point(250, 0);
-            this.employees1.Name = "employees1";
-            this.employees1.Size = new System.Drawing.Size(692, 545);
-            this.employees1.TabIndex = 11;
-            this.employees1.Visible = false;
+            this.checkOutForm1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.checkOutForm1.Location = new System.Drawing.Point(250, 0);
+            this.checkOutForm1.Name = "checkOutForm1";
+            this.checkOutForm1.Size = new System.Drawing.Size(692, 545);
+            this.checkOutForm1.TabIndex = 9;
+            this.checkOutForm1.Visible = false;
             // 
-            // employeeLoginForm1
+            // checkInForm1
             // 
-            this.employeeLoginForm1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.employeeLoginForm1.Location = new System.Drawing.Point(250, 0);
-            this.employeeLoginForm1.Name = "employeeLoginForm1";
-            this.employeeLoginForm1.Size = new System.Drawing.Size(692, 545);
-            this.employeeLoginForm1.TabIndex = 12;
-            this.employeeLoginForm1.Visible = false;
+            this.checkInForm1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.checkInForm1.Location = new System.Drawing.Point(250, 0);
+            this.checkInForm1.Name = "checkInForm1";
+            this.checkInForm1.Size = new System.Drawing.Size(692, 545);
+            this.checkInForm1.TabIndex = 8;
+            this.checkInForm1.Visible = false;
+            // 
+            // viewCustomers1
+            // 
+            this.viewCustomers1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.viewCustomers1.Location = new System.Drawing.Point(250, 0);
+            this.viewCustomers1.Name = "viewCustomers1";
+            this.viewCustomers1.Size = new System.Drawing.Size(692, 545);
+            this.viewCustomers1.TabIndex = 7;
+            this.viewCustomers1.Visible = false;
+            // 
+            // roomAvailability1
+            // 
+            this.roomAvailability1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.roomAvailability1.Location = new System.Drawing.Point(250, 0);
+            this.roomAvailability1.Name = "roomAvailability1";
+            this.roomAvailability1.Size = new System.Drawing.Size(692, 545);
+            this.roomAvailability1.TabIndex = 6;
+            this.roomAvailability1.Visible = false;
+            // 
+            // viewReservations1
+            // 
+            this.viewReservations1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.viewReservations1.Location = new System.Drawing.Point(250, 0);
+            this.viewReservations1.Name = "viewReservations1";
+            this.viewReservations1.Size = new System.Drawing.Size(692, 545);
+            this.viewReservations1.TabIndex = 5;
+            this.viewReservations1.Visible = false;
+            // 
+            // viewTransactions1
+            // 
+            this.viewTransactions1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.viewTransactions1.Location = new System.Drawing.Point(250, 0);
+            this.viewTransactions1.Name = "viewTransactions1";
+            this.viewTransactions1.Size = new System.Drawing.Size(692, 545);
+            this.viewTransactions1.TabIndex = 4;
+            this.viewTransactions1.Visible = false;
+            // 
+            // imageList1
+            // 
+            this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             // 
             // Form2
             // 
@@ -428,5 +445,7 @@ namespace HotelApp_v1
         private ViewLocations viewLocations1;
         private Employees employees1;
         private EmployeeLoginForm employeeLoginForm1;
+        private System.Data.SqlClient.SqlConnection sqlConnection1;
+        private ImageList imageList1;
     }
 }
