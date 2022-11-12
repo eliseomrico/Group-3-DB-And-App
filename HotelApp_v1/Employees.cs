@@ -41,6 +41,20 @@ namespace HotelApp_v1
             txtEmpTitle.Clear();
         }
 
+        // Clears text from text boxes
+        private void clearCmbBoxes()
+        {
+            cmbEmpFname.SelectedIndex = -1;
+            cmbEmpLoc.SelectedIndex = -1;
+            cmbEmpSup.SelectedIndex = -1;
+            cmbEmpTitle.SelectedIndex = -1;
+
+            cmbEmpLoc.Items.Clear();
+            cmbEmpSup.Items.Clear();
+            cmbEmpTitle.Items.Clear();
+            cmbEmpFname.Items.Clear();
+        }
+
         // Show/Hide Button Functions
         private void showEditButton(bool status) // after search is clicked, show edit and delete buttons
         {
@@ -88,6 +102,7 @@ namespace HotelApp_v1
         private void button_home_Click(object sender, EventArgs e)
         {
             clearTextBoxes();
+            clearCmbBoxes();
             enableEditDeleteButtons(false);
             this.Visible = false;
         }
@@ -106,6 +121,7 @@ namespace HotelApp_v1
             btnSubmitEdit.Enabled = false;
             btnSubmitCreate.Enabled = false;
             txtEmpFname.Visible = false;
+            txtSearchBox.Enabled = true;
             cmbEmpFname.Visible = true;
             btnSearch.Enabled = true;
             txtSearchBox.Focus();
@@ -253,6 +269,13 @@ namespace HotelApp_v1
             enableEditDeleteButtons(true);
             btnSubmitEdit.Enabled = false;
             showCancelButton(false);
+            showCmbFields(false);
+            showTxtFields(true);
+            txtEmpFname.Visible = false;
+            cmbEmpFname.Visible = true;
+            clearTextBoxes();
+
+            // RefreshTextBoxes();
         }
 
         ///////////
@@ -274,7 +297,7 @@ namespace HotelApp_v1
 
             MessageBox.Show("User deleted");
             
-            clearTextBoxes(); 
+            clearTextBoxes();
             enableEditDeleteButtons(false); 
             changeTextBoxesReadOnlyStatus(true);
 
@@ -522,7 +545,7 @@ namespace HotelApp_v1
 
             SqlCommand cmdFillLocations = sqlConnection2.CreateCommand();
             cmdFillLocations.CommandText = @"SELECT LOC_NAME
-                                         FROM LOCATION";
+                                             FROM LOCATION";
             SqlDataReader reader = cmdFillLocations.ExecuteReader();
 
             while (reader.Read())
@@ -558,7 +581,43 @@ namespace HotelApp_v1
 
             sqlConnection2.Close();
             reader2.Close();
-
         }
+
+        //private void RefreshTextBoxes()
+        //{
+        //    sqlConnection2.Open();
+        //    clearTextBoxes();
+        //    enableEditDeleteButtons(true);
+
+        //    int id = Convert.ToInt32(txtHiddenID.Text);
+
+        //    SqlCommand cmdRefreshInfo = sqlConnection2.CreateCommand();
+        //    cmdRefreshInfo.CommandText = @"SELECT * 
+        //                                  FROM EMPLOYEE 
+        //                                  WHERE EMP_FNAME = @search";
+        //    cmdRefreshInfo.Parameters.AddWithValue("@search", id);
+        //    SqlDataReader reader = cmdRefreshInfo.ExecuteReader();
+
+        //    if (reader.Read())
+        //    {
+        //        txtHiddenID.Text = reader[0].ToString();
+        //        txtEmpLname.Text = reader[2].ToString();
+        //        txtEmpTitle.Text = GetEmployeeTitle(Convert.ToInt32(reader[3].ToString()));
+        //        txtEmpLoc.Text = GetLocationName(Convert.ToInt32(reader[4].ToString()));
+        //        txtEmpSSN.Text = reader[6].ToString();
+
+        //        if (!reader.IsDBNull(5))
+        //        {
+        //            txtEmpSup.Text = GetSupervisorName(Convert.ToInt32(reader[5].ToString()));
+        //        }
+        //        else
+        //        {
+        //            txtEmpSup.Text = "N/A";
+        //        }
+        //    }
+
+        //    reader.Close();
+        //    sqlConnection2.Close();
+        //}
     }
 }
