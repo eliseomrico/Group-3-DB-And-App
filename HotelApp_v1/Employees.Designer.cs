@@ -29,21 +29,24 @@
         private void InitializeComponent()
         {
             this.panel2 = new System.Windows.Forms.Panel();
-            this.txtEmpID = new System.Windows.Forms.TextBox();
+            this.cmbEmpLoc = new System.Windows.Forms.ComboBox();
+            this.cmbEmpTitle = new System.Windows.Forms.ComboBox();
+            this.cmbEmpSup = new System.Windows.Forms.ComboBox();
+            this.txtEmpFname = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
+            this.txtEmpLoc = new System.Windows.Forms.TextBox();
             this.cmbEmpFname = new System.Windows.Forms.ComboBox();
             this.lblEmpFname = new System.Windows.Forms.Label();
-            this.button_cancel = new System.Windows.Forms.Button();
-            this.button_submit_edit = new System.Windows.Forms.Button();
-            this.button_submit_create = new System.Windows.Forms.Button();
-            this.button_search = new System.Windows.Forms.Button();
-            this.button_delete = new System.Windows.Forms.Button();
-            this.button_edit = new System.Windows.Forms.Button();
-            this.button_create = new System.Windows.Forms.Button();
-            this.button_home = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnSubmitEdit = new System.Windows.Forms.Button();
+            this.btnSubmitCreate = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnEdit = new System.Windows.Forms.Button();
+            this.btnCreate = new System.Windows.Forms.Button();
+            this.btnHome = new System.Windows.Forms.Button();
+            this.lblEmpLoc = new System.Windows.Forms.Label();
             this.txtEmpSSN = new System.Windows.Forms.TextBox();
-            this.txtSupID = new System.Windows.Forms.TextBox();
+            this.txtEmpSup = new System.Windows.Forms.TextBox();
             this.txtSearchBox = new System.Windows.Forms.TextBox();
             this.txtEmpLname = new System.Windows.Forms.TextBox();
             this.txtEmpTitle = new System.Windows.Forms.TextBox();
@@ -54,28 +57,31 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.sqlConnection1 = new System.Data.SqlClient.SqlConnection();
-            this.sqlCommand1 = new System.Data.SqlClient.SqlCommand();
+            this.sqlConnection2 = new System.Data.SqlClient.SqlConnection();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
-            this.panel2.Controls.Add(this.txtEmpID);
+            this.panel2.Controls.Add(this.cmbEmpLoc);
+            this.panel2.Controls.Add(this.cmbEmpTitle);
+            this.panel2.Controls.Add(this.cmbEmpSup);
+            this.panel2.Controls.Add(this.txtEmpFname);
             this.panel2.Controls.Add(this.btnSearch);
+            this.panel2.Controls.Add(this.txtEmpLoc);
             this.panel2.Controls.Add(this.cmbEmpFname);
             this.panel2.Controls.Add(this.lblEmpFname);
-            this.panel2.Controls.Add(this.button_cancel);
-            this.panel2.Controls.Add(this.button_submit_edit);
-            this.panel2.Controls.Add(this.button_submit_create);
-            this.panel2.Controls.Add(this.button_search);
-            this.panel2.Controls.Add(this.button_delete);
-            this.panel2.Controls.Add(this.button_edit);
-            this.panel2.Controls.Add(this.button_create);
-            this.panel2.Controls.Add(this.button_home);
-            this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.btnCancel);
+            this.panel2.Controls.Add(this.btnSubmitEdit);
+            this.panel2.Controls.Add(this.btnSubmitCreate);
+            this.panel2.Controls.Add(this.btnDelete);
+            this.panel2.Controls.Add(this.btnEdit);
+            this.panel2.Controls.Add(this.btnCreate);
+            this.panel2.Controls.Add(this.btnHome);
+            this.panel2.Controls.Add(this.lblEmpLoc);
             this.panel2.Controls.Add(this.txtEmpSSN);
-            this.panel2.Controls.Add(this.txtSupID);
+            this.panel2.Controls.Add(this.txtEmpSup);
             this.panel2.Controls.Add(this.txtSearchBox);
             this.panel2.Controls.Add(this.txtEmpLname);
             this.panel2.Controls.Add(this.txtEmpTitle);
@@ -91,25 +97,81 @@
             this.panel2.Size = new System.Drawing.Size(692, 545);
             this.panel2.TabIndex = 23;
             // 
-            // txtEmpID
+            // cmbEmpLoc
             // 
-            this.txtEmpID.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmpID.Location = new System.Drawing.Point(83, 305);
-            this.txtEmpID.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtEmpID.Name = "txtEmpID";
-            this.txtEmpID.ReadOnly = true;
-            this.txtEmpID.Size = new System.Drawing.Size(227, 27);
-            this.txtEmpID.TabIndex = 49;
+            this.cmbEmpLoc.BackColor = System.Drawing.Color.White;
+            this.cmbEmpLoc.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cmbEmpLoc.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbEmpLoc.FormattingEnabled = true;
+            this.cmbEmpLoc.Location = new System.Drawing.Point(83, 305);
+            this.cmbEmpLoc.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cmbEmpLoc.Name = "cmbEmpLoc";
+            this.cmbEmpLoc.Size = new System.Drawing.Size(227, 28);
+            this.cmbEmpLoc.TabIndex = 13;
+            this.cmbEmpLoc.Visible = false;
+            // 
+            // cmbEmpTitle
+            // 
+            this.cmbEmpTitle.BackColor = System.Drawing.Color.White;
+            this.cmbEmpTitle.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cmbEmpTitle.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbEmpTitle.FormattingEnabled = true;
+            this.cmbEmpTitle.Location = new System.Drawing.Point(83, 399);
+            this.cmbEmpTitle.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cmbEmpTitle.Name = "cmbEmpTitle";
+            this.cmbEmpTitle.Size = new System.Drawing.Size(227, 28);
+            this.cmbEmpTitle.TabIndex = 15;
+            this.cmbEmpTitle.Visible = false;
+            // 
+            // cmbEmpSup
+            // 
+            this.cmbEmpSup.BackColor = System.Drawing.Color.White;
+            this.cmbEmpSup.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cmbEmpSup.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbEmpSup.FormattingEnabled = true;
+            this.cmbEmpSup.Location = new System.Drawing.Point(384, 398);
+            this.cmbEmpSup.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cmbEmpSup.Name = "cmbEmpSup";
+            this.cmbEmpSup.Size = new System.Drawing.Size(227, 28);
+            this.cmbEmpSup.TabIndex = 16;
+            this.cmbEmpSup.Visible = false;
+            // 
+            // txtEmpFname
+            // 
+            this.txtEmpFname.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEmpFname.Location = new System.Drawing.Point(83, 216);
+            this.txtEmpFname.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtEmpFname.Name = "txtEmpFname";
+            this.txtEmpFname.ReadOnly = true;
+            this.txtEmpFname.Size = new System.Drawing.Size(227, 27);
+            this.txtEmpFname.TabIndex = 11;
+            this.txtEmpFname.Visible = false;
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(466, 100);
+            this.btnSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(78)))), ((int)(((byte)(79)))));
+            this.btnSearch.FlatAppearance.BorderSize = 0;
+            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSearch.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearch.ForeColor = System.Drawing.Color.White;
+            this.btnSearch.Location = new System.Drawing.Point(477, 95);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(112, 25);
-            this.btnSearch.TabIndex = 48;
+            this.btnSearch.Size = new System.Drawing.Size(118, 33);
+            this.btnSearch.TabIndex = 50;
             this.btnSearch.Text = "Search";
-            this.btnSearch.UseVisualStyleBackColor = true;
-            this.btnSearch.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btnSearch_MouseClick);
+            this.btnSearch.UseVisualStyleBackColor = false;
+            this.btnSearch.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btnSearch_MouseClick_1);
+            // 
+            // txtEmpLoc
+            // 
+            this.txtEmpLoc.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEmpLoc.Location = new System.Drawing.Point(83, 305);
+            this.txtEmpLoc.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtEmpLoc.Name = "txtEmpLoc";
+            this.txtEmpLoc.ReadOnly = true;
+            this.txtEmpLoc.Size = new System.Drawing.Size(227, 27);
+            this.txtEmpLoc.TabIndex = 49;
             // 
             // cmbEmpFname
             // 
@@ -135,153 +197,136 @@
             this.lblEmpFname.TabIndex = 46;
             this.lblEmpFname.Text = "First Name";
             // 
-            // button_cancel
+            // btnCancel
             // 
-            this.button_cancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(78)))), ((int)(((byte)(79)))));
-            this.button_cancel.Enabled = false;
-            this.button_cancel.FlatAppearance.BorderSize = 0;
-            this.button_cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_cancel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_cancel.ForeColor = System.Drawing.Color.White;
-            this.button_cancel.Location = new System.Drawing.Point(553, 501);
-            this.button_cancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button_cancel.Name = "button_cancel";
-            this.button_cancel.Size = new System.Drawing.Size(139, 44);
-            this.button_cancel.TabIndex = 45;
-            this.button_cancel.Text = "Cancel";
-            this.button_cancel.UseVisualStyleBackColor = false;
-            this.button_cancel.Visible = false;
-            this.button_cancel.Click += new System.EventHandler(this.button_cancel_Click);
+            this.btnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(78)))), ((int)(((byte)(79)))));
+            this.btnCancel.Enabled = false;
+            this.btnCancel.FlatAppearance.BorderSize = 0;
+            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.ForeColor = System.Drawing.Color.White;
+            this.btnCancel.Location = new System.Drawing.Point(519, 501);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(173, 44);
+            this.btnCancel.TabIndex = 45;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = false;
+            this.btnCancel.Visible = false;
+            this.btnCancel.Click += new System.EventHandler(this.button_cancel_Click);
             // 
-            // button_submit_edit
+            // btnSubmitEdit
             // 
-            this.button_submit_edit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(78)))), ((int)(((byte)(79)))));
-            this.button_submit_edit.Enabled = false;
-            this.button_submit_edit.FlatAppearance.BorderSize = 0;
-            this.button_submit_edit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_submit_edit.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_submit_edit.ForeColor = System.Drawing.Color.White;
-            this.button_submit_edit.Location = new System.Drawing.Point(415, 501);
-            this.button_submit_edit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button_submit_edit.Name = "button_submit_edit";
-            this.button_submit_edit.Size = new System.Drawing.Size(139, 44);
-            this.button_submit_edit.TabIndex = 44;
-            this.button_submit_edit.Text = "Submit Edit";
-            this.button_submit_edit.UseVisualStyleBackColor = false;
-            this.button_submit_edit.Visible = false;
-            this.button_submit_edit.Click += new System.EventHandler(this.button_submit_edit_Click);
+            this.btnSubmitEdit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(78)))), ((int)(((byte)(79)))));
+            this.btnSubmitEdit.Enabled = false;
+            this.btnSubmitEdit.FlatAppearance.BorderSize = 0;
+            this.btnSubmitEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSubmitEdit.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSubmitEdit.ForeColor = System.Drawing.Color.White;
+            this.btnSubmitEdit.Location = new System.Drawing.Point(340, 501);
+            this.btnSubmitEdit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnSubmitEdit.Name = "btnSubmitEdit";
+            this.btnSubmitEdit.Size = new System.Drawing.Size(180, 44);
+            this.btnSubmitEdit.TabIndex = 44;
+            this.btnSubmitEdit.Text = "Submit Edit";
+            this.btnSubmitEdit.UseVisualStyleBackColor = false;
+            this.btnSubmitEdit.Visible = false;
+            this.btnSubmitEdit.Click += new System.EventHandler(this.button_submit_edit_Click);
             // 
-            // button_submit_create
+            // btnSubmitCreate
             // 
-            this.button_submit_create.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(78)))), ((int)(((byte)(79)))));
-            this.button_submit_create.Enabled = false;
-            this.button_submit_create.FlatAppearance.BorderSize = 0;
-            this.button_submit_create.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_submit_create.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_submit_create.ForeColor = System.Drawing.Color.White;
-            this.button_submit_create.Location = new System.Drawing.Point(276, 501);
-            this.button_submit_create.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button_submit_create.Name = "button_submit_create";
-            this.button_submit_create.Size = new System.Drawing.Size(139, 44);
-            this.button_submit_create.TabIndex = 43;
-            this.button_submit_create.Text = "Submit Create";
-            this.button_submit_create.UseVisualStyleBackColor = false;
-            this.button_submit_create.Visible = false;
-            this.button_submit_create.Click += new System.EventHandler(this.button_submit_create_Click);
+            this.btnSubmitCreate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(78)))), ((int)(((byte)(79)))));
+            this.btnSubmitCreate.Enabled = false;
+            this.btnSubmitCreate.FlatAppearance.BorderSize = 0;
+            this.btnSubmitCreate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSubmitCreate.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSubmitCreate.ForeColor = System.Drawing.Color.White;
+            this.btnSubmitCreate.Location = new System.Drawing.Point(170, 501);
+            this.btnSubmitCreate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnSubmitCreate.Name = "btnSubmitCreate";
+            this.btnSubmitCreate.Size = new System.Drawing.Size(173, 44);
+            this.btnSubmitCreate.TabIndex = 43;
+            this.btnSubmitCreate.Text = "Submit Create";
+            this.btnSubmitCreate.UseVisualStyleBackColor = false;
+            this.btnSubmitCreate.Visible = false;
+            this.btnSubmitCreate.Click += new System.EventHandler(this.button_submit_create_Click);
             // 
-            // button_search
+            // btnDelete
             // 
-            this.button_search.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(78)))), ((int)(((byte)(79)))));
-            this.button_search.FlatAppearance.BorderSize = 0;
-            this.button_search.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_search.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_search.ForeColor = System.Drawing.Color.White;
-            this.button_search.Location = new System.Drawing.Point(139, 501);
-            this.button_search.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button_search.Name = "button_search";
-            this.button_search.Size = new System.Drawing.Size(139, 44);
-            this.button_search.TabIndex = 32;
-            this.button_search.Text = "Search";
-            this.button_search.UseVisualStyleBackColor = false;
-            this.button_search.Click += new System.EventHandler(this.button_search_Click);
+            this.btnDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(78)))), ((int)(((byte)(79)))));
+            this.btnDelete.Enabled = false;
+            this.btnDelete.FlatAppearance.BorderSize = 0;
+            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDelete.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelete.ForeColor = System.Drawing.Color.White;
+            this.btnDelete.Location = new System.Drawing.Point(519, 501);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(173, 44);
+            this.btnDelete.TabIndex = 31;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.button_delete_Click);
             // 
-            // button_delete
+            // btnEdit
             // 
-            this.button_delete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(78)))), ((int)(((byte)(79)))));
-            this.button_delete.Enabled = false;
-            this.button_delete.FlatAppearance.BorderSize = 0;
-            this.button_delete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_delete.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_delete.ForeColor = System.Drawing.Color.White;
-            this.button_delete.Location = new System.Drawing.Point(553, 501);
-            this.button_delete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button_delete.Name = "button_delete";
-            this.button_delete.Size = new System.Drawing.Size(139, 44);
-            this.button_delete.TabIndex = 31;
-            this.button_delete.Text = "Delete";
-            this.button_delete.UseVisualStyleBackColor = false;
-            this.button_delete.Click += new System.EventHandler(this.button_delete_Click);
+            this.btnEdit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(78)))), ((int)(((byte)(79)))));
+            this.btnEdit.Enabled = false;
+            this.btnEdit.FlatAppearance.BorderSize = 0;
+            this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEdit.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEdit.ForeColor = System.Drawing.Color.White;
+            this.btnEdit.Location = new System.Drawing.Point(340, 501);
+            this.btnEdit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(180, 44);
+            this.btnEdit.TabIndex = 30;
+            this.btnEdit.Text = "Edit";
+            this.btnEdit.UseVisualStyleBackColor = false;
+            this.btnEdit.Click += new System.EventHandler(this.button_edit_Click);
             // 
-            // button_edit
+            // btnCreate
             // 
-            this.button_edit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(78)))), ((int)(((byte)(79)))));
-            this.button_edit.Enabled = false;
-            this.button_edit.FlatAppearance.BorderSize = 0;
-            this.button_edit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_edit.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_edit.ForeColor = System.Drawing.Color.White;
-            this.button_edit.Location = new System.Drawing.Point(415, 501);
-            this.button_edit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button_edit.Name = "button_edit";
-            this.button_edit.Size = new System.Drawing.Size(139, 44);
-            this.button_edit.TabIndex = 30;
-            this.button_edit.Text = "Edit";
-            this.button_edit.UseVisualStyleBackColor = false;
-            this.button_edit.Click += new System.EventHandler(this.button_edit_Click);
+            this.btnCreate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(78)))), ((int)(((byte)(79)))));
+            this.btnCreate.FlatAppearance.BorderSize = 0;
+            this.btnCreate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCreate.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCreate.ForeColor = System.Drawing.Color.White;
+            this.btnCreate.Location = new System.Drawing.Point(170, 501);
+            this.btnCreate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnCreate.Name = "btnCreate";
+            this.btnCreate.Size = new System.Drawing.Size(173, 44);
+            this.btnCreate.TabIndex = 29;
+            this.btnCreate.Text = "Create";
+            this.btnCreate.UseVisualStyleBackColor = false;
+            this.btnCreate.Click += new System.EventHandler(this.button_create_Click);
             // 
-            // button_create
+            // btnHome
             // 
-            this.button_create.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(78)))), ((int)(((byte)(79)))));
-            this.button_create.Enabled = false;
-            this.button_create.FlatAppearance.BorderSize = 0;
-            this.button_create.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_create.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_create.ForeColor = System.Drawing.Color.White;
-            this.button_create.Location = new System.Drawing.Point(276, 501);
-            this.button_create.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button_create.Name = "button_create";
-            this.button_create.Size = new System.Drawing.Size(139, 44);
-            this.button_create.TabIndex = 29;
-            this.button_create.Text = "Create";
-            this.button_create.UseVisualStyleBackColor = false;
-            this.button_create.Click += new System.EventHandler(this.button_create_Click);
+            this.btnHome.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(78)))), ((int)(((byte)(79)))));
+            this.btnHome.FlatAppearance.BorderSize = 0;
+            this.btnHome.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHome.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHome.ForeColor = System.Drawing.Color.White;
+            this.btnHome.Location = new System.Drawing.Point(0, 501);
+            this.btnHome.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnHome.Name = "btnHome";
+            this.btnHome.Size = new System.Drawing.Size(173, 44);
+            this.btnHome.TabIndex = 28;
+            this.btnHome.Text = "Home";
+            this.btnHome.UseVisualStyleBackColor = false;
+            this.btnHome.Click += new System.EventHandler(this.button_home_Click);
             // 
-            // button_home
+            // lblEmpLoc
             // 
-            this.button_home.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(78)))), ((int)(((byte)(79)))));
-            this.button_home.FlatAppearance.BorderSize = 0;
-            this.button_home.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_home.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_home.ForeColor = System.Drawing.Color.White;
-            this.button_home.Location = new System.Drawing.Point(0, 501);
-            this.button_home.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button_home.Name = "button_home";
-            this.button_home.Size = new System.Drawing.Size(139, 44);
-            this.button_home.TabIndex = 28;
-            this.button_home.Text = "Home";
-            this.button_home.UseVisualStyleBackColor = false;
-            this.button_home.Click += new System.EventHandler(this.button_home_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.White;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(79, 273);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(94, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Employee ID";
+            this.lblEmpLoc.AutoSize = true;
+            this.lblEmpLoc.BackColor = System.Drawing.Color.White;
+            this.lblEmpLoc.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEmpLoc.Location = new System.Drawing.Point(79, 273);
+            this.lblEmpLoc.Name = "lblEmpLoc";
+            this.lblEmpLoc.Size = new System.Drawing.Size(66, 20);
+            this.lblEmpLoc.TabIndex = 0;
+            this.lblEmpLoc.Text = "Location";
             // 
             // txtEmpSSN
             // 
@@ -291,17 +336,17 @@
             this.txtEmpSSN.Name = "txtEmpSSN";
             this.txtEmpSSN.ReadOnly = true;
             this.txtEmpSSN.Size = new System.Drawing.Size(227, 27);
-            this.txtEmpSSN.TabIndex = 8;
+            this.txtEmpSSN.TabIndex = 14;
             // 
-            // txtSupID
+            // txtEmpSup
             // 
-            this.txtSupID.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSupID.Location = new System.Drawing.Point(384, 399);
-            this.txtSupID.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtSupID.Name = "txtSupID";
-            this.txtSupID.ReadOnly = true;
-            this.txtSupID.Size = new System.Drawing.Size(227, 27);
-            this.txtSupID.TabIndex = 9;
+            this.txtEmpSup.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEmpSup.Location = new System.Drawing.Point(384, 399);
+            this.txtEmpSup.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtEmpSup.Name = "txtEmpSup";
+            this.txtEmpSup.ReadOnly = true;
+            this.txtEmpSup.Size = new System.Drawing.Size(227, 27);
+            this.txtEmpSup.TabIndex = 9;
             // 
             // txtSearchBox
             // 
@@ -320,7 +365,7 @@
             this.txtEmpLname.Name = "txtEmpLname";
             this.txtEmpLname.ReadOnly = true;
             this.txtEmpLname.Size = new System.Drawing.Size(227, 27);
-            this.txtEmpLname.TabIndex = 11;
+            this.txtEmpLname.TabIndex = 12;
             // 
             // txtEmpTitle
             // 
@@ -404,6 +449,12 @@
     "rue";
             this.sqlConnection1.FireInfoMessageEventOnUserErrors = false;
             // 
+            // sqlConnection2
+            // 
+            this.sqlConnection2.ConnectionString = "Data Source=ESCO-PC\\SQLEXPRESS01;Initial Catalog=HOTEL_TEST;Integrated Security=T" +
+    "rue";
+            this.sqlConnection2.FireInfoMessageEventOnUserErrors = false;
+            // 
             // Employees
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -421,9 +472,9 @@
         #endregion
 
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblEmpLoc;
         private System.Windows.Forms.TextBox txtEmpSSN;
-        private System.Windows.Forms.TextBox txtSupID;
+        private System.Windows.Forms.TextBox txtEmpSup;
         private System.Windows.Forms.TextBox txtSearchBox;
         private System.Windows.Forms.TextBox txtEmpLname;
         private System.Windows.Forms.TextBox txtEmpTitle;
@@ -433,19 +484,22 @@
         private System.Windows.Forms.Label lblSearchFname;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button button_search;
-        private System.Windows.Forms.Button button_delete;
-        private System.Windows.Forms.Button button_edit;
-        private System.Windows.Forms.Button button_create;
-        private System.Windows.Forms.Button button_home;
-        private System.Windows.Forms.Button button_submit_create;
-        private System.Windows.Forms.Button button_submit_edit;
-        private System.Windows.Forms.Button button_cancel;
+        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnEdit;
+        private System.Windows.Forms.Button btnCreate;
+        private System.Windows.Forms.Button btnHome;
+        private System.Windows.Forms.Button btnSubmitCreate;
+        private System.Windows.Forms.Button btnSubmitEdit;
+        private System.Windows.Forms.Button btnCancel;
         private System.Data.SqlClient.SqlConnection sqlConnection1;
         private System.Windows.Forms.Label lblEmpFname;
         private System.Windows.Forms.ComboBox cmbEmpFname;
+        private System.Windows.Forms.TextBox txtEmpLoc;
+        private System.Data.SqlClient.SqlConnection sqlConnection2;
         private System.Windows.Forms.Button btnSearch;
-        private System.Data.SqlClient.SqlCommand sqlCommand1;
-        private System.Windows.Forms.TextBox txtEmpID;
+        private System.Windows.Forms.TextBox txtEmpFname;
+        private System.Windows.Forms.ComboBox cmbEmpLoc;
+        private System.Windows.Forms.ComboBox cmbEmpTitle;
+        private System.Windows.Forms.ComboBox cmbEmpSup;
     }
 }
