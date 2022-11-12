@@ -58,12 +58,14 @@
             this.label6 = new System.Windows.Forms.Label();
             this.sqlConnection1 = new System.Data.SqlClient.SqlConnection();
             this.sqlConnection2 = new System.Data.SqlClient.SqlConnection();
+            this.txtHiddenID = new System.Windows.Forms.TextBox();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.Controls.Add(this.txtHiddenID);
             this.panel2.Controls.Add(this.cmbEmpLoc);
             this.panel2.Controls.Add(this.cmbEmpTitle);
             this.panel2.Controls.Add(this.cmbEmpSup);
@@ -141,6 +143,7 @@
             this.txtEmpFname.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmpFname.Location = new System.Drawing.Point(83, 216);
             this.txtEmpFname.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtEmpFname.MaxLength = 20;
             this.txtEmpFname.Name = "txtEmpFname";
             this.txtEmpFname.ReadOnly = true;
             this.txtEmpFname.Size = new System.Drawing.Size(227, 27);
@@ -333,6 +336,7 @@
             this.txtEmpSSN.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmpSSN.Location = new System.Drawing.Point(384, 305);
             this.txtEmpSSN.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtEmpSSN.MaxLength = 9;
             this.txtEmpSSN.Name = "txtEmpSSN";
             this.txtEmpSSN.ReadOnly = true;
             this.txtEmpSSN.Size = new System.Drawing.Size(227, 27);
@@ -353,6 +357,7 @@
             this.txtSearchBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSearchBox.Location = new System.Drawing.Point(229, 99);
             this.txtSearchBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtSearchBox.MaxLength = 20;
             this.txtSearchBox.Name = "txtSearchBox";
             this.txtSearchBox.Size = new System.Drawing.Size(227, 27);
             this.txtSearchBox.TabIndex = 10;
@@ -362,6 +367,7 @@
             this.txtEmpLname.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmpLname.Location = new System.Drawing.Point(384, 216);
             this.txtEmpLname.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtEmpLname.MaxLength = 20;
             this.txtEmpLname.Name = "txtEmpLname";
             this.txtEmpLname.ReadOnly = true;
             this.txtEmpLname.Size = new System.Drawing.Size(227, 27);
@@ -455,6 +461,15 @@
     "rue";
             this.sqlConnection2.FireInfoMessageEventOnUserErrors = false;
             // 
+            // txtHiddenID
+            // 
+            this.txtHiddenID.Enabled = false;
+            this.txtHiddenID.Location = new System.Drawing.Point(281, 99);
+            this.txtHiddenID.Name = "txtHiddenID";
+            this.txtHiddenID.Size = new System.Drawing.Size(100, 22);
+            this.txtHiddenID.TabIndex = 0;
+            this.txtHiddenID.Visible = false;
+            // 
             // Employees
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -501,5 +516,6 @@
         private System.Windows.Forms.ComboBox cmbEmpLoc;
         private System.Windows.Forms.ComboBox cmbEmpTitle;
         private System.Windows.Forms.ComboBox cmbEmpSup;
+        private System.Windows.Forms.TextBox txtHiddenID;
     }
 }

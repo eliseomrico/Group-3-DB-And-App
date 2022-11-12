@@ -92,25 +92,51 @@ namespace HotelApp_v1
             this.Visible = false;
         }
 
+        // "Cancel" button click
+        private void button_cancel_Click(object sender, EventArgs e)
+        {
+            clearTextBoxes();
+            enableEditDeleteButtons(false);
+            changeTextBoxesReadOnlyStatus(true);
+            showEditButton(true);
+            showCreateButton(true);
+            showCancelButton(false);
+            showTxtFields(true);
+            showCmbFields(false);
+            btnSubmitEdit.Enabled = false;
+            btnSubmitCreate.Enabled = false;
+            txtEmpFname.Visible = false;
+            cmbEmpFname.Visible = true;
+            btnSearch.Enabled = true;
+            txtSearchBox.Focus();
+        }
+
         ///////////
         // Create functions
         ///////////
-        
+
+        // Prep the form for creating/stopping creating
+        private void CreateModeToggle(bool status)
+        {
+            clearTextBoxes();
+            showCreateButton(!status);
+            showCancelButton(status);
+            showTxtFields(!status);
+            showCmbFields(status);
+            txtEmpFname.Visible = status;
+            cmbEmpFname.Visible = !status;
+            changeTextBoxesReadOnlyStatus(!status);
+            txtSearchBox.Enabled = !status;
+            btnSearch.Enabled = !status;
+        }
+
         // "Create" button click  
         private void button_create_Click(object sender, EventArgs e)
         {
+            CreateModeToggle(true);
             cmbEmpFname.SelectedIndex = -1;
-            btnSearch.Enabled = false;
-            btnEdit.Enabled = false;
-            showCreateButton(false);
-            showCancelButton(true);
-            showTxtFields(false);
-            showCmbFields(true);
-            txtEmpFname.Visible = true;
-            cmbEmpFname.Visible = false;
+            enableEditDeleteButtons(false);
             txtEmpFname.Focus();
-            changeTextBoxesReadOnlyStatus(false);
-
             FillCmbFields();
         }
 
@@ -118,14 +144,14 @@ namespace HotelApp_v1
         private void button_submit_create_Click(object sender, EventArgs e)
         {
             int ssn, location, title, supervisor;
-            string[] name = cmbEmpSup.Text.Split(' ');
+            string[] sup_name = cmbEmpSup.Text.Split(' ');
 
             location = GetLocationID(cmbEmpLoc.Text);
             // if (location == -1) { }
             title = GetTitleCode(cmbEmpTitle.Text);
             // if (title == -1) { }
             ssn = Convert.ToInt32(txtEmpSSN.Text);
-            supervisor = GetSupervisorID(name[0], name[1]);
+            supervisor = GetSupervisorID(sup_name[0], sup_name[1]);
 
             sqlConnection1.Open();
             SqlCommand cmdInsertUser = sqlConnection1.CreateCommand();
@@ -151,11 +177,9 @@ namespace HotelApp_v1
 
             MessageBox.Show("Employee Added");
 
-            clearTextBoxes(); 
-            showCreateButton(true);
-            enableEditDeleteButtons(true);
-            showCancelButton(false);
+            CreateModeToggle(false);
             btnSubmitCreate.Enabled = false;
+            txtSearchBox.Focus();
         }
 
         ///////////
@@ -168,13 +192,62 @@ namespace HotelApp_v1
             showEditButton(false);
             changeTextBoxesReadOnlyStatus(false); 
             enableEditDeleteButtons(false);
-            btnSubmitEdit.Enabled = true;
             showCancelButton(true);
+            showTxtFields(false);
+            showCmbFields(true);
+            btnSubmitEdit.Enabled = true;
+            txtEmpFname.Visible = true;
+            cmbEmpFname.Visible = false;
+            txtEmpFname.Focus();
+
+            txtEmpFname.Text = cmbEmpFname.Text;
+            cmbEmpLoc.Text = txtEmpLoc.Text;
+            cmbEmpSup.Text = txtEmpSup.Text;
+            cmbEmpTitle.Text = txtEmpTitle.Text;
+
+            FillCmbFields();
         }
 
         // "Submit Edit" button click
         private void button_submit_edit_Click(object sender, EventArgs e)
         {
+            int ssn, location, title, supervisor, id;
+            string[] sup_name = cmbEmpSup.Text.Split(' ');
+
+            location = GetLocationID(cmbEmpLoc.Text);
+            // if (location == -1) { }
+            title = GetTitleCode(cmbEmpTitle.Text);
+            // if (title == -1) { }
+            ssn = Convert.ToInt32(txtEmpSSN.Text);
+            supervisor = GetSupervisorID(sup_name[0], sup_name[1]);
+            id = Convert.ToInt32(txtHiddenID.Text);
+
+            sqlConnection1.Open();
+
+            SqlCommand cmdUpdateUser = sqlConnection1.CreateCommand();
+            cmdUpdateUser.CommandText = @"UPDATE EMPLOYEE
+                                          SET EMP_FNAME = @bind1,
+                                              EMP_LNAME = @bind2,
+                                              EMP_LOC_ID = @bind3,
+                                              EMP_TITLE = @bind4,
+                                              SUPER_ID = @bind5,
+                                              EMP_SSN = @bind6
+                                          WHERE EMP_ID = @bind7";
+
+            cmdUpdateUser.Parameters.AddWithValue("@bind1", txtEmpFname.Text);
+            cmdUpdateUser.Parameters.AddWithValue("@bind2", txtEmpLname.Text);
+            cmdUpdateUser.Parameters.AddWithValue("@bind3", location);
+            cmdUpdateUser.Parameters.AddWithValue("@bind4", title);
+            cmdUpdateUser.Parameters.AddWithValue("@bind5", supervisor);
+            cmdUpdateUser.Parameters.AddWithValue("@bind6", ssn);
+            cmdUpdateUser.Parameters.AddWithValue("@bind7", id);
+
+            cmdUpdateUser.ExecuteNonQuery();
+
+            sqlConnection1.Close();
+
+            MessageBox.Show("Employee Updated");
+
             showEditButton(true);
             changeTextBoxesReadOnlyStatus(true); 
             enableEditDeleteButtons(true);
@@ -203,27 +276,15 @@ namespace HotelApp_v1
             
             clearTextBoxes(); 
             enableEditDeleteButtons(false); 
-            changeTextBoxesReadOnlyStatus(true); 
+            changeTextBoxesReadOnlyStatus(true);
+
+            cmbEmpFname.Items.RemoveAt(cmbEmpFname.SelectedIndex);
+            cmbEmpFname.SelectedIndex = -1;
         }
 
-        // "Cancel" button click
-        private void button_cancel_Click(object sender, EventArgs e)
-        {
-            clearTextBoxes();
-            enableEditDeleteButtons(false);
-            changeTextBoxesReadOnlyStatus(true);
-            showEditButton(true);
-            showCreateButton(true);
-            showCancelButton(false);
-            showTxtFields(true);
-            showCmbFields(false);
-            btnSubmitEdit.Enabled   = false;
-            btnSubmitCreate.Enabled = false;
-            txtEmpFname.Visible     = false;
-            cmbEmpFname.Visible     = true;
-            btnSearch.Enabled       = true;
-            txtSearchBox.Focus();
-        }
+        ///////////
+        // Search functions
+        ///////////
 
         // "Search" button click - Populates "First Name" combo box based on search criteria from search box
         private void btnSearch_MouseClick_1(object sender, MouseEventArgs e)
@@ -278,10 +339,11 @@ namespace HotelApp_v1
 
             if (reader.Read())
             {
-                txtEmpLoc.Text   = GetLocationName(Convert.ToInt32(reader[0].ToString()));
+                txtHiddenID.Text = reader[0].ToString();
                 txtEmpLname.Text = reader[2].ToString();
-                txtEmpSSN.Text   = reader[6].ToString();
                 txtEmpTitle.Text = GetEmployeeTitle(Convert.ToInt32(reader[3].ToString()));
+                txtEmpLoc.Text   = GetLocationName(Convert.ToInt32(reader[4].ToString()));
+                txtEmpSSN.Text   = reader[6].ToString();
 
                 if (!reader.IsDBNull(5))
                 {
@@ -451,28 +513,35 @@ namespace HotelApp_v1
         // Populate combo boxes used in create/edit with available options in DB
         private void FillCmbFields()
         {
+            cmbEmpLoc.Items.Clear();
+            cmbEmpSup.Items.Clear();
+            cmbEmpTitle.Items.Clear();
+
             // Locations
             sqlConnection2.Open();
 
             SqlCommand cmdFillLocations = sqlConnection2.CreateCommand();
             cmdFillLocations.CommandText = @"SELECT LOC_NAME
                                          FROM LOCATION";
-
             SqlDataReader reader = cmdFillLocations.ExecuteReader();
 
             while (reader.Read())
             {
                 cmbEmpLoc.Items.Add(reader[0].ToString());
-            }
-
+            }          
             reader.Close();
 
             // Supervisors
+
+            // int sup_id = Convert.ToInt32(txtHiddenID.Text);
+
             SqlCommand cmdFillSupervisors = sqlConnection2.CreateCommand();
             cmdFillSupervisors.CommandText = @"SELECT a.EMP_FNAME, a.EMP_LNAME
                                                FROM EMPLOYEE a
                                                WHERE a.EMP_ID IN (SELECT b.SUPER_ID
                                                                   FROM EMPLOYEE b)";
+                                               // AND EMP_ID != @search";
+            // cmdFillSupervisors.Parameters.AddWithValue("@search", sup_id);
 
             SqlDataReader reader2 = cmdFillSupervisors.ExecuteReader();
 
