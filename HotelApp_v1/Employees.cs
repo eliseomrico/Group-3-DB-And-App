@@ -18,6 +18,30 @@ namespace HotelApp_v1
         {
             InitializeComponent();
         }
+
+        // Toggles read-only status of text boxes
+        private void changeTextBoxesReadOnlyStatus(bool status)
+        {
+            txtEmpFname.ReadOnly = status;
+            txtEmpLoc.ReadOnly = status;
+            txtEmpSSN.ReadOnly = status;
+            txtEmpSup.ReadOnly = status;
+            txtSearchBox.ReadOnly = !status;
+            txtEmpLname.ReadOnly = status;
+            txtEmpTitle.ReadOnly = status;
+        }
+
+        // Clears text from text boxes
+        private void clearTextBoxes() 
+        {
+            txtEmpLoc.Clear();
+            txtEmpSSN.Clear();
+            txtEmpSup.Clear();
+            txtEmpLname.Clear();
+            txtEmpTitle.Clear();
+        }
+
+        // Show/Hide Button Functions
         private void showEditButton(bool status) // after search is clicked, show edit and delete buttons
         {
             btnEdit.Visible       = status;
@@ -35,6 +59,7 @@ namespace HotelApp_v1
             btnCancel.Visible = status;
         }
 
+        // Switch to text fields for displaying info. about an employee
         private void showTxtFields(bool status)
         {
             txtEmpFname.Visible = status;
@@ -43,6 +68,7 @@ namespace HotelApp_v1
             txtEmpSup.Visible   = status;
         }
 
+        // Switch to showing combo boxes for adding/editing an employee
         private void showCmbFields(bool status)
         {
             cmbEmpFname.Visible = status;
@@ -50,35 +76,15 @@ namespace HotelApp_v1
             cmbEmpTitle.Visible = status;
             cmbEmpSup.Visible   = status;
         }
+
+        // Toggle enabled state of "Edit"/"Delete" buttons
         private void enableEditDeleteButtons(bool status)
         {
-            btnEdit.Enabled   = status;
+            btnEdit.Enabled = status;
             btnDelete.Enabled = status;
         }
-        private void changeTextBoxesReadOnlyStatus(bool status) // makes text boxes read-only or not read-only
-        {
-            txtEmpFname.ReadOnly  = status;
-            txtEmpLoc.ReadOnly    = status;
-            txtEmpSSN.ReadOnly    = status;
-            txtEmpSup.ReadOnly    = status;
-            txtSearchBox.ReadOnly = !status;
-            txtEmpLname.ReadOnly  = status;
-            txtEmpTitle.ReadOnly  = status;
-        }
-        private void clearTextBoxes() // clears text from text boxes
-        {
-            txtEmpLoc.Clear();
-            txtEmpSSN.Clear();
-            txtEmpSup.Clear();
-            txtEmpLname.Clear();
-            txtEmpTitle.Clear();
-        }
 
-        //////
-        //  Lower Menu Button Clicks Functions Below
-        //////
-        
-        // Clicked home button 
+        // "Home" button click 
         private void button_home_Click(object sender, EventArgs e)
         {
             clearTextBoxes();
@@ -86,7 +92,11 @@ namespace HotelApp_v1
             this.Visible = false;
         }
 
-        // Clicked create button 
+        ///////////
+        // Create functions
+        ///////////
+        
+        // "Create" button click  
         private void button_create_Click(object sender, EventArgs e)
         {
             cmbEmpFname.SelectedIndex = -1;
@@ -104,7 +114,7 @@ namespace HotelApp_v1
             FillCmbFields();
         }
 
-        // Clicked submit create button 
+        // "Submit Create" button click
         private void button_submit_create_Click(object sender, EventArgs e)
         {
             int ssn, location, title, supervisor;
@@ -127,6 +137,7 @@ namespace HotelApp_v1
                                            SUPER_ID,
                                            EMP_SSN)
                                            VALUES(@bind1, @bind2, @bind3, @bind4, @bind5, @bind6)";
+
             cmdInsertUser.Parameters.AddWithValue("@bind1", txtEmpFname.Text);
             cmdInsertUser.Parameters.AddWithValue("@bind2", txtEmpLname.Text);
             cmdInsertUser.Parameters.AddWithValue("@bind3", location);
@@ -138,24 +149,8 @@ namespace HotelApp_v1
 
             sqlConnection1.Close();
 
-            MessageBox.Show("User Added");
+            MessageBox.Show("Employee Added");
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            /////////////////
             clearTextBoxes(); 
             showCreateButton(true);
             enableEditDeleteButtons(true);
@@ -163,7 +158,11 @@ namespace HotelApp_v1
             btnSubmitCreate.Enabled = false;
         }
 
-        // Clicked edit button 
+        ///////////
+        // Edit functions
+        ///////////
+        
+        // "Edit" button click
         private void button_edit_Click(object sender, EventArgs e)
         {
             showEditButton(false);
@@ -173,7 +172,7 @@ namespace HotelApp_v1
             showCancelButton(true);
         }
 
-        // Clicked submit edit button 
+        // "Submit Edit" button click
         private void button_submit_edit_Click(object sender, EventArgs e)
         {
             showEditButton(true);
@@ -183,15 +182,31 @@ namespace HotelApp_v1
             showCancelButton(false);
         }
 
-        // Clicked delete button
+        ///////////
+        // Delete function
+        ///////////
+
+        // "Delete" button click
         private void button_delete_Click(object sender, EventArgs e)
         {
+            sqlConnection1.Open();
+
+            SqlCommand cmdDeleteUser = sqlConnection1.CreateCommand();
+            cmdDeleteUser.CommandText = @"DELETE FROM EMPLOYEE
+                                          WHERE EMP_SSN = @search";
+            cmdDeleteUser.Parameters.AddWithValue("@search", Convert.ToInt32(txtEmpSSN.Text));
+            cmdDeleteUser.ExecuteNonQuery();
+
+            sqlConnection1.Close();
+
+            MessageBox.Show("User deleted");
+            
             clearTextBoxes(); 
             enableEditDeleteButtons(false); 
             changeTextBoxesReadOnlyStatus(true); 
         }
 
-        // Clicked cancel button
+        // "Cancel" button click
         private void button_cancel_Click(object sender, EventArgs e)
         {
             clearTextBoxes();
@@ -210,13 +225,7 @@ namespace HotelApp_v1
             txtSearchBox.Focus();
         }
 
-        //////////////////////////////
-        // Lauren's functions below //
-        //////////////////////////////
-
-        ////
-        // Populates combo box based on search criteria from search box
-        ////
+        // "Search" button click - Populates "First Name" combo box based on search criteria from search box
         private void btnSearch_MouseClick_1(object sender, MouseEventArgs e)
         {
             // Empty combo box and revert selected index
@@ -252,9 +261,7 @@ namespace HotelApp_v1
             //}
         }
 
-        /////
-        // Populates all fields on employee form based on combo box selection
-        ////
+        // "First Name" combo box selection - Populates all fields on employee form based on selection
         private void cmbEmpFname_SelectedIndexChanged(object sender, EventArgs e)
         {
             sqlConnection1.Open();
@@ -441,6 +448,7 @@ namespace HotelApp_v1
             }
         }
 
+        // Populate combo boxes used in create/edit with available options in DB
         private void FillCmbFields()
         {
             // Locations
