@@ -62,7 +62,7 @@
             // 
             // pnlManageTransactions
             // 
-            this.pnlManageTransactions.Location = new System.Drawing.Point(0, 0);
+            this.pnlManageTransactions.Location = new System.Drawing.Point(0, 154);
             this.pnlManageTransactions.Name = "pnlManageTransactions";
             this.pnlManageTransactions.Size = new System.Drawing.Size(692, 545);
             this.pnlManageTransactions.TabIndex = 33;
@@ -73,7 +73,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.White;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(351, 117);
+            this.label1.Location = new System.Drawing.Point(346, 108);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(73, 20);
             this.label1.TabIndex = 32;
@@ -84,7 +84,7 @@
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.White;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(8, 116);
+            this.label6.Location = new System.Drawing.Point(23, 108);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(79, 20);
             this.label6.TabIndex = 31;
@@ -93,20 +93,24 @@
             // dtpEndDate
             // 
             this.dtpEndDate.Checked = false;
+            this.dtpEndDate.CustomFormat = "ddd, MMMM dd yyyy";
             this.dtpEndDate.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpEndDate.Location = new System.Drawing.Point(429, 112);
+            this.dtpEndDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpEndDate.Location = new System.Drawing.Point(425, 101);
             this.dtpEndDate.Name = "dtpEndDate";
-            this.dtpEndDate.Size = new System.Drawing.Size(254, 27);
+            this.dtpEndDate.Size = new System.Drawing.Size(232, 27);
             this.dtpEndDate.TabIndex = 30;
             this.dtpEndDate.ValueChanged += new System.EventHandler(this.dtpEndDate_ValueChanged);
             // 
             // dtpStartDate
             // 
             this.dtpStartDate.Checked = false;
+            this.dtpStartDate.CustomFormat = "ddd, MMMM dd yyyy";
             this.dtpStartDate.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpStartDate.Location = new System.Drawing.Point(92, 112);
+            this.dtpStartDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpStartDate.Location = new System.Drawing.Point(108, 101);
             this.dtpStartDate.Name = "dtpStartDate";
-            this.dtpStartDate.Size = new System.Drawing.Size(254, 27);
+            this.dtpStartDate.Size = new System.Drawing.Size(232, 27);
             this.dtpStartDate.TabIndex = 29;
             this.dtpStartDate.ValueChanged += new System.EventHandler(this.dtpStartDate_ValueChanged);
             // 

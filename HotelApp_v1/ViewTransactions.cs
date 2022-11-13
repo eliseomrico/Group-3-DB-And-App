@@ -20,6 +20,8 @@ namespace HotelApp_v1
 
         private void button_home_Click(object sender, EventArgs e)
         {
+            dtpEndDate.Value = DateTime.Now;
+            dtpStartDate.Value = DateTime.Now;
             this.Visible = false;
         }
 
@@ -48,6 +50,13 @@ namespace HotelApp_v1
             transactionsResults.Load(reader);
             dgvTransactionsList.DataSource = transactionsResults;
 
+            dgvTransactionsList.Columns[0].HeaderText = "Transaction Number";
+            dgvTransactionsList.Columns[1].HeaderText = "Date";
+            dgvTransactionsList.Columns[2].HeaderText = "Amount";
+            dgvTransactionsList.Columns[3].HeaderText = "Associated Reservation ID";
+
+            dgvTransactionsList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
             reader.Close();
             sqlConnection1.Close();
             cmdGetTransactions.Dispose();
@@ -72,6 +81,8 @@ namespace HotelApp_v1
 
             transactionsResults.Load(reader);
             dgvTransactionsList.DataSource = transactionsResults;
+
+            dgvTransactionsList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
             reader.Close();
             sqlConnection1.Close();

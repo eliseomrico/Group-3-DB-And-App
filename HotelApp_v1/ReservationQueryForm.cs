@@ -19,40 +19,40 @@ namespace HotelApp_v1
         }
         private void changeEditButtonsVisibility(bool enable) // after search is clicked, show edit and delete buttons
         {
-            button_edit.Visible = enable;
-            button_submit_edit.Visible = !enable;
+            btnEdit.Visible = enable;
+            btnSubmitEdit.Visible = !enable;
         }
         private void changeCreateButtonsVisibility(bool enable)
         {
-            button_create.Visible = enable;
-            button_submit_create.Visible = !enable;
+            btnCreate.Visible = enable;
+            btnSubmitCreate.Visible = !enable;
         }
         private void changeCancelButton(bool enable)
         {
-            button_cancel.Enabled = enable;
-            button_cancel.Visible = enable;
+            btnCancel.Enabled = enable;
+            btnCancel.Visible = enable;
         }
         private void changeTextBoxesReadOnlyStatus(bool enable) // makes text boxes read-only or not read-only
         {
-            textBox_res_emp_id.ReadOnly = enable;
-            textBox_res_loc_id.ReadOnly = enable;
-            textBox_res_room_num.ReadOnly = enable;
-            dateTimePicker_start.Enabled = !enable;
-            dateTimePicker_end.Enabled = !enable;
+            txtEmpName.ReadOnly = enable;
+            txtLocName.ReadOnly = enable;
+            txtRoomNo.ReadOnly = enable;
+            dtpResStart.Enabled = !enable;
+            dtpResEnd.Enabled = !enable;
         }
         private void emptyTextBoxes() // clears text from text boxes
         {
             comboBox_res_id.Text = "";
-            textBox_res_emp_id.Clear();
-            textBox_res_loc_id.Clear();
-            textBox_res_room_num.Clear();
-            dateTimePicker_start.Value = DateTime.Now;
-            dateTimePicker_end.Value = DateTime.Now;
+            txtEmpName.Clear();
+            txtLocName.Clear();
+            txtRoomNo.Clear();
+            dtpResStart.Value = DateTime.Now;
+            dtpResEnd.Value = DateTime.Now;
         }
         private void changeButtonsEnabled(bool enable)
         {
-            button_create.Enabled = enable;
-            button_edit.Enabled = enable;
+            btnCreate.Enabled = enable;
+            btnEdit.Enabled = enable;
             button_delete.Enabled = enable;
         }
         private string getReservationID()
@@ -116,19 +116,19 @@ namespace HotelApp_v1
             changeCreateButtonsVisibility(false);
 
             changeButtonsEnabled(false);
-            button_search.Enabled = false;
-            button_submit_create.Enabled = true;
+            btnSearch.Enabled = false;
+            btnSubmitCreate.Enabled = true;
             changeCancelButton(true);
 
             // Marcel's Code Here
 
-            textBox_res_emp_id.ReadOnly = false;
-            textBox_res_loc_id.ReadOnly = false;
-            textBox_res_room_num.ReadOnly = false;
+            txtEmpName.ReadOnly = false;
+            txtLocName.ReadOnly = false;
+            txtRoomNo.ReadOnly = false;
             comboBox_res_id.Visible = false;
-            textBox_res_id.Text = getReservationID();
-            textBox_res_id.Visible= true;
-            comboBox_cust_id.Focus();
+            txtResID.Text = getReservationID();
+            txtResID.Visible= true;
+            cmbCustName.Focus();
 
             // Load Cust IDs into ComboBox
 
@@ -141,7 +141,7 @@ namespace HotelApp_v1
                 SqlDataReader dr = cmd.ExecuteReader();
                 while (dr.Read())
                 {
-                    comboBox_cust_id.Items.Add(dr[0].ToString()+" - " + dr[1].ToString() + " " + dr[2].ToString());
+                    cmbCustName.Items.Add(dr[0].ToString()+" - " + dr[1].ToString() + " " + dr[2].ToString());
                 }
             }
             catch(Exception ex)
@@ -157,8 +157,8 @@ namespace HotelApp_v1
             emptyTextBoxes(); // clears texts from text boxes
             changeCreateButtonsVisibility(true);
             changeButtonsEnabled(true);
-            button_search.Enabled = true;
-            button_submit_create.Enabled = false;
+            btnSearch.Enabled = true;
+            btnSubmitCreate.Enabled = false;
             changeCancelButton(false);
         }
 
@@ -167,8 +167,8 @@ namespace HotelApp_v1
             changeEditButtonsVisibility(false);
             changeTextBoxesReadOnlyStatus(false); // make text boxes non-'editable' or read-only
             changeButtonsEnabled(false);
-            button_submit_edit.Enabled = true;
-            button_search.Enabled = false; // disable search button
+            btnSubmitEdit.Enabled = true;
+            btnSearch.Enabled = false; // disable search button
             changeCancelButton(true);
         }
 
@@ -177,8 +177,8 @@ namespace HotelApp_v1
             changeEditButtonsVisibility(true);
             changeTextBoxesReadOnlyStatus(true); // make text boxes non-'editable' or read-only
             changeButtonsEnabled(true);
-            button_submit_edit.Enabled = false;
-            button_search.Enabled = true; // enable search button
+            btnSubmitEdit.Enabled = false;
+            btnSearch.Enabled = true; // enable search button
             changeCancelButton(false);
         }
 
@@ -198,9 +198,9 @@ namespace HotelApp_v1
             changeEditButtonsVisibility(true);
             changeCreateButtonsVisibility(true);
             changeCancelButton(false);
-            button_submit_edit.Enabled = false;
-            button_submit_create.Enabled = false;
-            button_search.Enabled = true; // enable search button
+            btnSubmitEdit.Enabled = false;
+            btnSubmitCreate.Enabled = false;
+            btnSearch.Enabled = true; // enable search button
         }
     }
 }

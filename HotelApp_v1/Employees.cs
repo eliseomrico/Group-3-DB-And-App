@@ -35,6 +35,7 @@ namespace HotelApp_v1
         private void clearTextBoxes() 
         {
             txtEmpLoc.Clear();
+            txtEmpFname.Clear();
             txtEmpSSN.Clear();
             txtEmpSup.Clear();
             txtEmpLname.Clear();
@@ -44,15 +45,15 @@ namespace HotelApp_v1
         // Clears text from text boxes
         private void clearCmbBoxes()
         {
-            cmbEmpFname.SelectedIndex = -1;
-            cmbEmpLoc.SelectedIndex = -1;
-            cmbEmpSup.SelectedIndex = -1;
-            cmbEmpTitle.SelectedIndex = -1;
-
             cmbEmpLoc.Items.Clear();
             cmbEmpSup.Items.Clear();
             cmbEmpTitle.Items.Clear();
             cmbEmpFname.Items.Clear();
+
+            cmbEmpFname.SelectedIndex = -1;
+            cmbEmpLoc.SelectedIndex = -1;
+            cmbEmpSup.SelectedIndex = -1;
+            cmbEmpTitle.SelectedIndex = -1;
         }
 
         // Show/Hide Button Functions
@@ -135,6 +136,7 @@ namespace HotelApp_v1
         private void CreateModeToggle(bool status)
         {
             clearTextBoxes();
+            clearCmbBoxes();
             showCreateButton(!status);
             showCancelButton(status);
             showTxtFields(!status);
@@ -274,6 +276,7 @@ namespace HotelApp_v1
             txtEmpFname.Visible = false;
             cmbEmpFname.Visible = true;
             clearTextBoxes();
+            clearCmbBoxes();
 
             // RefreshTextBoxes();
         }

@@ -18,8 +18,18 @@ namespace HotelApp_v1
             InitializeComponent();
         }
 
+        private void ToggleAnnoyingButtons(bool status)
+        {
+            lblEndDate.Visible = status;
+            lblStartDate.Visible = status;
+            dtpEndDate.Visible = status;
+            dtpStartDate.Visible = status;
+            btnSearch.Visible = status;
+        }
+
         private void button_manage_reservations_Click(object sender, EventArgs e)
         {
+            ToggleAnnoyingButtons(false);
             reservationQueryForm1.Visible = true;
         }
 
@@ -81,6 +91,9 @@ namespace HotelApp_v1
 
             availableRooms.Load(reader);
             dgvRooms.DataSource = availableRooms;
+
+            dgvRooms.Columns[0].HeaderText = "Room Number";
+            dgvRooms.Columns[1].HeaderText = "Room Type";
 
             dgvRooms.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 

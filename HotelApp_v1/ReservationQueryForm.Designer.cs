@@ -29,30 +29,33 @@
         private void InitializeComponent()
         {
             this.panel2 = new System.Windows.Forms.Panel();
-            this.textBox_res_id = new System.Windows.Forms.TextBox();
-            this.comboBox_cust_id = new System.Windows.Forms.ComboBox();
-            this.button_cancel = new System.Windows.Forms.Button();
-            this.button_submit_create = new System.Windows.Forms.Button();
-            this.button_submit_edit = new System.Windows.Forms.Button();
-            this.dateTimePicker_end = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker_start = new System.Windows.Forms.DateTimePicker();
-            this.button_search = new System.Windows.Forms.Button();
+            this.cmbCustName = new System.Windows.Forms.ComboBox();
+            this.txtCustName = new System.Windows.Forms.TextBox();
+            this.txtTransNo = new System.Windows.Forms.TextBox();
+            this.lblTransNo = new System.Windows.Forms.Label();
+            this.txtResID = new System.Windows.Forms.TextBox();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnSubmitCreate = new System.Windows.Forms.Button();
+            this.btnSubmitEdit = new System.Windows.Forms.Button();
+            this.dtpResEnd = new System.Windows.Forms.DateTimePicker();
+            this.dtpResStart = new System.Windows.Forms.DateTimePicker();
+            this.btnSearch = new System.Windows.Forms.Button();
             this.button_delete = new System.Windows.Forms.Button();
-            this.button_edit = new System.Windows.Forms.Button();
-            this.button_create = new System.Windows.Forms.Button();
-            this.button_home = new System.Windows.Forms.Button();
+            this.btnEdit = new System.Windows.Forms.Button();
+            this.btnCreate = new System.Windows.Forms.Button();
+            this.btnBack = new System.Windows.Forms.Button();
             this.comboBox_res_id = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBox_res_emp_id = new System.Windows.Forms.TextBox();
-            this.textBox_res_loc_id = new System.Windows.Forms.TextBox();
-            this.textBox_res_room_num = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lblResID = new System.Windows.Forms.Label();
+            this.txtEmpName = new System.Windows.Forms.TextBox();
+            this.txtLocName = new System.Windows.Forms.TextBox();
+            this.txtRoomNo = new System.Windows.Forms.TextBox();
+            this.lblEmpID = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
+            this.lblCustID = new System.Windows.Forms.Label();
+            this.lblLocID = new System.Windows.Forms.Label();
+            this.lblRoomNo = new System.Windows.Forms.Label();
+            this.lblResStart = new System.Windows.Forms.Label();
+            this.lblResEnd = new System.Windows.Forms.Label();
             this.sqlConnection1 = new System.Data.SqlClient.SqlConnection();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -60,146 +63,176 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
-            this.panel2.Controls.Add(this.textBox_res_id);
-            this.panel2.Controls.Add(this.comboBox_cust_id);
-            this.panel2.Controls.Add(this.button_cancel);
-            this.panel2.Controls.Add(this.button_submit_create);
-            this.panel2.Controls.Add(this.button_submit_edit);
-            this.panel2.Controls.Add(this.dateTimePicker_end);
-            this.panel2.Controls.Add(this.dateTimePicker_start);
-            this.panel2.Controls.Add(this.button_search);
+            this.panel2.Controls.Add(this.cmbCustName);
+            this.panel2.Controls.Add(this.txtCustName);
+            this.panel2.Controls.Add(this.txtTransNo);
+            this.panel2.Controls.Add(this.lblTransNo);
+            this.panel2.Controls.Add(this.txtResID);
+            this.panel2.Controls.Add(this.btnCancel);
+            this.panel2.Controls.Add(this.btnSubmitCreate);
+            this.panel2.Controls.Add(this.btnSubmitEdit);
+            this.panel2.Controls.Add(this.dtpResEnd);
+            this.panel2.Controls.Add(this.dtpResStart);
+            this.panel2.Controls.Add(this.btnSearch);
             this.panel2.Controls.Add(this.button_delete);
-            this.panel2.Controls.Add(this.button_edit);
-            this.panel2.Controls.Add(this.button_create);
-            this.panel2.Controls.Add(this.button_home);
+            this.panel2.Controls.Add(this.btnEdit);
+            this.panel2.Controls.Add(this.btnCreate);
+            this.panel2.Controls.Add(this.btnBack);
             this.panel2.Controls.Add(this.comboBox_res_id);
-            this.panel2.Controls.Add(this.label1);
-            this.panel2.Controls.Add(this.textBox_res_emp_id);
-            this.panel2.Controls.Add(this.textBox_res_loc_id);
-            this.panel2.Controls.Add(this.textBox_res_room_num);
-            this.panel2.Controls.Add(this.label3);
+            this.panel2.Controls.Add(this.lblResID);
+            this.panel2.Controls.Add(this.txtEmpName);
+            this.panel2.Controls.Add(this.txtLocName);
+            this.panel2.Controls.Add(this.txtRoomNo);
+            this.panel2.Controls.Add(this.lblEmpID);
             this.panel2.Controls.Add(this.label8);
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.label5);
-            this.panel2.Controls.Add(this.label4);
-            this.panel2.Controls.Add(this.label6);
-            this.panel2.Controls.Add(this.label7);
+            this.panel2.Controls.Add(this.lblCustID);
+            this.panel2.Controls.Add(this.lblLocID);
+            this.panel2.Controls.Add(this.lblRoomNo);
+            this.panel2.Controls.Add(this.lblResStart);
+            this.panel2.Controls.Add(this.lblResEnd);
             this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(519, 443);
+            this.panel2.Size = new System.Drawing.Size(692, 545);
             this.panel2.TabIndex = 23;
             // 
-            // textBox_res_id
+            // cmbCustName
             // 
-            this.textBox_res_id.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_res_id.Location = new System.Drawing.Point(47, 102);
-            this.textBox_res_id.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox_res_id.Name = "textBox_res_id";
-            this.textBox_res_id.ReadOnly = true;
-            this.textBox_res_id.Size = new System.Drawing.Size(171, 23);
-            this.textBox_res_id.TabIndex = 34;
-            this.textBox_res_id.Visible = false;
+            this.cmbCustName.FormattingEnabled = true;
+            this.cmbCustName.Location = new System.Drawing.Point(74, 235);
+            this.cmbCustName.Name = "cmbCustName";
+            this.cmbCustName.Size = new System.Drawing.Size(225, 24);
+            this.cmbCustName.TabIndex = 38;
             // 
-            // comboBox_cust_id
+            // txtCustName
             // 
-            this.comboBox_cust_id.BackColor = System.Drawing.Color.White;
-            this.comboBox_cust_id.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.comboBox_cust_id.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox_cust_id.FormattingEnabled = true;
-            this.comboBox_cust_id.Location = new System.Drawing.Point(46, 193);
-            this.comboBox_cust_id.Margin = new System.Windows.Forms.Padding(2);
-            this.comboBox_cust_id.Name = "comboBox_cust_id";
-            this.comboBox_cust_id.Size = new System.Drawing.Size(171, 23);
-            this.comboBox_cust_id.TabIndex = 33;
+            this.txtCustName.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCustName.Location = new System.Drawing.Point(72, 232);
+            this.txtCustName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtCustName.Name = "txtCustName";
+            this.txtCustName.ReadOnly = true;
+            this.txtCustName.Size = new System.Drawing.Size(227, 27);
+            this.txtCustName.TabIndex = 37;
             // 
-            // button_cancel
+            // txtTransNo
             // 
-            this.button_cancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(78)))), ((int)(((byte)(79)))));
-            this.button_cancel.Enabled = false;
-            this.button_cancel.FlatAppearance.BorderSize = 0;
-            this.button_cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_cancel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_cancel.ForeColor = System.Drawing.Color.White;
-            this.button_cancel.Location = new System.Drawing.Point(415, 407);
-            this.button_cancel.Margin = new System.Windows.Forms.Padding(2);
-            this.button_cancel.Name = "button_cancel";
-            this.button_cancel.Size = new System.Drawing.Size(104, 36);
-            this.button_cancel.TabIndex = 32;
-            this.button_cancel.Text = "Cancel";
-            this.button_cancel.UseVisualStyleBackColor = false;
-            this.button_cancel.Visible = false;
-            this.button_cancel.Click += new System.EventHandler(this.button_cancel_Click);
+            this.txtTransNo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTransNo.Location = new System.Drawing.Point(384, 334);
+            this.txtTransNo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtTransNo.Name = "txtTransNo";
+            this.txtTransNo.ReadOnly = true;
+            this.txtTransNo.Size = new System.Drawing.Size(227, 27);
+            this.txtTransNo.TabIndex = 36;
             // 
-            // button_submit_create
+            // lblTransNo
             // 
-            this.button_submit_create.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(78)))), ((int)(((byte)(79)))));
-            this.button_submit_create.Enabled = false;
-            this.button_submit_create.FlatAppearance.BorderSize = 0;
-            this.button_submit_create.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_submit_create.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_submit_create.ForeColor = System.Drawing.Color.White;
-            this.button_submit_create.Location = new System.Drawing.Point(207, 407);
-            this.button_submit_create.Margin = new System.Windows.Forms.Padding(2);
-            this.button_submit_create.Name = "button_submit_create";
-            this.button_submit_create.Size = new System.Drawing.Size(104, 36);
-            this.button_submit_create.TabIndex = 31;
-            this.button_submit_create.Text = "Submit Create";
-            this.button_submit_create.UseVisualStyleBackColor = false;
-            this.button_submit_create.Visible = false;
-            this.button_submit_create.Click += new System.EventHandler(this.button_submit_create_Click);
+            this.lblTransNo.AutoSize = true;
+            this.lblTransNo.BackColor = System.Drawing.Color.White;
+            this.lblTransNo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTransNo.Location = new System.Drawing.Point(378, 300);
+            this.lblTransNo.Name = "lblTransNo";
+            this.lblTransNo.Size = new System.Drawing.Size(142, 20);
+            this.lblTransNo.TabIndex = 35;
+            this.lblTransNo.Text = "Transaction Number";
             // 
-            // button_submit_edit
+            // txtResID
             // 
-            this.button_submit_edit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(78)))), ((int)(((byte)(79)))));
-            this.button_submit_edit.Enabled = false;
-            this.button_submit_edit.FlatAppearance.BorderSize = 0;
-            this.button_submit_edit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_submit_edit.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_submit_edit.ForeColor = System.Drawing.Color.White;
-            this.button_submit_edit.Location = new System.Drawing.Point(311, 407);
-            this.button_submit_edit.Margin = new System.Windows.Forms.Padding(2);
-            this.button_submit_edit.Name = "button_submit_edit";
-            this.button_submit_edit.Size = new System.Drawing.Size(104, 36);
-            this.button_submit_edit.TabIndex = 30;
-            this.button_submit_edit.Text = "Submit Edit";
-            this.button_submit_edit.UseVisualStyleBackColor = false;
-            this.button_submit_edit.Visible = false;
-            this.button_submit_edit.Click += new System.EventHandler(this.button_submit_edit_Click);
+            this.txtResID.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtResID.Location = new System.Drawing.Point(74, 138);
+            this.txtResID.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtResID.Name = "txtResID";
+            this.txtResID.ReadOnly = true;
+            this.txtResID.Size = new System.Drawing.Size(227, 27);
+            this.txtResID.TabIndex = 34;
+            this.txtResID.Visible = false;
             // 
-            // dateTimePicker_end
+            // btnCancel
             // 
-            this.dateTimePicker_end.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker_end.Location = new System.Drawing.Point(320, 349);
-            this.dateTimePicker_end.Margin = new System.Windows.Forms.Padding(2);
-            this.dateTimePicker_end.Name = "dateTimePicker_end";
-            this.dateTimePicker_end.Size = new System.Drawing.Size(171, 23);
-            this.dateTimePicker_end.TabIndex = 29;
+            this.btnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(78)))), ((int)(((byte)(79)))));
+            this.btnCancel.Enabled = false;
+            this.btnCancel.FlatAppearance.BorderSize = 0;
+            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.ForeColor = System.Drawing.Color.White;
+            this.btnCancel.Location = new System.Drawing.Point(553, 501);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(139, 44);
+            this.btnCancel.TabIndex = 32;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = false;
+            this.btnCancel.Visible = false;
+            this.btnCancel.Click += new System.EventHandler(this.button_cancel_Click);
             // 
-            // dateTimePicker_start
+            // btnSubmitCreate
             // 
-            this.dateTimePicker_start.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker_start.Location = new System.Drawing.Point(320, 281);
-            this.dateTimePicker_start.Margin = new System.Windows.Forms.Padding(2);
-            this.dateTimePicker_start.Name = "dateTimePicker_start";
-            this.dateTimePicker_start.Size = new System.Drawing.Size(171, 23);
-            this.dateTimePicker_start.TabIndex = 28;
+            this.btnSubmitCreate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(78)))), ((int)(((byte)(79)))));
+            this.btnSubmitCreate.Enabled = false;
+            this.btnSubmitCreate.FlatAppearance.BorderSize = 0;
+            this.btnSubmitCreate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSubmitCreate.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSubmitCreate.ForeColor = System.Drawing.Color.White;
+            this.btnSubmitCreate.Location = new System.Drawing.Point(276, 501);
+            this.btnSubmitCreate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnSubmitCreate.Name = "btnSubmitCreate";
+            this.btnSubmitCreate.Size = new System.Drawing.Size(139, 44);
+            this.btnSubmitCreate.TabIndex = 31;
+            this.btnSubmitCreate.Text = "Submit Create";
+            this.btnSubmitCreate.UseVisualStyleBackColor = false;
+            this.btnSubmitCreate.Visible = false;
+            this.btnSubmitCreate.Click += new System.EventHandler(this.button_submit_create_Click);
             // 
-            // button_search
+            // btnSubmitEdit
             // 
-            this.button_search.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(78)))), ((int)(((byte)(79)))));
-            this.button_search.FlatAppearance.BorderSize = 0;
-            this.button_search.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_search.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_search.ForeColor = System.Drawing.Color.White;
-            this.button_search.Location = new System.Drawing.Point(104, 407);
-            this.button_search.Margin = new System.Windows.Forms.Padding(2);
-            this.button_search.Name = "button_search";
-            this.button_search.Size = new System.Drawing.Size(104, 36);
-            this.button_search.TabIndex = 27;
-            this.button_search.Text = "Search";
-            this.button_search.UseVisualStyleBackColor = false;
-            this.button_search.Click += new System.EventHandler(this.button_search_Click);
+            this.btnSubmitEdit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(78)))), ((int)(((byte)(79)))));
+            this.btnSubmitEdit.Enabled = false;
+            this.btnSubmitEdit.FlatAppearance.BorderSize = 0;
+            this.btnSubmitEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSubmitEdit.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSubmitEdit.ForeColor = System.Drawing.Color.White;
+            this.btnSubmitEdit.Location = new System.Drawing.Point(415, 501);
+            this.btnSubmitEdit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnSubmitEdit.Name = "btnSubmitEdit";
+            this.btnSubmitEdit.Size = new System.Drawing.Size(139, 44);
+            this.btnSubmitEdit.TabIndex = 30;
+            this.btnSubmitEdit.Text = "Submit Edit";
+            this.btnSubmitEdit.UseVisualStyleBackColor = false;
+            this.btnSubmitEdit.Visible = false;
+            this.btnSubmitEdit.Click += new System.EventHandler(this.button_submit_edit_Click);
+            // 
+            // dtpResEnd
+            // 
+            this.dtpResEnd.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpResEnd.Location = new System.Drawing.Point(384, 430);
+            this.dtpResEnd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dtpResEnd.Name = "dtpResEnd";
+            this.dtpResEnd.Size = new System.Drawing.Size(227, 27);
+            this.dtpResEnd.TabIndex = 29;
+            // 
+            // dtpResStart
+            // 
+            this.dtpResStart.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpResStart.Location = new System.Drawing.Point(74, 430);
+            this.dtpResStart.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dtpResStart.Name = "dtpResStart";
+            this.dtpResStart.Size = new System.Drawing.Size(227, 27);
+            this.dtpResStart.TabIndex = 28;
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(78)))), ((int)(((byte)(79)))));
+            this.btnSearch.FlatAppearance.BorderSize = 0;
+            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSearch.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearch.ForeColor = System.Drawing.Color.White;
+            this.btnSearch.Location = new System.Drawing.Point(139, 501);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(139, 44);
+            this.btnSearch.TabIndex = 27;
+            this.btnSearch.Text = "Search";
+            this.btnSearch.UseVisualStyleBackColor = false;
+            this.btnSearch.Click += new System.EventHandler(this.button_search_Click);
             // 
             // button_delete
             // 
@@ -209,63 +242,63 @@
             this.button_delete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_delete.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_delete.ForeColor = System.Drawing.Color.White;
-            this.button_delete.Location = new System.Drawing.Point(415, 407);
-            this.button_delete.Margin = new System.Windows.Forms.Padding(2);
+            this.button_delete.Location = new System.Drawing.Point(553, 501);
+            this.button_delete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button_delete.Name = "button_delete";
-            this.button_delete.Size = new System.Drawing.Size(104, 36);
+            this.button_delete.Size = new System.Drawing.Size(139, 44);
             this.button_delete.TabIndex = 26;
             this.button_delete.Text = "Delete";
             this.button_delete.UseVisualStyleBackColor = false;
             this.button_delete.Click += new System.EventHandler(this.button_delete_Click);
             // 
-            // button_edit
+            // btnEdit
             // 
-            this.button_edit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(78)))), ((int)(((byte)(79)))));
-            this.button_edit.Enabled = false;
-            this.button_edit.FlatAppearance.BorderSize = 0;
-            this.button_edit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_edit.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_edit.ForeColor = System.Drawing.Color.White;
-            this.button_edit.Location = new System.Drawing.Point(311, 407);
-            this.button_edit.Margin = new System.Windows.Forms.Padding(2);
-            this.button_edit.Name = "button_edit";
-            this.button_edit.Size = new System.Drawing.Size(104, 36);
-            this.button_edit.TabIndex = 25;
-            this.button_edit.Text = "Edit";
-            this.button_edit.UseVisualStyleBackColor = false;
-            this.button_edit.Click += new System.EventHandler(this.button_edit_Click);
+            this.btnEdit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(78)))), ((int)(((byte)(79)))));
+            this.btnEdit.Enabled = false;
+            this.btnEdit.FlatAppearance.BorderSize = 0;
+            this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEdit.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEdit.ForeColor = System.Drawing.Color.White;
+            this.btnEdit.Location = new System.Drawing.Point(415, 501);
+            this.btnEdit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(139, 44);
+            this.btnEdit.TabIndex = 25;
+            this.btnEdit.Text = "Edit";
+            this.btnEdit.UseVisualStyleBackColor = false;
+            this.btnEdit.Click += new System.EventHandler(this.button_edit_Click);
             // 
-            // button_create
+            // btnCreate
             // 
-            this.button_create.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(78)))), ((int)(((byte)(79)))));
-            this.button_create.FlatAppearance.BorderSize = 0;
-            this.button_create.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_create.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_create.ForeColor = System.Drawing.Color.White;
-            this.button_create.Location = new System.Drawing.Point(207, 407);
-            this.button_create.Margin = new System.Windows.Forms.Padding(2);
-            this.button_create.Name = "button_create";
-            this.button_create.Size = new System.Drawing.Size(104, 36);
-            this.button_create.TabIndex = 24;
-            this.button_create.Text = "Create";
-            this.button_create.UseVisualStyleBackColor = false;
-            this.button_create.Click += new System.EventHandler(this.button_create_Click);
+            this.btnCreate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(78)))), ((int)(((byte)(79)))));
+            this.btnCreate.FlatAppearance.BorderSize = 0;
+            this.btnCreate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCreate.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCreate.ForeColor = System.Drawing.Color.White;
+            this.btnCreate.Location = new System.Drawing.Point(276, 501);
+            this.btnCreate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnCreate.Name = "btnCreate";
+            this.btnCreate.Size = new System.Drawing.Size(139, 44);
+            this.btnCreate.TabIndex = 24;
+            this.btnCreate.Text = "Create";
+            this.btnCreate.UseVisualStyleBackColor = false;
+            this.btnCreate.Click += new System.EventHandler(this.button_create_Click);
             // 
-            // button_home
+            // btnBack
             // 
-            this.button_home.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(78)))), ((int)(((byte)(79)))));
-            this.button_home.FlatAppearance.BorderSize = 0;
-            this.button_home.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_home.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_home.ForeColor = System.Drawing.Color.White;
-            this.button_home.Location = new System.Drawing.Point(0, 407);
-            this.button_home.Margin = new System.Windows.Forms.Padding(2);
-            this.button_home.Name = "button_home";
-            this.button_home.Size = new System.Drawing.Size(104, 36);
-            this.button_home.TabIndex = 23;
-            this.button_home.Text = "Back";
-            this.button_home.UseVisualStyleBackColor = false;
-            this.button_home.Click += new System.EventHandler(this.button_home_Click);
+            this.btnBack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(78)))), ((int)(((byte)(79)))));
+            this.btnBack.FlatAppearance.BorderSize = 0;
+            this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBack.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBack.ForeColor = System.Drawing.Color.White;
+            this.btnBack.Location = new System.Drawing.Point(0, 501);
+            this.btnBack.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(139, 44);
+            this.btnBack.TabIndex = 23;
+            this.btnBack.Text = "Back";
+            this.btnBack.UseVisualStyleBackColor = false;
+            this.btnBack.Click += new System.EventHandler(this.button_home_Click);
             // 
             // comboBox_res_id
             // 
@@ -273,137 +306,129 @@
             this.comboBox_res_id.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.comboBox_res_id.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox_res_id.FormattingEnabled = true;
-            this.comboBox_res_id.Location = new System.Drawing.Point(46, 101);
-            this.comboBox_res_id.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBox_res_id.Location = new System.Drawing.Point(72, 136);
+            this.comboBox_res_id.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.comboBox_res_id.Name = "comboBox_res_id";
-            this.comboBox_res_id.Size = new System.Drawing.Size(171, 23);
+            this.comboBox_res_id.Size = new System.Drawing.Size(227, 28);
             this.comboBox_res_id.TabIndex = 16;
             // 
-            // label1
+            // lblResID
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.White;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(44, 77);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(82, 15);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Reservation ID";
+            this.lblResID.AutoSize = true;
+            this.lblResID.BackColor = System.Drawing.Color.White;
+            this.lblResID.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblResID.Location = new System.Drawing.Point(70, 107);
+            this.lblResID.Name = "lblResID";
+            this.lblResID.Size = new System.Drawing.Size(144, 20);
+            this.lblResID.TabIndex = 0;
+            this.lblResID.Text = "Reservation Number";
             // 
-            // textBox_res_emp_id
+            // txtEmpName
             // 
-            this.textBox_res_emp_id.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_res_emp_id.Location = new System.Drawing.Point(320, 102);
-            this.textBox_res_emp_id.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox_res_emp_id.Name = "textBox_res_emp_id";
-            this.textBox_res_emp_id.ReadOnly = true;
-            this.textBox_res_emp_id.Size = new System.Drawing.Size(171, 23);
-            this.textBox_res_emp_id.TabIndex = 8;
+            this.txtEmpName.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEmpName.Location = new System.Drawing.Point(384, 138);
+            this.txtEmpName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtEmpName.Name = "txtEmpName";
+            this.txtEmpName.ReadOnly = true;
+            this.txtEmpName.Size = new System.Drawing.Size(227, 27);
+            this.txtEmpName.TabIndex = 8;
             // 
-            // textBox_res_loc_id
+            // txtLocName
             // 
-            this.textBox_res_loc_id.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_res_loc_id.Location = new System.Drawing.Point(320, 193);
-            this.textBox_res_loc_id.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox_res_loc_id.Name = "textBox_res_loc_id";
-            this.textBox_res_loc_id.ReadOnly = true;
-            this.textBox_res_loc_id.Size = new System.Drawing.Size(171, 23);
-            this.textBox_res_loc_id.TabIndex = 10;
+            this.txtLocName.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLocName.Location = new System.Drawing.Point(384, 232);
+            this.txtLocName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtLocName.Name = "txtLocName";
+            this.txtLocName.ReadOnly = true;
+            this.txtLocName.Size = new System.Drawing.Size(227, 27);
+            this.txtLocName.TabIndex = 10;
             // 
-            // textBox_res_room_num
+            // txtRoomNo
             // 
-            this.textBox_res_room_num.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_res_room_num.Location = new System.Drawing.Point(46, 283);
-            this.textBox_res_room_num.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox_res_room_num.Name = "textBox_res_room_num";
-            this.textBox_res_room_num.ReadOnly = true;
-            this.textBox_res_room_num.Size = new System.Drawing.Size(171, 23);
-            this.textBox_res_room_num.TabIndex = 11;
+            this.txtRoomNo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRoomNo.Location = new System.Drawing.Point(72, 334);
+            this.txtRoomNo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtRoomNo.Name = "txtRoomNo";
+            this.txtRoomNo.ReadOnly = true;
+            this.txtRoomNo.Size = new System.Drawing.Size(227, 27);
+            this.txtRoomNo.TabIndex = 11;
             // 
-            // label3
+            // lblEmpID
             // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.White;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(316, 77);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(73, 15);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Employee ID";
+            this.lblEmpID.AutoSize = true;
+            this.lblEmpID.BackColor = System.Drawing.Color.White;
+            this.lblEmpID.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEmpID.Location = new System.Drawing.Point(378, 107);
+            this.lblEmpID.Name = "lblEmpID";
+            this.lblEmpID.Size = new System.Drawing.Size(119, 20);
+            this.lblEmpID.TabIndex = 2;
+            this.lblEmpID.Text = "Employee Name";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.BackColor = System.Drawing.Color.White;
-            this.label8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(79, 24);
-            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(124, 34);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(312, 21);
+            this.label8.Size = new System.Drawing.Size(430, 28);
             this.label8.TabIndex = 14;
             this.label8.Text = "Enter Reservation ID and click Search below";
             // 
-            // label2
+            // lblCustID
             // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.White;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(44, 166);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(73, 15);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Customer ID";
+            this.lblCustID.AutoSize = true;
+            this.lblCustID.BackColor = System.Drawing.Color.White;
+            this.lblCustID.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCustID.Location = new System.Drawing.Point(70, 198);
+            this.lblCustID.Name = "lblCustID";
+            this.lblCustID.Size = new System.Drawing.Size(116, 20);
+            this.lblCustID.TabIndex = 1;
+            this.lblCustID.Text = "Customer Name";
             // 
-            // label5
+            // lblLocID
             // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.White;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(316, 166);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(131, 15);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "Reservation Location ID";
+            this.lblLocID.AutoSize = true;
+            this.lblLocID.BackColor = System.Drawing.Color.White;
+            this.lblLocID.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLocID.Location = new System.Drawing.Point(378, 198);
+            this.lblLocID.Name = "lblLocID";
+            this.lblLocID.Size = new System.Drawing.Size(66, 20);
+            this.lblLocID.TabIndex = 4;
+            this.lblLocID.Text = "Location";
             // 
-            // label4
+            // lblRoomNo
             // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.White;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(44, 258);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(150, 15);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Reservation Room Number";
+            this.lblRoomNo.AutoSize = true;
+            this.lblRoomNo.BackColor = System.Drawing.Color.White;
+            this.lblRoomNo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRoomNo.Location = new System.Drawing.Point(70, 304);
+            this.lblRoomNo.Name = "lblRoomNo";
+            this.lblRoomNo.Size = new System.Drawing.Size(107, 20);
+            this.lblRoomNo.TabIndex = 3;
+            this.lblRoomNo.Text = "Room Number";
             // 
-            // label6
+            // lblResStart
             // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.White;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(316, 258);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(122, 15);
-            this.label6.TabIndex = 5;
-            this.label6.Text = "Reservation Start Date";
+            this.lblResStart.AutoSize = true;
+            this.lblResStart.BackColor = System.Drawing.Color.White;
+            this.lblResStart.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblResStart.Location = new System.Drawing.Point(68, 402);
+            this.lblResStart.Name = "lblResStart";
+            this.lblResStart.Size = new System.Drawing.Size(157, 20);
+            this.lblResStart.TabIndex = 5;
+            this.lblResStart.Text = "Reservation Start Date";
             // 
-            // label7
+            // lblResEnd
             // 
-            this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.White;
-            this.label7.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(316, 327);
-            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(118, 15);
-            this.label7.TabIndex = 6;
-            this.label7.Text = "Reservation End Date";
+            this.lblResEnd.AutoSize = true;
+            this.lblResEnd.BackColor = System.Drawing.Color.White;
+            this.lblResEnd.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblResEnd.Location = new System.Drawing.Point(378, 402);
+            this.lblResEnd.Name = "lblResEnd";
+            this.lblResEnd.Size = new System.Drawing.Size(151, 20);
+            this.lblResEnd.TabIndex = 6;
+            this.lblResEnd.Text = "Reservation End Date";
             // 
             // sqlConnection1
             // 
@@ -411,12 +436,12 @@
             // 
             // ReservationQueryForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panel2);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "ReservationQueryForm";
-            this.Size = new System.Drawing.Size(519, 443);
+            this.Size = new System.Drawing.Size(692, 545);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.ResumeLayout(false);
@@ -427,29 +452,32 @@
 
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button button_delete;
-        private System.Windows.Forms.Button button_edit;
-        private System.Windows.Forms.Button button_create;
-        private System.Windows.Forms.Button button_home;
+        private System.Windows.Forms.Button btnEdit;
+        private System.Windows.Forms.Button btnCreate;
+        private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.ComboBox comboBox_res_id;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox_res_emp_id;
-        private System.Windows.Forms.TextBox textBox_res_loc_id;
-        private System.Windows.Forms.TextBox textBox_res_room_num;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblResID;
+        private System.Windows.Forms.TextBox txtEmpName;
+        private System.Windows.Forms.TextBox txtLocName;
+        private System.Windows.Forms.TextBox txtRoomNo;
+        private System.Windows.Forms.Label lblEmpID;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Button button_search;
-        private System.Windows.Forms.DateTimePicker dateTimePicker_end;
-        private System.Windows.Forms.DateTimePicker dateTimePicker_start;
-        private System.Windows.Forms.Button button_submit_edit;
-        private System.Windows.Forms.Button button_submit_create;
-        private System.Windows.Forms.Button button_cancel;
-        private System.Windows.Forms.ComboBox comboBox_cust_id;
-        private System.Windows.Forms.TextBox textBox_res_id;
+        private System.Windows.Forms.Label lblCustID;
+        private System.Windows.Forms.Label lblLocID;
+        private System.Windows.Forms.Label lblRoomNo;
+        private System.Windows.Forms.Label lblResStart;
+        private System.Windows.Forms.Label lblResEnd;
+        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.DateTimePicker dtpResEnd;
+        private System.Windows.Forms.DateTimePicker dtpResStart;
+        private System.Windows.Forms.Button btnSubmitEdit;
+        private System.Windows.Forms.Button btnSubmitCreate;
+        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.TextBox txtResID;
         private System.Data.SqlClient.SqlConnection sqlConnection1;
+        private System.Windows.Forms.TextBox txtTransNo;
+        private System.Windows.Forms.Label lblTransNo;
+        private System.Windows.Forms.TextBox txtCustName;
+        private System.Windows.Forms.ComboBox cmbCustName;
     }
 }
