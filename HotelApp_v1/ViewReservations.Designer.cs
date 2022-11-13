@@ -29,13 +29,12 @@
         private void InitializeComponent()
         {
             this.panel2 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.reservationQueryForm1 = new HotelApp_v1.ReservationQueryForm();
             this.btnSearch = new System.Windows.Forms.Button();
             this.lblEndDate = new System.Windows.Forms.Label();
             this.lblStartDate = new System.Windows.Forms.Label();
             this.dtpEndDate = new System.Windows.Forms.DateTimePicker();
             this.dtpStartDate = new System.Windows.Forms.DateTimePicker();
-            this.reservationQueryForm1 = new HotelApp_v1.ReservationQueryForm();
             this.btnManageRes = new System.Windows.Forms.Button();
             this.btnHome = new System.Windows.Forms.Button();
             this.cmbLocName = new System.Windows.Forms.ComboBox();
@@ -50,13 +49,12 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
-            this.panel2.Controls.Add(this.button1);
+            this.panel2.Controls.Add(this.reservationQueryForm1);
             this.panel2.Controls.Add(this.btnSearch);
             this.panel2.Controls.Add(this.lblEndDate);
             this.panel2.Controls.Add(this.lblStartDate);
             this.panel2.Controls.Add(this.dtpEndDate);
             this.panel2.Controls.Add(this.dtpStartDate);
-            this.panel2.Controls.Add(this.reservationQueryForm1);
             this.panel2.Controls.Add(this.btnManageRes);
             this.panel2.Controls.Add(this.btnHome);
             this.panel2.Controls.Add(this.cmbLocName);
@@ -68,19 +66,14 @@
             this.panel2.Size = new System.Drawing.Size(692, 545);
             this.panel2.TabIndex = 24;
             // 
-            // button1
+            // reservationQueryForm1
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(78)))), ((int)(((byte)(79)))));
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(210, 501);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(243, 44);
-            this.button1.TabIndex = 39;
-            this.button1.Text = "Create Reservation";
-            this.button1.UseVisualStyleBackColor = false;
+            this.reservationQueryForm1.Location = new System.Drawing.Point(0, -2);
+            this.reservationQueryForm1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.reservationQueryForm1.Name = "reservationQueryForm1";
+            this.reservationQueryForm1.Size = new System.Drawing.Size(692, 545);
+            this.reservationQueryForm1.TabIndex = 27;
+            this.reservationQueryForm1.Visible = false;
             // 
             // btnSearch
             // 
@@ -144,15 +137,6 @@
             this.dtpStartDate.TabIndex = 33;
             this.dtpStartDate.ValueChanged += new System.EventHandler(this.dtpStartDate_ValueChanged);
             // 
-            // reservationQueryForm1
-            // 
-            this.reservationQueryForm1.Location = new System.Drawing.Point(0, 0);
-            this.reservationQueryForm1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.reservationQueryForm1.Name = "reservationQueryForm1";
-            this.reservationQueryForm1.Size = new System.Drawing.Size(692, 545);
-            this.reservationQueryForm1.TabIndex = 27;
-            this.reservationQueryForm1.Visible = false;
-            // 
             // btnManageRes
             // 
             this.btnManageRes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(78)))), ((int)(((byte)(79)))));
@@ -160,9 +144,9 @@
             this.btnManageRes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnManageRes.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnManageRes.ForeColor = System.Drawing.Color.White;
-            this.btnManageRes.Location = new System.Drawing.Point(450, 501);
+            this.btnManageRes.Location = new System.Drawing.Point(359, 501);
             this.btnManageRes.Name = "btnManageRes";
-            this.btnManageRes.Size = new System.Drawing.Size(242, 44);
+            this.btnManageRes.Size = new System.Drawing.Size(333, 44);
             this.btnManageRes.TabIndex = 26;
             this.btnManageRes.Text = "Manage Reservations";
             this.btnManageRes.UseVisualStyleBackColor = false;
@@ -177,7 +161,7 @@
             this.btnHome.ForeColor = System.Drawing.Color.White;
             this.btnHome.Location = new System.Drawing.Point(0, 501);
             this.btnHome.Name = "btnHome";
-            this.btnHome.Size = new System.Drawing.Size(210, 44);
+            this.btnHome.Size = new System.Drawing.Size(362, 44);
             this.btnHome.TabIndex = 24;
             this.btnHome.Text = "Home";
             this.btnHome.UseVisualStyleBackColor = false;
@@ -263,6 +247,5 @@
         private System.Windows.Forms.DateTimePicker dtpEndDate;
         private System.Windows.Forms.DateTimePicker dtpStartDate;
         private System.Windows.Forms.Button btnSearch;
-        private System.Windows.Forms.Button button1;
     }
 }

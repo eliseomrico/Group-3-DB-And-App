@@ -45,9 +45,9 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.Controls.Add(this.locations1);
             this.panel2.Controls.Add(this.cmbLocName);
             this.panel2.Controls.Add(this.btnSearch);
-            this.panel2.Controls.Add(this.locations1);
             this.panel2.Controls.Add(this.btnManageLocations);
             this.panel2.Controls.Add(this.btnHome);
             this.panel2.Controls.Add(this.dgvRooms);
