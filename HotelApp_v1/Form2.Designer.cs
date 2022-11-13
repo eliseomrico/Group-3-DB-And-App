@@ -310,7 +310,6 @@ namespace HotelApp_v1
             this.employeeLoginForm1.Size = new System.Drawing.Size(692, 545);
             this.employeeLoginForm1.TabIndex = 12;
             this.employeeLoginForm1.Visible = false;
-            this.employeeLoginForm1.Load += new System.EventHandler(this.employeeLoginForm1_Load);
             // 
             // employees1
             // 
