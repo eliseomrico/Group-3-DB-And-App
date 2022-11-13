@@ -220,10 +220,10 @@
             // 
             this.lblTransTitle.AutoSize = true;
             this.lblTransTitle.BackColor = System.Drawing.Color.White;
-            this.lblTransTitle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTransTitle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTransTitle.Location = new System.Drawing.Point(109, 65);
             this.lblTransTitle.Name = "lblTransTitle";
-            this.lblTransTitle.Size = new System.Drawing.Size(482, 28);
+            this.lblTransTitle.Size = new System.Drawing.Size(439, 28);
             this.lblTransTitle.TabIndex = 14;
             this.lblTransTitle.Text = "Enter Transaction Number and click Search below";
             // 

@@ -128,7 +128,7 @@
             this.dtpEndDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpEndDate.Location = new System.Drawing.Point(171, 112);
             this.dtpEndDate.Name = "dtpEndDate";
-            this.dtpEndDate.Size = new System.Drawing.Size(126, 27);
+            this.dtpEndDate.Size = new System.Drawing.Size(145, 27);
             this.dtpEndDate.TabIndex = 34;
             this.dtpEndDate.ValueChanged += new System.EventHandler(this.dtpEndDate_ValueChanged);
             // 
@@ -140,13 +140,13 @@
             this.dtpStartDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpStartDate.Location = new System.Drawing.Point(171, 79);
             this.dtpStartDate.Name = "dtpStartDate";
-            this.dtpStartDate.Size = new System.Drawing.Size(126, 27);
+            this.dtpStartDate.Size = new System.Drawing.Size(145, 27);
             this.dtpStartDate.TabIndex = 33;
             this.dtpStartDate.ValueChanged += new System.EventHandler(this.dtpStartDate_ValueChanged);
             // 
             // reservationQueryForm1
             // 
-            this.reservationQueryForm1.Location = new System.Drawing.Point(607, 179);
+            this.reservationQueryForm1.Location = new System.Drawing.Point(0, 0);
             this.reservationQueryForm1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.reservationQueryForm1.Name = "reservationQueryForm1";
             this.reservationQueryForm1.Size = new System.Drawing.Size(692, 545);
@@ -220,10 +220,10 @@
             // 
             this.lblResTitle.AutoSize = true;
             this.lblResTitle.BackColor = System.Drawing.Color.White;
-            this.lblResTitle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblResTitle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblResTitle.Location = new System.Drawing.Point(66, 24);
             this.lblResTitle.Name = "lblResTitle";
-            this.lblResTitle.Size = new System.Drawing.Size(568, 28);
+            this.lblResTitle.Size = new System.Drawing.Size(523, 28);
             this.lblResTitle.TabIndex = 14;
             this.lblResTitle.Text = "Choose desired location and dates to view available rooms";
             // 

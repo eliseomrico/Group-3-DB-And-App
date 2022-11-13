@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel2 = new System.Windows.Forms.Panel();
+            this.txtHiddenID = new System.Windows.Forms.TextBox();
             this.cmbEmpLoc = new System.Windows.Forms.ComboBox();
             this.cmbEmpTitle = new System.Windows.Forms.ComboBox();
             this.cmbEmpSup = new System.Windows.Forms.ComboBox();
@@ -58,7 +59,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.sqlConnection1 = new System.Data.SqlClient.SqlConnection();
             this.sqlConnection2 = new System.Data.SqlClient.SqlConnection();
-            this.txtHiddenID = new System.Windows.Forms.TextBox();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -98,6 +98,15 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(692, 545);
             this.panel2.TabIndex = 23;
+            // 
+            // txtHiddenID
+            // 
+            this.txtHiddenID.Enabled = false;
+            this.txtHiddenID.Location = new System.Drawing.Point(281, 99);
+            this.txtHiddenID.Name = "txtHiddenID";
+            this.txtHiddenID.Size = new System.Drawing.Size(100, 22);
+            this.txtHiddenID.TabIndex = 0;
+            this.txtHiddenID.Visible = false;
             // 
             // cmbEmpLoc
             // 
@@ -398,10 +407,10 @@
             // 
             this.lblSelectEmployee.AutoSize = true;
             this.lblSelectEmployee.BackColor = System.Drawing.Color.White;
-            this.lblSelectEmployee.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSelectEmployee.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSelectEmployee.Location = new System.Drawing.Point(233, 20);
             this.lblSelectEmployee.Name = "lblSelectEmployee";
-            this.lblSelectEmployee.Size = new System.Drawing.Size(223, 28);
+            this.lblSelectEmployee.Size = new System.Drawing.Size(206, 28);
             this.lblSelectEmployee.TabIndex = 14;
             this.lblSelectEmployee.Text = "Employee Information";
             // 
@@ -460,15 +469,6 @@
             this.sqlConnection2.ConnectionString = "Data Source=ESCO-PC\\SQLEXPRESS01;Initial Catalog=HOTEL_TEST;Integrated Security=T" +
     "rue";
             this.sqlConnection2.FireInfoMessageEventOnUserErrors = false;
-            // 
-            // txtHiddenID
-            // 
-            this.txtHiddenID.Enabled = false;
-            this.txtHiddenID.Location = new System.Drawing.Point(281, 99);
-            this.txtHiddenID.Name = "txtHiddenID";
-            this.txtHiddenID.Size = new System.Drawing.Size(100, 22);
-            this.txtHiddenID.TabIndex = 0;
-            this.txtHiddenID.Visible = false;
             // 
             // Employees
             // 

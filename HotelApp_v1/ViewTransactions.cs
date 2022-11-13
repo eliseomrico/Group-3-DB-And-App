@@ -88,5 +88,6 @@ namespace HotelApp_v1
             sqlConnection1.Close();
             cmdGetTransactions.Dispose();
         }
+
     }
 }

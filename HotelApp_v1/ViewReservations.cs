@@ -63,8 +63,7 @@ namespace HotelApp_v1
         // Populates the datagridview with available rooms based on location and dates
         private void FillDataGrid()
         {
-            string location = cmbLocName.Text.Trim();
-            int location_id = GetLocationID(location);
+            int location_id = GetLocationID(cmbLocName.Text.Trim());
             DateTime startDate = dtpStartDate.Value;
             DateTime endDate = dtpEndDate.Value;
 

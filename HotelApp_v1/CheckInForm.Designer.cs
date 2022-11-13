@@ -29,178 +29,147 @@
         private void InitializeComponent()
         {
             this.panel3 = new System.Windows.Forms.Panel();
-            this.button_submit = new System.Windows.Forms.Button();
-            this.button_home = new System.Windows.Forms.Button();
-            this.textBox_checkin_lname = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.textBox_checkin_exp_date = new System.Windows.Forms.TextBox();
-            this.textBox_checkin_sec_code = new System.Windows.Forms.TextBox();
+            this.btnResSearch = new System.Windows.Forms.Button();
+            this.btnSubmit = new System.Windows.Forms.Button();
+            this.btnHome = new System.Windows.Forms.Button();
+            this.txtLname = new System.Windows.Forms.TextBox();
+            this.txtSecCode = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.textBox_checkin_cc_num = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBox_checkin_res_id = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lblLname = new System.Windows.Forms.Label();
+            this.lblSecCode = new System.Windows.Forms.Label();
+            this.lblResID = new System.Windows.Forms.Label();
+            this.txtResID = new System.Windows.Forms.TextBox();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.White;
-            this.panel3.Controls.Add(this.button_submit);
-            this.panel3.Controls.Add(this.button_home);
-            this.panel3.Controls.Add(this.textBox_checkin_lname);
-            this.panel3.Controls.Add(this.label4);
-            this.panel3.Controls.Add(this.textBox_checkin_exp_date);
-            this.panel3.Controls.Add(this.textBox_checkin_sec_code);
+            this.panel3.Controls.Add(this.btnResSearch);
+            this.panel3.Controls.Add(this.btnSubmit);
+            this.panel3.Controls.Add(this.btnHome);
+            this.panel3.Controls.Add(this.txtLname);
+            this.panel3.Controls.Add(this.txtSecCode);
             this.panel3.Controls.Add(this.label6);
-            this.panel3.Controls.Add(this.label1);
-            this.panel3.Controls.Add(this.label5);
-            this.panel3.Controls.Add(this.textBox_checkin_cc_num);
-            this.panel3.Controls.Add(this.label2);
-            this.panel3.Controls.Add(this.textBox_checkin_res_id);
-            this.panel3.Controls.Add(this.label3);
+            this.panel3.Controls.Add(this.lblLname);
+            this.panel3.Controls.Add(this.lblSecCode);
+            this.panel3.Controls.Add(this.lblResID);
+            this.panel3.Controls.Add(this.txtResID);
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(692, 545);
             this.panel3.TabIndex = 22;
             // 
-            // button_submit
+            // btnResSearch
             // 
-            this.button_submit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(78)))), ((int)(((byte)(79)))));
-            this.button_submit.FlatAppearance.BorderSize = 0;
-            this.button_submit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_submit.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_submit.ForeColor = System.Drawing.Color.White;
-            this.button_submit.Location = new System.Drawing.Point(346, 501);
-            this.button_submit.Name = "button_submit";
-            this.button_submit.Size = new System.Drawing.Size(346, 44);
-            this.button_submit.TabIndex = 28;
-            this.button_submit.Text = "Submit";
-            this.button_submit.UseVisualStyleBackColor = false;
-            this.button_submit.Click += new System.EventHandler(this.button_submit_Click);
+            this.btnResSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(78)))), ((int)(((byte)(79)))));
+            this.btnResSearch.FlatAppearance.BorderSize = 0;
+            this.btnResSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnResSearch.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnResSearch.ForeColor = System.Drawing.Color.White;
+            this.btnResSearch.Location = new System.Drawing.Point(175, 501);
+            this.btnResSearch.Name = "btnResSearch";
+            this.btnResSearch.Size = new System.Drawing.Size(346, 44);
+            this.btnResSearch.TabIndex = 29;
+            this.btnResSearch.Text = "Need to Search for Reservation ID?";
+            this.btnResSearch.UseVisualStyleBackColor = false;
             // 
-            // button_home
+            // btnSubmit
             // 
-            this.button_home.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(78)))), ((int)(((byte)(79)))));
-            this.button_home.FlatAppearance.BorderSize = 0;
-            this.button_home.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_home.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_home.ForeColor = System.Drawing.Color.White;
-            this.button_home.Location = new System.Drawing.Point(0, 501);
-            this.button_home.Name = "button_home";
-            this.button_home.Size = new System.Drawing.Size(346, 44);
-            this.button_home.TabIndex = 27;
-            this.button_home.Text = "Home";
-            this.button_home.UseVisualStyleBackColor = false;
-            this.button_home.Click += new System.EventHandler(this.button_home_Click);
+            this.btnSubmit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(78)))), ((int)(((byte)(79)))));
+            this.btnSubmit.FlatAppearance.BorderSize = 0;
+            this.btnSubmit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSubmit.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSubmit.ForeColor = System.Drawing.Color.White;
+            this.btnSubmit.Location = new System.Drawing.Point(513, 501);
+            this.btnSubmit.Name = "btnSubmit";
+            this.btnSubmit.Size = new System.Drawing.Size(179, 44);
+            this.btnSubmit.TabIndex = 28;
+            this.btnSubmit.Text = "Submit";
+            this.btnSubmit.UseVisualStyleBackColor = false;
             // 
-            // textBox_checkin_lname
+            // btnHome
             // 
-            this.textBox_checkin_lname.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_checkin_lname.Location = new System.Drawing.Point(68, 165);
-            this.textBox_checkin_lname.Name = "textBox_checkin_lname";
-            this.textBox_checkin_lname.Size = new System.Drawing.Size(227, 27);
-            this.textBox_checkin_lname.TabIndex = 9;
+            this.btnHome.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(78)))), ((int)(((byte)(79)))));
+            this.btnHome.FlatAppearance.BorderSize = 0;
+            this.btnHome.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHome.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHome.ForeColor = System.Drawing.Color.White;
+            this.btnHome.Location = new System.Drawing.Point(0, 501);
+            this.btnHome.Name = "btnHome";
+            this.btnHome.Size = new System.Drawing.Size(179, 44);
+            this.btnHome.TabIndex = 27;
+            this.btnHome.Text = "Home";
+            this.btnHome.UseVisualStyleBackColor = false;
+            this.btnHome.Click += new System.EventHandler(this.button_home_Click);
             // 
-            // label4
+            // txtLname
             // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.White;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(379, 247);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(112, 20);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Expiration Date";
+            this.txtLname.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLname.Location = new System.Drawing.Point(238, 190);
+            this.txtLname.Name = "txtLname";
+            this.txtLname.Size = new System.Drawing.Size(227, 27);
+            this.txtLname.TabIndex = 9;
             // 
-            // textBox_checkin_exp_date
+            // txtSecCode
             // 
-            this.textBox_checkin_exp_date.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_checkin_exp_date.Location = new System.Drawing.Point(383, 282);
-            this.textBox_checkin_exp_date.Name = "textBox_checkin_exp_date";
-            this.textBox_checkin_exp_date.Size = new System.Drawing.Size(102, 27);
-            this.textBox_checkin_exp_date.TabIndex = 12;
-            // 
-            // textBox_checkin_sec_code
-            // 
-            this.textBox_checkin_sec_code.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_checkin_sec_code.Location = new System.Drawing.Point(512, 282);
-            this.textBox_checkin_sec_code.Name = "textBox_checkin_sec_code";
-            this.textBox_checkin_sec_code.Size = new System.Drawing.Size(98, 27);
-            this.textBox_checkin_sec_code.TabIndex = 13;
+            this.txtSecCode.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSecCode.Location = new System.Drawing.Point(300, 387);
+            this.txtSecCode.Name = "txtSecCode";
+            this.txtSecCode.Size = new System.Drawing.Size(98, 27);
+            this.txtSecCode.TabIndex = 13;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.White;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(300, 31);
+            this.label6.Location = new System.Drawing.Point(295, 63);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(85, 28);
             this.label6.TabIndex = 5;
             this.label6.Text = "Check In";
             // 
-            // label1
+            // lblLname
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.White;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(64, 126);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(79, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Last Name";
+            this.lblLname.AutoSize = true;
+            this.lblLname.BackColor = System.Drawing.Color.White;
+            this.lblLname.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLname.Location = new System.Drawing.Point(234, 153);
+            this.lblLname.Name = "lblLname";
+            this.lblLname.Size = new System.Drawing.Size(79, 20);
+            this.lblLname.TabIndex = 0;
+            this.lblLname.Text = "Last Name";
             // 
-            // label5
+            // lblSecCode
             // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.White;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(510, 247);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(100, 20);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "Security Code";
+            this.lblSecCode.AutoSize = true;
+            this.lblSecCode.BackColor = System.Drawing.Color.White;
+            this.lblSecCode.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSecCode.Location = new System.Drawing.Point(298, 352);
+            this.lblSecCode.Name = "lblSecCode";
+            this.lblSecCode.Size = new System.Drawing.Size(100, 20);
+            this.lblSecCode.TabIndex = 4;
+            this.lblSecCode.Text = "Security Code";
             // 
-            // textBox_checkin_cc_num
+            // lblResID
             // 
-            this.textBox_checkin_cc_num.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_checkin_cc_num.Location = new System.Drawing.Point(68, 282);
-            this.textBox_checkin_cc_num.Name = "textBox_checkin_cc_num";
-            this.textBox_checkin_cc_num.Size = new System.Drawing.Size(227, 27);
-            this.textBox_checkin_cc_num.TabIndex = 11;
+            this.lblResID.AutoSize = true;
+            this.lblResID.BackColor = System.Drawing.Color.White;
+            this.lblResID.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblResID.Location = new System.Drawing.Point(234, 246);
+            this.lblResID.Name = "lblResID";
+            this.lblResID.Size = new System.Drawing.Size(105, 20);
+            this.lblResID.TabIndex = 1;
+            this.lblResID.Text = "Reservation ID";
             // 
-            // label2
+            // txtResID
             // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.White;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(379, 126);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(105, 20);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Reservation ID";
-            // 
-            // textBox_checkin_res_id
-            // 
-            this.textBox_checkin_res_id.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_checkin_res_id.Location = new System.Drawing.Point(383, 165);
-            this.textBox_checkin_res_id.Name = "textBox_checkin_res_id";
-            this.textBox_checkin_res_id.Size = new System.Drawing.Size(227, 27);
-            this.textBox_checkin_res_id.TabIndex = 10;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.White;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(64, 247);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(142, 20);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Credit Card Number";
+            this.txtResID.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtResID.Location = new System.Drawing.Point(238, 285);
+            this.txtResID.Name = "txtResID";
+            this.txtResID.Size = new System.Drawing.Size(227, 27);
+            this.txtResID.TabIndex = 10;
             // 
             // CheckInForm
             // 
@@ -218,18 +187,15 @@
         #endregion
 
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.TextBox textBox_checkin_lname;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox_checkin_exp_date;
-        private System.Windows.Forms.TextBox textBox_checkin_sec_code;
+        private System.Windows.Forms.TextBox txtLname;
+        private System.Windows.Forms.TextBox txtSecCode;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox_checkin_cc_num;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox_checkin_res_id;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button_submit;
-        private System.Windows.Forms.Button button_home;
+        private System.Windows.Forms.Label lblLname;
+        private System.Windows.Forms.Label lblSecCode;
+        private System.Windows.Forms.Label lblResID;
+        private System.Windows.Forms.TextBox txtResID;
+        private System.Windows.Forms.Button btnSubmit;
+        private System.Windows.Forms.Button btnHome;
+        private System.Windows.Forms.Button btnResSearch;
     }
 }
