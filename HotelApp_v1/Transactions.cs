@@ -22,11 +22,15 @@ namespace HotelApp_v1
         private void clearTextBoxes() 
         {
             txtResID.Clear();
+            txtCustName.Clear();
+            txtEmpName.Clear();
+            txtTransDate.Clear();
             txtTransAmt.Clear();
+            txtTransNo.Clear();
         }
 
-        // "Home" button click - doesn't exist on this form?
-        private void button_home_Click(object sender, EventArgs e)
+        // "Back" button click 
+        private void btnBackClick(object sender, EventArgs e)
         {
             clearTextBoxes();
             this.Visible = false;
@@ -41,13 +45,9 @@ namespace HotelApp_v1
         // "Search" button click - Populate text boxes
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            clearTextBoxes();
-
             int trans_no = Convert.ToInt32(txtTransNo.Text);
 
             GetTransactionInfo(trans_no);
-            PopulateCustomerName(trans_no);
-            PopulateEmployeeName(trans_no);
         }
 
         ////////////////////////// GENERAL METHODS BELOW //////////////////////////
@@ -55,9 +55,9 @@ namespace HotelApp_v1
         // Populate transaction information associated with transaction ID
         private void GetTransactionInfo(int trans_no)
         {
-            sqlConnection2.Open();
+            sqlConnection1.Open();
 
-            SqlCommand cmdGetTransInfo = sqlConnection2.CreateCommand();
+            SqlCommand cmdGetTransInfo = sqlConnection1.CreateCommand();
             cmdGetTransInfo.CommandText = @"SELECT *
                                             FROM TRANSACTIONS
                                             WHERE TRANS_NO = @search";
@@ -70,13 +70,17 @@ namespace HotelApp_v1
                 txtResID.Text = reader[3].ToString();
                 txtTransAmt.Text = reader[2].ToString();
                 txtTransDate.Text = reader[1].ToString();
+
+                PopulateCustomerName(trans_no);
+                PopulateEmployeeName(trans_no);
             }
             else
             {
                 MessageBox.Show("Transaction not found");
+                clearTextBoxes();
             }
 
-            sqlConnection2.Close();
+            sqlConnection1.Close();
             reader.Close();
             cmdGetTransInfo.Dispose();
         }

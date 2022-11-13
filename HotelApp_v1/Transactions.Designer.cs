@@ -37,7 +37,7 @@
             this.txtTransNo = new System.Windows.Forms.TextBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
-            this.btnHome = new System.Windows.Forms.Button();
+            this.btnBack = new System.Windows.Forms.Button();
             this.lblTransNo = new System.Windows.Forms.Label();
             this.txtResID = new System.Windows.Forms.TextBox();
             this.txtTransAmt = new System.Windows.Forms.TextBox();
@@ -46,6 +46,7 @@
             this.lblTransAmt = new System.Windows.Forms.Label();
             this.lblTransDate = new System.Windows.Forms.Label();
             this.sqlConnection2 = new System.Data.SqlClient.SqlConnection();
+            this.sqlConnection1 = new System.Data.SqlClient.SqlConnection();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -60,7 +61,7 @@
             this.panel2.Controls.Add(this.txtTransNo);
             this.panel2.Controls.Add(this.btnCancel);
             this.panel2.Controls.Add(this.btnSearch);
-            this.panel2.Controls.Add(this.btnHome);
+            this.panel2.Controls.Add(this.btnBack);
             this.panel2.Controls.Add(this.lblTransNo);
             this.panel2.Controls.Add(this.txtResID);
             this.panel2.Controls.Add(this.txtTransAmt);
@@ -160,20 +161,20 @@
             this.btnSearch.UseVisualStyleBackColor = false;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
-            // btnHome
+            // btnBack
             // 
-            this.btnHome.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(78)))), ((int)(((byte)(79)))));
-            this.btnHome.FlatAppearance.BorderSize = 0;
-            this.btnHome.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnHome.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHome.ForeColor = System.Drawing.Color.White;
-            this.btnHome.Location = new System.Drawing.Point(0, 501);
-            this.btnHome.Name = "btnHome";
-            this.btnHome.Size = new System.Drawing.Size(199, 44);
-            this.btnHome.TabIndex = 23;
-            this.btnHome.Text = "Back";
-            this.btnHome.UseVisualStyleBackColor = false;
-            this.btnHome.Click += new System.EventHandler(this.button_home_Click);
+            this.btnBack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(78)))), ((int)(((byte)(79)))));
+            this.btnBack.FlatAppearance.BorderSize = 0;
+            this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBack.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBack.ForeColor = System.Drawing.Color.White;
+            this.btnBack.Location = new System.Drawing.Point(0, 501);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(199, 44);
+            this.btnBack.TabIndex = 23;
+            this.btnBack.Text = "Back";
+            this.btnBack.UseVisualStyleBackColor = false;
+            this.btnBack.Click += new System.EventHandler(this.btnBackClick);
             // 
             // lblTransNo
             // 
@@ -254,6 +255,12 @@
     "rue";
             this.sqlConnection2.FireInfoMessageEventOnUserErrors = false;
             // 
+            // sqlConnection1
+            // 
+            this.sqlConnection1.ConnectionString = "Data Source=ESCO-PC\\SQLEXPRESS01;Initial Catalog=HOTEL_TEST;Integrated Security=T" +
+    "rue";
+            this.sqlConnection1.FireInfoMessageEventOnUserErrors = false;
+            // 
             // Transactions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -271,7 +278,7 @@
 
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.Button btnHome;
+        private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.Label lblTransNo;
         private System.Windows.Forms.TextBox txtResID;
         private System.Windows.Forms.TextBox txtTransAmt;
@@ -287,5 +294,6 @@
         private System.Windows.Forms.Label lblCustName;
         private System.Windows.Forms.Label lblEmpName;
         private System.Data.SqlClient.SqlConnection sqlConnection2;
+        private System.Data.SqlClient.SqlConnection sqlConnection1;
     }
 }

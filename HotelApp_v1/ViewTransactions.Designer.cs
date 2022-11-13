@@ -62,7 +62,7 @@
             // 
             // pnlManageTransactions
             // 
-            this.pnlManageTransactions.Location = new System.Drawing.Point(0, 3);
+            this.pnlManageTransactions.Location = new System.Drawing.Point(0, 0);
             this.pnlManageTransactions.Name = "pnlManageTransactions";
             this.pnlManageTransactions.Size = new System.Drawing.Size(692, 545);
             this.pnlManageTransactions.TabIndex = 33;

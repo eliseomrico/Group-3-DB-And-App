@@ -29,112 +29,189 @@
         private void InitializeComponent()
         {
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button_search = new System.Windows.Forms.Button();
+            this.lblEndDate = new System.Windows.Forms.Label();
+            this.lblStartDate = new System.Windows.Forms.Label();
+            this.dtpEndDate = new System.Windows.Forms.DateTimePicker();
+            this.dtpStartDate = new System.Windows.Forms.DateTimePicker();
             this.reservationQueryForm1 = new HotelApp_v1.ReservationQueryForm();
-            this.button_manage_reservations = new System.Windows.Forms.Button();
-            this.button_home = new System.Windows.Forms.Button();
-            this.comboBox_location_name = new System.Windows.Forms.ComboBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
+            this.btnManageRes = new System.Windows.Forms.Button();
+            this.btnHome = new System.Windows.Forms.Button();
+            this.cmbLocName = new System.Windows.Forms.ComboBox();
+            this.dgvRooms = new System.Windows.Forms.DataGridView();
+            this.lblLocName = new System.Windows.Forms.Label();
+            this.lblResTitle = new System.Windows.Forms.Label();
+            this.sqlConnection1 = new System.Data.SqlClient.SqlConnection();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRooms)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.Controls.Add(this.button_search);
+            this.panel2.Controls.Add(this.lblEndDate);
+            this.panel2.Controls.Add(this.lblStartDate);
+            this.panel2.Controls.Add(this.dtpEndDate);
+            this.panel2.Controls.Add(this.dtpStartDate);
             this.panel2.Controls.Add(this.reservationQueryForm1);
-            this.panel2.Controls.Add(this.button_manage_reservations);
-            this.panel2.Controls.Add(this.button_home);
-            this.panel2.Controls.Add(this.comboBox_location_name);
-            this.panel2.Controls.Add(this.dataGridView1);
-            this.panel2.Controls.Add(this.label1);
-            this.panel2.Controls.Add(this.label8);
+            this.panel2.Controls.Add(this.btnManageRes);
+            this.panel2.Controls.Add(this.btnHome);
+            this.panel2.Controls.Add(this.cmbLocName);
+            this.panel2.Controls.Add(this.dgvRooms);
+            this.panel2.Controls.Add(this.lblLocName);
+            this.panel2.Controls.Add(this.lblResTitle);
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(692, 545);
             this.panel2.TabIndex = 24;
             // 
+            // button_search
+            // 
+            this.button_search.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(78)))), ((int)(((byte)(79)))));
+            this.button_search.FlatAppearance.BorderSize = 0;
+            this.button_search.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_search.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_search.ForeColor = System.Drawing.Color.White;
+            this.button_search.Location = new System.Drawing.Point(523, 129);
+            this.button_search.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button_search.Name = "button_search";
+            this.button_search.Size = new System.Drawing.Size(116, 32);
+            this.button_search.TabIndex = 37;
+            this.button_search.Text = "Search";
+            this.button_search.UseVisualStyleBackColor = false;
+            this.button_search.Click += new System.EventHandler(this.button_search_Click);
+            // 
+            // lblEndDate
+            // 
+            this.lblEndDate.AutoSize = true;
+            this.lblEndDate.BackColor = System.Drawing.Color.White;
+            this.lblEndDate.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEndDate.Location = new System.Drawing.Point(14, 120);
+            this.lblEndDate.Name = "lblEndDate";
+            this.lblEndDate.Size = new System.Drawing.Size(73, 20);
+            this.lblEndDate.TabIndex = 36;
+            this.lblEndDate.Text = "End Date:";
+            // 
+            // lblStartDate
+            // 
+            this.lblStartDate.AutoSize = true;
+            this.lblStartDate.BackColor = System.Drawing.Color.White;
+            this.lblStartDate.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStartDate.Location = new System.Drawing.Point(8, 86);
+            this.lblStartDate.Name = "lblStartDate";
+            this.lblStartDate.Size = new System.Drawing.Size(79, 20);
+            this.lblStartDate.TabIndex = 35;
+            this.lblStartDate.Text = "Start Date:";
+            // 
+            // dtpEndDate
+            // 
+            this.dtpEndDate.Checked = false;
+            this.dtpEndDate.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpEndDate.Location = new System.Drawing.Point(92, 115);
+            this.dtpEndDate.Name = "dtpEndDate";
+            this.dtpEndDate.Size = new System.Drawing.Size(254, 27);
+            this.dtpEndDate.TabIndex = 34;
+            this.dtpEndDate.ValueChanged += new System.EventHandler(this.dtpEndDate_ValueChanged);
+            // 
+            // dtpStartDate
+            // 
+            this.dtpStartDate.Checked = false;
+            this.dtpStartDate.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpStartDate.Location = new System.Drawing.Point(92, 82);
+            this.dtpStartDate.Name = "dtpStartDate";
+            this.dtpStartDate.Size = new System.Drawing.Size(254, 27);
+            this.dtpStartDate.TabIndex = 33;
+            this.dtpStartDate.ValueChanged += new System.EventHandler(this.dtpStartDate_ValueChanged);
+            // 
             // reservationQueryForm1
             // 
-            this.reservationQueryForm1.Location = new System.Drawing.Point(0, 0);
+            this.reservationQueryForm1.Location = new System.Drawing.Point(3, 245);
+            this.reservationQueryForm1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.reservationQueryForm1.Name = "reservationQueryForm1";
             this.reservationQueryForm1.Size = new System.Drawing.Size(692, 545);
             this.reservationQueryForm1.TabIndex = 27;
             this.reservationQueryForm1.Visible = false;
             // 
-            // button_manage_reservations
+            // btnManageRes
             // 
-            this.button_manage_reservations.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(78)))), ((int)(((byte)(79)))));
-            this.button_manage_reservations.FlatAppearance.BorderSize = 0;
-            this.button_manage_reservations.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_manage_reservations.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_manage_reservations.ForeColor = System.Drawing.Color.White;
-            this.button_manage_reservations.Location = new System.Drawing.Point(346, 501);
-            this.button_manage_reservations.Name = "button_manage_reservations";
-            this.button_manage_reservations.Size = new System.Drawing.Size(346, 44);
-            this.button_manage_reservations.TabIndex = 26;
-            this.button_manage_reservations.Text = "Manage Reservations";
-            this.button_manage_reservations.UseVisualStyleBackColor = false;
-            this.button_manage_reservations.Click += new System.EventHandler(this.button_manage_reservations_Click);
+            this.btnManageRes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(78)))), ((int)(((byte)(79)))));
+            this.btnManageRes.FlatAppearance.BorderSize = 0;
+            this.btnManageRes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnManageRes.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnManageRes.ForeColor = System.Drawing.Color.White;
+            this.btnManageRes.Location = new System.Drawing.Point(346, 501);
+            this.btnManageRes.Name = "btnManageRes";
+            this.btnManageRes.Size = new System.Drawing.Size(346, 44);
+            this.btnManageRes.TabIndex = 26;
+            this.btnManageRes.Text = "Manage Reservations";
+            this.btnManageRes.UseVisualStyleBackColor = false;
+            this.btnManageRes.Click += new System.EventHandler(this.button_manage_reservations_Click);
             // 
-            // button_home
+            // btnHome
             // 
-            this.button_home.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(78)))), ((int)(((byte)(79)))));
-            this.button_home.FlatAppearance.BorderSize = 0;
-            this.button_home.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_home.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_home.ForeColor = System.Drawing.Color.White;
-            this.button_home.Location = new System.Drawing.Point(0, 501);
-            this.button_home.Name = "button_home";
-            this.button_home.Size = new System.Drawing.Size(346, 44);
-            this.button_home.TabIndex = 24;
-            this.button_home.Text = "Home";
-            this.button_home.UseVisualStyleBackColor = false;
-            this.button_home.Click += new System.EventHandler(this.button_home_Click);
+            this.btnHome.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(78)))), ((int)(((byte)(79)))));
+            this.btnHome.FlatAppearance.BorderSize = 0;
+            this.btnHome.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHome.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHome.ForeColor = System.Drawing.Color.White;
+            this.btnHome.Location = new System.Drawing.Point(0, 501);
+            this.btnHome.Name = "btnHome";
+            this.btnHome.Size = new System.Drawing.Size(346, 44);
+            this.btnHome.TabIndex = 24;
+            this.btnHome.Text = "Home";
+            this.btnHome.UseVisualStyleBackColor = false;
+            this.btnHome.Click += new System.EventHandler(this.button_home_Click);
             // 
-            // comboBox_location_name
+            // cmbLocName
             // 
-            this.comboBox_location_name.BackColor = System.Drawing.Color.White;
-            this.comboBox_location_name.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.comboBox_location_name.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox_location_name.FormattingEnabled = true;
-            this.comboBox_location_name.Location = new System.Drawing.Point(332, 124);
-            this.comboBox_location_name.Name = "comboBox_location_name";
-            this.comboBox_location_name.Size = new System.Drawing.Size(208, 28);
-            this.comboBox_location_name.TabIndex = 16;
+            this.cmbLocName.BackColor = System.Drawing.Color.White;
+            this.cmbLocName.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cmbLocName.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbLocName.FormattingEnabled = true;
+            this.cmbLocName.Location = new System.Drawing.Point(439, 82);
+            this.cmbLocName.Name = "cmbLocName";
+            this.cmbLocName.Size = new System.Drawing.Size(208, 28);
+            this.cmbLocName.TabIndex = 16;
+            this.cmbLocName.Click += new System.EventHandler(this.cmbLocName_Click);
             // 
-            // dataGridView1
+            // dgvRooms
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 178);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(692, 325);
-            this.dataGridView1.TabIndex = 15;
+            this.dgvRooms.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvRooms.Location = new System.Drawing.Point(0, 179);
+            this.dgvRooms.Name = "dgvRooms";
+            this.dgvRooms.RowHeadersWidth = 51;
+            this.dgvRooms.RowTemplate.Height = 24;
+            this.dgvRooms.Size = new System.Drawing.Size(692, 325);
+            this.dgvRooms.TabIndex = 15;
             // 
-            // label1
+            // lblLocName
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.White;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(159, 124);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(110, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Location Name";
+            this.lblLocName.AutoSize = true;
+            this.lblLocName.BackColor = System.Drawing.Color.White;
+            this.lblLocName.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLocName.Location = new System.Drawing.Point(368, 86);
+            this.lblLocName.Name = "lblLocName";
+            this.lblLocName.Size = new System.Drawing.Size(69, 20);
+            this.lblLocName.TabIndex = 0;
+            this.lblLocName.Text = "Location:";
             // 
-            // label8
+            // lblResTitle
             // 
-            this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.Color.White;
-            this.label8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(97, 38);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(494, 28);
-            this.label8.TabIndex = 14;
-            this.label8.Text = "Choose desired location to view rooms and room types";
+            this.lblResTitle.AutoSize = true;
+            this.lblResTitle.BackColor = System.Drawing.Color.White;
+            this.lblResTitle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblResTitle.Location = new System.Drawing.Point(66, 24);
+            this.lblResTitle.Name = "lblResTitle";
+            this.lblResTitle.Size = new System.Drawing.Size(568, 28);
+            this.lblResTitle.TabIndex = 14;
+            this.lblResTitle.Text = "Choose desired location and dates to view available rooms";
+            // 
+            // sqlConnection1
+            // 
+            this.sqlConnection1.ConnectionString = "Data Source=ESCO-PC\\SQLEXPRESS01;Initial Catalog=HOTEL_TEST;Integrated Security=T" +
+    "rue";
+            this.sqlConnection1.FireInfoMessageEventOnUserErrors = false;
             // 
             // ViewReservations
             // 
@@ -145,7 +222,7 @@
             this.Size = new System.Drawing.Size(692, 545);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRooms)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -153,12 +230,18 @@
         #endregion
 
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button button_manage_reservations;
-        private System.Windows.Forms.Button button_home;
-        private System.Windows.Forms.ComboBox comboBox_location_name;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button btnManageRes;
+        private System.Windows.Forms.Button btnHome;
+        private System.Windows.Forms.ComboBox cmbLocName;
+        private System.Windows.Forms.DataGridView dgvRooms;
+        private System.Windows.Forms.Label lblLocName;
+        private System.Windows.Forms.Label lblResTitle;
         private ReservationQueryForm reservationQueryForm1;
+        private System.Data.SqlClient.SqlConnection sqlConnection1;
+        private System.Windows.Forms.Label lblEndDate;
+        private System.Windows.Forms.Label lblStartDate;
+        private System.Windows.Forms.DateTimePicker dtpEndDate;
+        private System.Windows.Forms.DateTimePicker dtpStartDate;
+        private System.Windows.Forms.Button button_search;
     }
 }
