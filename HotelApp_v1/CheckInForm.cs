@@ -51,5 +51,10 @@ and credit_sec_code = 5*/
 
             // Check the customer in
         }
+
+        private void btnResSearch_Click(object sender, EventArgs e)
+        {
+            reservationQueryForm1.Visible = true;
+        }
     }
 }

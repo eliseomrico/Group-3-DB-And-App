@@ -40,12 +40,14 @@
             this.lblResID = new System.Windows.Forms.Label();
             this.txtResID = new System.Windows.Forms.TextBox();
             this.sqlConnection1 = new System.Data.SqlClient.SqlConnection();
+            this.reservationQueryForm1 = new HotelApp_v1.ReservationQueryForm();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.White;
+            this.panel3.Controls.Add(this.reservationQueryForm1);
             this.panel3.Controls.Add(this.btnResSearch);
             this.panel3.Controls.Add(this.btnSubmit);
             this.panel3.Controls.Add(this.btnHome);
@@ -74,6 +76,7 @@
             this.btnResSearch.TabIndex = 29;
             this.btnResSearch.Text = "Need to Search for Reservation ID?";
             this.btnResSearch.UseVisualStyleBackColor = false;
+            this.btnResSearch.Click += new System.EventHandler(this.btnResSearch_Click);
             // 
             // btnSubmit
             // 
@@ -179,6 +182,13 @@
     "rue";
             this.sqlConnection1.FireInfoMessageEventOnUserErrors = false;
             // 
+            // reservationQueryForm1
+            // 
+            this.reservationQueryForm1.Location = new System.Drawing.Point(0, 0);
+            this.reservationQueryForm1.Name = "reservationQueryForm1";
+            this.reservationQueryForm1.Size = new System.Drawing.Size(692, 545);
+            this.reservationQueryForm1.TabIndex = 30;
+            // 
             // CheckInForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -206,5 +216,6 @@
         private System.Windows.Forms.Button btnHome;
         private System.Windows.Forms.Button btnResSearch;
         private System.Data.SqlClient.SqlConnection sqlConnection1;
+        private ReservationQueryForm reservationQueryForm1;
     }
 }
