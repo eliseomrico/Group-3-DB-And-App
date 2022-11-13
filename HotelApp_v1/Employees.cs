@@ -161,15 +161,13 @@ namespace HotelApp_v1
         // "Submit Create" button click
         private void button_submit_create_Click(object sender, EventArgs e)
         {
-            int ssn, location, title, supervisor;
             string[] sup_name = cmbEmpSup.Text.Split(' ');
-
-            location = GetLocationID(cmbEmpLoc.Text);
-            // if (location == -1) { }
-            title = GetTitleCode(cmbEmpTitle.Text);
-            // if (title == -1) { }
-            ssn = Convert.ToInt32(txtEmpSSN.Text);
-            supervisor = GetSupervisorID(sup_name[0], sup_name[1]);
+            int location = GetLocationID(cmbEmpLoc.Text);
+                // if (location == -1) { }
+            int title = GetTitleCode(cmbEmpTitle.Text);
+                // if (title == -1) { }
+            int ssn = Convert.ToInt32(txtEmpSSN.Text);
+            int supervisor = GetSupervisorID(sup_name[0], sup_name[1]);
 
             sqlConnection1.Open();
             SqlCommand cmdInsertUser = sqlConnection1.CreateCommand();
@@ -190,6 +188,7 @@ namespace HotelApp_v1
             cmdInsertUser.Parameters.AddWithValue("@bind6", ssn);
 
             cmdInsertUser.ExecuteNonQuery();
+            cmdInsertUser.Dispose();
 
             sqlConnection1.Close();
 

@@ -39,6 +39,7 @@
             this.lblSecCode = new System.Windows.Forms.Label();
             this.lblResID = new System.Windows.Forms.Label();
             this.txtResID = new System.Windows.Forms.TextBox();
+            this.sqlConnection1 = new System.Data.SqlClient.SqlConnection();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -87,6 +88,7 @@
             this.btnSubmit.TabIndex = 28;
             this.btnSubmit.Text = "Submit";
             this.btnSubmit.UseVisualStyleBackColor = false;
+            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
             // 
             // btnHome
             // 
@@ -171,6 +173,12 @@
             this.txtResID.Size = new System.Drawing.Size(227, 27);
             this.txtResID.TabIndex = 10;
             // 
+            // sqlConnection1
+            // 
+            this.sqlConnection1.ConnectionString = "Data Source=ESCO-PC\\SQLEXPRESS01;Initial Catalog=HOTEL_TEST;Integrated Security=T" +
+    "rue";
+            this.sqlConnection1.FireInfoMessageEventOnUserErrors = false;
+            // 
             // CheckInForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -197,5 +205,6 @@
         private System.Windows.Forms.Button btnSubmit;
         private System.Windows.Forms.Button btnHome;
         private System.Windows.Forms.Button btnResSearch;
+        private System.Data.SqlClient.SqlConnection sqlConnection1;
     }
 }
