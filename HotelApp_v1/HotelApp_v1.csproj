@@ -97,16 +97,17 @@
     <Compile Include="ReservationQueryForm.Designer.cs">
       <DependentUpon>ReservationQueryForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="RoomAvailability.cs">
+    <Compile Include="Rooms\Room_Obj.cs" />
+    <Compile Include="Rooms\RoomAvailability.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="RoomAvailability.Designer.cs">
+    <Compile Include="Rooms\RoomAvailability.Designer.cs">
       <DependentUpon>RoomAvailability.cs</DependentUpon>
     </Compile>
-    <Compile Include="Rooms.cs">
+    <Compile Include="Rooms\Rooms.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Rooms.Designer.cs">
+    <Compile Include="Rooms\Rooms.Designer.cs">
       <DependentUpon>Rooms.cs</DependentUpon>
     </Compile>
     <Compile Include="Transactions.cs">
@@ -172,10 +173,10 @@
     <EmbeddedResource Include="ReservationQueryForm.resx">
       <DependentUpon>ReservationQueryForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="RoomAvailability.resx">
+    <EmbeddedResource Include="Rooms\RoomAvailability.resx">
       <DependentUpon>RoomAvailability.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Rooms.resx">
+    <EmbeddedResource Include="Rooms\Rooms.resx">
       <DependentUpon>Rooms.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Transactions.resx">

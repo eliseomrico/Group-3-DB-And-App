@@ -29,15 +29,17 @@
         private void InitializeComponent()
         {
             this.panel2 = new System.Windows.Forms.Panel();
-            this.rooms1 = new HotelApp_v1.Rooms();
             this.button_manage_rooms = new System.Windows.Forms.Button();
             this.button_home = new System.Windows.Forms.Button();
             this.comboBox_location_name = new System.Windows.Forms.ComboBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridView_room = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.sqlConnection1 = new System.Data.SqlClient.SqlConnection();
+            this.sqlConnection2 = new System.Data.SqlClient.SqlConnection();
+            this.rooms1 = new HotelApp_v1.Rooms();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_room)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
@@ -47,7 +49,7 @@
             this.panel2.Controls.Add(this.button_manage_rooms);
             this.panel2.Controls.Add(this.button_home);
             this.panel2.Controls.Add(this.comboBox_location_name);
-            this.panel2.Controls.Add(this.dataGridView1);
+            this.panel2.Controls.Add(this.dataGridView_room);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.label8);
             this.panel2.Location = new System.Drawing.Point(0, 0);
@@ -55,15 +57,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1038, 852);
             this.panel2.TabIndex = 23;
-            // 
-            // rooms1
-            // 
-            this.rooms1.Location = new System.Drawing.Point(0, 0);
-            this.rooms1.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
-            this.rooms1.Name = "rooms1";
-            this.rooms1.Size = new System.Drawing.Size(1038, 852);
-            this.rooms1.TabIndex = 27;
-            this.rooms1.Visible = false;
             // 
             // button_manage_rooms
             // 
@@ -109,16 +102,16 @@
             this.comboBox_location_name.Size = new System.Drawing.Size(310, 40);
             this.comboBox_location_name.TabIndex = 16;
             // 
-            // dataGridView1
+            // dataGridView_room
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 278);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(1038, 508);
-            this.dataGridView1.TabIndex = 15;
+            this.dataGridView_room.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView_room.Location = new System.Drawing.Point(0, 278);
+            this.dataGridView_room.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dataGridView_room.Name = "dataGridView_room";
+            this.dataGridView_room.RowHeadersWidth = 51;
+            this.dataGridView_room.RowTemplate.Height = 24;
+            this.dataGridView_room.Size = new System.Drawing.Size(1038, 508);
+            this.dataGridView_room.TabIndex = 15;
             // 
             // label1
             // 
@@ -144,6 +137,25 @@
             this.label8.TabIndex = 14;
             this.label8.Text = "Choose desired location to view rooms and room types";
             // 
+            // sqlConnection1
+            // 
+            this.sqlConnection1.ConnectionString = "Data Source=ELISEORICOCE42;Initial Catalog=TestDatabase;Integrated Security=True";
+            this.sqlConnection1.FireInfoMessageEventOnUserErrors = false;
+            // 
+            // sqlConnection2
+            // 
+            this.sqlConnection2.ConnectionString = "Data Source=ELISEORICOCE42;Initial Catalog=TestDatabase;Integrated Security=True";
+            this.sqlConnection2.FireInfoMessageEventOnUserErrors = false;
+            // 
+            // rooms1
+            // 
+            this.rooms1.Location = new System.Drawing.Point(0, 0);
+            this.rooms1.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+            this.rooms1.Name = "rooms1";
+            this.rooms1.Size = new System.Drawing.Size(1038, 852);
+            this.rooms1.TabIndex = 27;
+            this.rooms1.Visible = false;
+            // 
             // RoomAvailability
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -154,7 +166,7 @@
             this.Size = new System.Drawing.Size(1038, 852);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_room)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -163,11 +175,13 @@
 
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.ComboBox comboBox_location_name;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridView_room;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button button_home;
         private System.Windows.Forms.Button button_manage_rooms;
         private Rooms rooms1;
+        private System.Data.SqlClient.SqlConnection sqlConnection1;
+        private System.Data.SqlClient.SqlConnection sqlConnection2;
     }
 }
