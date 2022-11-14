@@ -29,10 +29,13 @@
         private void InitializeComponent()
         {
             this.panel2 = new System.Windows.Forms.Panel();
+            this.dgvReservations = new System.Windows.Forms.DataGridView();
+            this.txtRoomTypeDeletion = new System.Windows.Forms.TextBox();
+            this.txtRoomNoDeletion = new System.Windows.Forms.TextBox();
+            this.txtLocNameDeletion = new System.Windows.Forms.TextBox();
             this.cmbResID = new System.Windows.Forms.ComboBox();
             this.btnCancel2 = new System.Windows.Forms.Button();
             this.btnSubmitDelete = new System.Windows.Forms.Button();
-            this.dgvReservations = new System.Windows.Forms.DataGridView();
             this.btnGetPrice = new System.Windows.Forms.Button();
             this.cmbRoomNo = new System.Windows.Forms.ComboBox();
             this.cmbRoomType = new System.Windows.Forms.ComboBox();
@@ -60,9 +63,6 @@
             this.lblResStart = new System.Windows.Forms.Label();
             this.lblResEnd = new System.Windows.Forms.Label();
             this.sqlConnection1 = new System.Data.SqlClient.SqlConnection();
-            this.txtLocNameDeletion = new System.Windows.Forms.TextBox();
-            this.txtRoomNoDeletion = new System.Windows.Forms.TextBox();
-            this.txtRoomTypeDeletion = new System.Windows.Forms.TextBox();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReservations)).BeginInit();
             this.SuspendLayout();
@@ -109,6 +109,53 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1038, 852);
             this.panel2.TabIndex = 23;
+            // 
+            // dgvReservations
+            // 
+            this.dgvReservations.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvReservations.Location = new System.Drawing.Point(0, 194);
+            this.dgvReservations.Name = "dgvReservations";
+            this.dgvReservations.RowHeadersWidth = 51;
+            this.dgvReservations.RowTemplate.Height = 24;
+            this.dgvReservations.Size = new System.Drawing.Size(692, 309);
+            this.dgvReservations.TabIndex = 39;
+            this.dgvReservations.Visible = false;
+            // 
+            // txtRoomTypeDeletion
+            // 
+            this.txtRoomTypeDeletion.Enabled = false;
+            this.txtRoomTypeDeletion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRoomTypeDeletion.Location = new System.Drawing.Point(76, 241);
+            this.txtRoomTypeDeletion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtRoomTypeDeletion.Name = "txtRoomTypeDeletion";
+            this.txtRoomTypeDeletion.ReadOnly = true;
+            this.txtRoomTypeDeletion.Size = new System.Drawing.Size(227, 27);
+            this.txtRoomTypeDeletion.TabIndex = 40;
+            this.txtRoomTypeDeletion.Visible = false;
+            // 
+            // txtRoomNoDeletion
+            // 
+            this.txtRoomNoDeletion.Enabled = false;
+            this.txtRoomNoDeletion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRoomNoDeletion.Location = new System.Drawing.Point(380, 241);
+            this.txtRoomNoDeletion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtRoomNoDeletion.Name = "txtRoomNoDeletion";
+            this.txtRoomNoDeletion.ReadOnly = true;
+            this.txtRoomNoDeletion.Size = new System.Drawing.Size(227, 27);
+            this.txtRoomNoDeletion.TabIndex = 41;
+            this.txtRoomNoDeletion.Visible = false;
+            // 
+            // txtLocNameDeletion
+            // 
+            this.txtLocNameDeletion.Enabled = false;
+            this.txtLocNameDeletion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLocNameDeletion.Location = new System.Drawing.Point(382, 136);
+            this.txtLocNameDeletion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtLocNameDeletion.Name = "txtLocNameDeletion";
+            this.txtLocNameDeletion.ReadOnly = true;
+            this.txtLocNameDeletion.Size = new System.Drawing.Size(227, 27);
+            this.txtLocNameDeletion.TabIndex = 39;
+            this.txtLocNameDeletion.Visible = false;
             // 
             // cmbResID
             // 
@@ -158,17 +205,6 @@
             this.btnSubmitDelete.UseVisualStyleBackColor = false;
             this.btnSubmitDelete.Visible = false;
             this.btnSubmitDelete.Click += new System.EventHandler(this.btnSubmitDelete_Click);
-            // 
-            // dgvReservations
-            // 
-            this.dgvReservations.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvReservations.Location = new System.Drawing.Point(0, 194);
-            this.dgvReservations.Name = "dgvReservations";
-            this.dgvReservations.RowHeadersWidth = 51;
-            this.dgvReservations.RowTemplate.Height = 24;
-            this.dgvReservations.Size = new System.Drawing.Size(692, 309);
-            this.dgvReservations.TabIndex = 39;
-            this.dgvReservations.Visible = false;
             // 
             // btnGetPrice
             // 
@@ -518,42 +554,6 @@
             this.sqlConnection1.ConnectionString = "Data Source=ESCO-PC\\SQLEXPRESS01;Initial Catalog=HOTEL_TEST;Integrated Security=T" +
     "rue";
             this.sqlConnection1.FireInfoMessageEventOnUserErrors = false;
-            // 
-            // txtLocNameDeletion
-            // 
-            this.txtLocNameDeletion.Enabled = false;
-            this.txtLocNameDeletion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLocNameDeletion.Location = new System.Drawing.Point(382, 136);
-            this.txtLocNameDeletion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtLocNameDeletion.Name = "txtLocNameDeletion";
-            this.txtLocNameDeletion.ReadOnly = true;
-            this.txtLocNameDeletion.Size = new System.Drawing.Size(227, 27);
-            this.txtLocNameDeletion.TabIndex = 39;
-            this.txtLocNameDeletion.Visible = false;
-            // 
-            // txtRoomNoDeletion
-            // 
-            this.txtRoomNoDeletion.Enabled = false;
-            this.txtRoomNoDeletion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRoomNoDeletion.Location = new System.Drawing.Point(380, 241);
-            this.txtRoomNoDeletion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtRoomNoDeletion.Name = "txtRoomNoDeletion";
-            this.txtRoomNoDeletion.ReadOnly = true;
-            this.txtRoomNoDeletion.Size = new System.Drawing.Size(227, 27);
-            this.txtRoomNoDeletion.TabIndex = 41;
-            this.txtRoomNoDeletion.Visible = false;
-            // 
-            // txtRoomTypeDeletion
-            // 
-            this.txtRoomTypeDeletion.Enabled = false;
-            this.txtRoomTypeDeletion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRoomTypeDeletion.Location = new System.Drawing.Point(76, 241);
-            this.txtRoomTypeDeletion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtRoomTypeDeletion.Name = "txtRoomTypeDeletion";
-            this.txtRoomTypeDeletion.ReadOnly = true;
-            this.txtRoomTypeDeletion.Size = new System.Drawing.Size(227, 27);
-            this.txtRoomTypeDeletion.TabIndex = 40;
-            this.txtRoomTypeDeletion.Visible = false;
             // 
             // ReservationQueryForm
             // 
