@@ -51,15 +51,17 @@
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.label8);
             this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(692, 545);
+            this.panel2.Size = new System.Drawing.Size(1038, 852);
             this.panel2.TabIndex = 23;
             // 
             // rooms1
             // 
             this.rooms1.Location = new System.Drawing.Point(0, 0);
+            this.rooms1.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.rooms1.Name = "rooms1";
-            this.rooms1.Size = new System.Drawing.Size(692, 545);
+            this.rooms1.Size = new System.Drawing.Size(1038, 852);
             this.rooms1.TabIndex = 27;
             this.rooms1.Visible = false;
             // 
@@ -70,9 +72,10 @@
             this.button_manage_rooms.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_manage_rooms.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_manage_rooms.ForeColor = System.Drawing.Color.White;
-            this.button_manage_rooms.Location = new System.Drawing.Point(346, 501);
+            this.button_manage_rooms.Location = new System.Drawing.Point(519, 783);
+            this.button_manage_rooms.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button_manage_rooms.Name = "button_manage_rooms";
-            this.button_manage_rooms.Size = new System.Drawing.Size(346, 44);
+            this.button_manage_rooms.Size = new System.Drawing.Size(519, 69);
             this.button_manage_rooms.TabIndex = 26;
             this.button_manage_rooms.Text = "Manage Rooms";
             this.button_manage_rooms.UseVisualStyleBackColor = false;
@@ -85,9 +88,10 @@
             this.button_home.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_home.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_home.ForeColor = System.Drawing.Color.White;
-            this.button_home.Location = new System.Drawing.Point(0, 501);
+            this.button_home.Location = new System.Drawing.Point(0, 783);
+            this.button_home.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button_home.Name = "button_home";
-            this.button_home.Size = new System.Drawing.Size(346, 44);
+            this.button_home.Size = new System.Drawing.Size(519, 69);
             this.button_home.TabIndex = 24;
             this.button_home.Text = "Home";
             this.button_home.UseVisualStyleBackColor = false;
@@ -99,19 +103,21 @@
             this.comboBox_location_name.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.comboBox_location_name.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox_location_name.FormattingEnabled = true;
-            this.comboBox_location_name.Location = new System.Drawing.Point(332, 124);
+            this.comboBox_location_name.Location = new System.Drawing.Point(498, 194);
+            this.comboBox_location_name.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.comboBox_location_name.Name = "comboBox_location_name";
-            this.comboBox_location_name.Size = new System.Drawing.Size(208, 28);
+            this.comboBox_location_name.Size = new System.Drawing.Size(310, 40);
             this.comboBox_location_name.TabIndex = 16;
             // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 178);
+            this.dataGridView1.Location = new System.Drawing.Point(0, 278);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(692, 325);
+            this.dataGridView1.Size = new System.Drawing.Size(1038, 508);
             this.dataGridView1.TabIndex = 15;
             // 
             // label1
@@ -119,9 +125,10 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.White;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(159, 124);
+            this.label1.Location = new System.Drawing.Point(238, 194);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(110, 20);
+            this.label1.Size = new System.Drawing.Size(175, 32);
             this.label1.TabIndex = 0;
             this.label1.Text = "Location Name";
             // 
@@ -130,19 +137,21 @@
             this.label8.AutoSize = true;
             this.label8.BackColor = System.Drawing.Color.White;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(97, 38);
+            this.label8.Location = new System.Drawing.Point(146, 59);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(494, 28);
+            this.label8.Size = new System.Drawing.Size(808, 45);
             this.label8.TabIndex = 14;
             this.label8.Text = "Choose desired location to view rooms and room types";
             // 
             // RoomAvailability
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panel2);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "RoomAvailability";
-            this.Size = new System.Drawing.Size(692, 545);
+            this.Size = new System.Drawing.Size(1038, 852);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

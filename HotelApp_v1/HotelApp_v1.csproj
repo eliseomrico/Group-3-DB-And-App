@@ -58,12 +58,13 @@
     <Compile Include="CheckOutForm.Designer.cs">
       <DependentUpon>CheckOutForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="CustomerQueryForm.cs">
+    <Compile Include="Customer\CustomerQueryForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="CustomerQueryForm.Designer.cs">
+    <Compile Include="Customer\CustomerQueryForm.Designer.cs">
       <DependentUpon>CustomerQueryForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Customer\Customer_Obj.cs" />
     <Compile Include="EmployeeLoginForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -114,10 +115,10 @@
     <Compile Include="Transactions.Designer.cs">
       <DependentUpon>Transactions.cs</DependentUpon>
     </Compile>
-    <Compile Include="ViewCustomers.cs">
+    <Compile Include="Customer\ViewCustomers.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ViewCustomers.Designer.cs">
+    <Compile Include="Customer\ViewCustomers.Designer.cs">
       <DependentUpon>ViewCustomers.cs</DependentUpon>
     </Compile>
     <Compile Include="ViewLocations.cs">
@@ -144,7 +145,7 @@
     <EmbeddedResource Include="CheckOutForm.resx">
       <DependentUpon>CheckOutForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CustomerQueryForm.resx">
+    <EmbeddedResource Include="Customer\CustomerQueryForm.resx">
       <DependentUpon>CustomerQueryForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EmployeeLoginForm.resx">
@@ -180,7 +181,7 @@
     <EmbeddedResource Include="Transactions.resx">
       <DependentUpon>Transactions.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ViewCustomers.resx">
+    <EmbeddedResource Include="Customer\ViewCustomers.resx">
       <DependentUpon>ViewCustomers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ViewLocations.resx">
