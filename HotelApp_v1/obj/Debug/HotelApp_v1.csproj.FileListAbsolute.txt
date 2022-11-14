@@ -36,3 +36,28 @@ C:\Users\matt\MatthewOlivarez\StMU\Fall 2022\Databases\HotelApp_v3\HotelApp_v1\o
 C:\Users\matt\MatthewOlivarez\StMU\Fall 2022\Databases\HotelApp_v3\HotelApp_v1\obj\Debug\HotelApp_v1.ViewReservations.resources
 C:\Users\matt\MatthewOlivarez\StMU\Fall 2022\Databases\HotelApp_v3\HotelApp_v1\obj\Debug\HotelApp_v1.Transactions.resources
 C:\Users\matt\MatthewOlivarez\StMU\Fall 2022\Databases\HotelApp_v3\HotelApp_v1\obj\Debug\HotelApp_v1.ViewTransactions.resources
+Y:\Group-3-DB-And-App\HotelApp_v1\bin\Debug\HotelApp_v1.exe.config
+Y:\Group-3-DB-And-App\HotelApp_v1\bin\Debug\HotelApp_v1.exe
+Y:\Group-3-DB-And-App\HotelApp_v1\bin\Debug\HotelApp_v1.pdb
+Y:\Group-3-DB-And-App\HotelApp_v1\obj\Debug\HotelApp_v1.csproj.AssemblyReference.cache
+Y:\Group-3-DB-And-App\HotelApp_v1\obj\Debug\HotelApp_v1.csproj.SuggestedBindingRedirects.cache
+Y:\Group-3-DB-And-App\HotelApp_v1\obj\Debug\HotelApp_v1.CheckInForm.resources
+Y:\Group-3-DB-And-App\HotelApp_v1\obj\Debug\HotelApp_v1.CheckOutForm.resources
+Y:\Group-3-DB-And-App\HotelApp_v1\obj\Debug\HotelApp_v1.CustomerQueryForm.resources
+Y:\Group-3-DB-And-App\HotelApp_v1\obj\Debug\HotelApp_v1.EmployeeLoginForm.resources
+Y:\Group-3-DB-And-App\HotelApp_v1\obj\Debug\HotelApp_v1.Employees.resources
+Y:\Group-3-DB-And-App\HotelApp_v1\obj\Debug\HotelApp_v1.Form2.resources
+Y:\Group-3-DB-And-App\HotelApp_v1\obj\Debug\HotelApp_v1.Locations.resources
+Y:\Group-3-DB-And-App\HotelApp_v1\obj\Debug\HotelApp_v1.Properties.Resources.resources
+Y:\Group-3-DB-And-App\HotelApp_v1\obj\Debug\HotelApp_v1.ReservationQueryForm.resources
+Y:\Group-3-DB-And-App\HotelApp_v1\obj\Debug\HotelApp_v1.RoomAvailability.resources
+Y:\Group-3-DB-And-App\HotelApp_v1\obj\Debug\HotelApp_v1.Rooms.resources
+Y:\Group-3-DB-And-App\HotelApp_v1\obj\Debug\HotelApp_v1.Transactions.resources
+Y:\Group-3-DB-And-App\HotelApp_v1\obj\Debug\HotelApp_v1.ViewCustomers.resources
+Y:\Group-3-DB-And-App\HotelApp_v1\obj\Debug\HotelApp_v1.ViewLocations.resources
+Y:\Group-3-DB-And-App\HotelApp_v1\obj\Debug\HotelApp_v1.ViewReservations.resources
+Y:\Group-3-DB-And-App\HotelApp_v1\obj\Debug\HotelApp_v1.ViewTransactions.resources
+Y:\Group-3-DB-And-App\HotelApp_v1\obj\Debug\HotelApp_v1.csproj.GenerateResource.cache
+Y:\Group-3-DB-And-App\HotelApp_v1\obj\Debug\HotelApp_v1.csproj.CoreCompileInputs.cache
+Y:\Group-3-DB-And-App\HotelApp_v1\obj\Debug\HotelApp_v1.exe
+Y:\Group-3-DB-And-App\HotelApp_v1\obj\Debug\HotelApp_v1.pdb
