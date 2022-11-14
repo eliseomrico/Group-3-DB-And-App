@@ -18,18 +18,8 @@ namespace HotelApp_v1
             InitializeComponent();
         }
 
-        private void ToggleAnnoyingButtons(bool status)
-        {
-            lblEndDate.Visible = status;
-            lblStartDate.Visible = status;
-            dtpEndDate.Visible = status;
-            dtpStartDate.Visible = status;
-            btnSearch.Visible = status;
-        }
-
         private void button_manage_reservations_Click(object sender, EventArgs e)
         {
-            ToggleAnnoyingButtons(false);
             reservationQueryForm1.Visible = true;
         }
 
@@ -75,12 +65,12 @@ namespace HotelApp_v1
             SqlCommand cmdGetRooms = sqlConnection1.CreateCommand();
             cmdGetRooms.CommandText = @"SELECT ROOM_NO, ROOM_TYPE
                                         FROM ROOM
-                                            JOIN RESERVATION ON RES_ROOM_NO = ROOM_NO
                                         WHERE ROOM_LOC = @search1
-                                        AND ROOM_NO NOT IN (SELECT RES_ROOM_NO
-                                                            FROM RESERVATION
-                                                            WHERE RES_START_DATE > @search2
-                                                            AND RES_END_DATE < @search3)";
+                                        AND ROOM_NO NOT IN (SELECT ROOM_NO
+                                                            FROM ROOM
+						                                        JOIN RESERVATION ON RES_ROOM_NO = ROOM_NO
+                                                            WHERE RES_START_DATE >= @search2
+                                                            AND RES_END_DATE <= @search3)";
             cmdGetRooms.Parameters.AddWithValue("@search1", location_id);
             cmdGetRooms.Parameters.AddWithValue("@search2", sqlFormatStartDate);
             cmdGetRooms.Parameters.AddWithValue("@search3", sqlFormatEndDate);
@@ -153,10 +143,12 @@ namespace HotelApp_v1
         private void dtpStartDate_ValueChanged(object sender, EventArgs e)
         {
             dtpEndDate.MinDate = dtpStartDate.Value;
+            FillLocationsComboBox();
         }
         private void dtpEndDate_ValueChanged(object sender, EventArgs e)
         {
             dtpStartDate.MaxDate = dtpEndDate.Value;
+            FillLocationsComboBox();
         }
     }
 }

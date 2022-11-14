@@ -20,7 +20,7 @@ namespace HotelApp_v1
 
         private void button_home_Click(object sender, EventArgs e)
         {
-            dtpEndDate.Value = DateTime.Now;
+            dtpEndDate.Value = DateTime.Now.AddDays(1);
             dtpStartDate.Value = DateTime.Now;
             this.Visible = false;
         }

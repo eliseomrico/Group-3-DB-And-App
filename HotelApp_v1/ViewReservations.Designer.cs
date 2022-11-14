@@ -68,7 +68,7 @@
             // 
             // reservationQueryForm1
             // 
-            this.reservationQueryForm1.Location = new System.Drawing.Point(0, -2);
+            this.reservationQueryForm1.Location = new System.Drawing.Point(0, 0);
             this.reservationQueryForm1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.reservationQueryForm1.Name = "reservationQueryForm1";
             this.reservationQueryForm1.Size = new System.Drawing.Size(692, 545);
@@ -170,6 +170,7 @@
             // cmbLocName
             // 
             this.cmbLocName.BackColor = System.Drawing.Color.White;
+            this.cmbLocName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbLocName.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.cmbLocName.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbLocName.FormattingEnabled = true;

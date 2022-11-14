@@ -111,6 +111,7 @@
             // cmbEmpLoc
             // 
             this.cmbEmpLoc.BackColor = System.Drawing.Color.White;
+            this.cmbEmpLoc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbEmpLoc.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.cmbEmpLoc.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbEmpLoc.FormattingEnabled = true;
@@ -124,6 +125,7 @@
             // cmbEmpTitle
             // 
             this.cmbEmpTitle.BackColor = System.Drawing.Color.White;
+            this.cmbEmpTitle.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbEmpTitle.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.cmbEmpTitle.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbEmpTitle.FormattingEnabled = true;
@@ -137,6 +139,7 @@
             // cmbEmpSup
             // 
             this.cmbEmpSup.BackColor = System.Drawing.Color.White;
+            this.cmbEmpSup.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbEmpSup.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.cmbEmpSup.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbEmpSup.FormattingEnabled = true;
