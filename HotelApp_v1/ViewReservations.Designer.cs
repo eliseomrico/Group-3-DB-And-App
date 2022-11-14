@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.panel2 = new System.Windows.Forms.Panel();
-            this.reservationQueryForm1 = new HotelApp_v1.ReservationQueryForm();
             this.btnSearch = new System.Windows.Forms.Button();
             this.lblEndDate = new System.Windows.Forms.Label();
             this.lblStartDate = new System.Windows.Forms.Label();
@@ -42,6 +41,7 @@
             this.lblLocName = new System.Windows.Forms.Label();
             this.lblResTitle = new System.Windows.Forms.Label();
             this.sqlConnection1 = new System.Data.SqlClient.SqlConnection();
+            this.reservationQueryForm1 = new HotelApp_v1.ReservationQueryForm();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRooms)).BeginInit();
             this.SuspendLayout();
@@ -65,15 +65,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(692, 545);
             this.panel2.TabIndex = 24;
-            // 
-            // reservationQueryForm1
-            // 
-            this.reservationQueryForm1.Location = new System.Drawing.Point(0, 0);
-            this.reservationQueryForm1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.reservationQueryForm1.Name = "reservationQueryForm1";
-            this.reservationQueryForm1.Size = new System.Drawing.Size(692, 545);
-            this.reservationQueryForm1.TabIndex = 27;
-            this.reservationQueryForm1.Visible = false;
             // 
             // btnSearch
             // 
@@ -217,6 +208,15 @@
             this.sqlConnection1.ConnectionString = "Data Source=ESCO-PC\\SQLEXPRESS01;Initial Catalog=HOTEL_TEST;Integrated Security=T" +
     "rue";
             this.sqlConnection1.FireInfoMessageEventOnUserErrors = false;
+            // 
+            // reservationQueryForm1
+            // 
+            this.reservationQueryForm1.Location = new System.Drawing.Point(0, 0);
+            this.reservationQueryForm1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.reservationQueryForm1.Name = "reservationQueryForm1";
+            this.reservationQueryForm1.Size = new System.Drawing.Size(692, 545);
+            this.reservationQueryForm1.TabIndex = 27;
+            this.reservationQueryForm1.Visible = false;
             // 
             // ViewReservations
             // 

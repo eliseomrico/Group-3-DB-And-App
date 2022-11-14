@@ -33,10 +33,22 @@ namespace HotelApp_v1
         {
             emptyTextBoxes();
             changeButtonsEnabled(!status);
+            changeTextBoxesReadOnlyStatus(!status);
             showCancelButton(status);
             showEditButton(!status);
             enableComboBoxes(status);
             btnGetPrice.Enabled = status;
+
+            cmbResID.Enabled = status;
+            cmbResID.Visible = status;
+            cmbResID.SelectedIndex = -1;
+
+            changeButtonsEnabled(!status);
+            btnSubmitEdit.Enabled = status;
+            btnSearch.Enabled = !status;
+            showCancelButton(status);
+
+            FillReservationIDs();
         }
         private void DeleteMode(bool status)
         {
@@ -276,8 +288,8 @@ namespace HotelApp_v1
             if (cmbCustName.SelectedIndex > -1 && cmbLocName.SelectedIndex == -1)
             {
                 string[] name = cmbCustName.Text.Split(' ');
-                string custFname = name[0];
-                string custLname = name[1];
+                string custLname = name[0];
+                string custFname = name[1];
 
                 sqlConnection1.Open();
 
@@ -312,8 +324,8 @@ namespace HotelApp_v1
             if (cmbCustName.SelectedIndex > -1 && cmbLocName.SelectedIndex > -1)
             {
                 string[] name = cmbCustName.Text.Split(' ');
-                string custFname = name[0];
-                string custLname = name[1];
+                string custLname = name[0];
+                string custFname = name[1];
                 int location = Convert.ToInt32(GetLocationID(cmbLocName.Text));
 
                 sqlConnection1.Open();
@@ -362,6 +374,24 @@ namespace HotelApp_v1
             cmbCustName.Focus();
         }
 
+        private void LoadRooms()
+        {
+            cmbRoomNo.Items.Clear();
+
+            sqlConnection1.Open();
+            SqlCommand cmdLoadRooms = sqlConnection1.CreateCommand();
+            cmdLoadRooms.CommandText = @"SELECT ROOM_NO
+                                         FROM ROOM";
+            SqlDataReader reader = cmdLoadRooms.ExecuteReader();
+            if (reader.Read())
+            {
+                cmbRoomNo.Items.Add(reader[0]);
+            }
+            sqlConnection1.Close();
+            cmdLoadRooms.Dispose();
+            reader.Close();
+            
+        }
         // Populates rooms combo box based on location, dates, and room type selected
         private void LoadAvailableRooms()
         {
@@ -523,22 +553,48 @@ namespace HotelApp_v1
         private void button_edit_Click(object sender, EventArgs e)
         {
             EditMode(true);
-            changeTextBoxesReadOnlyStatus(false); 
-            changeButtonsEnabled(false);
-            btnSubmitEdit.Enabled = true;
-            btnSearch.Enabled = false; 
-            showCancelButton(true);
         }
 
         // "Submit Edit" button clicked
         private void button_submit_edit_Click(object sender, EventArgs e)
         {
+            int res_id = Convert.ToInt32(cmbResID.Text);
+            int locID = Convert.ToInt32(GetLocationID(cmbLocName.Text));
+            int roomno = Convert.ToInt32(cmbRoomNo.Text);
+            int custID = getCustID();
+            DateTime resStart = dtpResStart.Value;
+            DateTime resEnd = dtpResEnd.Value;
+            try
+            {
+                sqlConnection1.Open();
+                SqlCommand cmdUpdateRes = sqlConnection1.CreateCommand();
+                cmdUpdateRes.CommandText = @"UPDATE RESERVATION SET
+                                                    RES_CUST_ID = @search1, 
+                                                    RES_LOC_ID = @search2,
+                                                    RES_ROOM_NO = @search3,
+                                                    RES_START_DATE = @search4,
+                                                    RES_END_DATE = @search5
+                                             WHERE RES_NO = @search6";
+                cmdUpdateRes.Parameters.AddWithValue("@search1", custID);
+                cmdUpdateRes.Parameters.AddWithValue("@search2", locID);
+                cmdUpdateRes.Parameters.AddWithValue("@search3", roomno);
+                cmdUpdateRes.Parameters.AddWithValue("@search4", resStart);
+                cmdUpdateRes.Parameters.AddWithValue("@search5", resEnd);
+                cmdUpdateRes.Parameters.AddWithValue("@search6", res_id);
+
+                cmdUpdateRes.ExecuteNonQuery();
+                cmdUpdateRes.Dispose();
+                MessageBox.Show("Reservation Updated");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + " in update submission");
+            }
+            sqlConnection1.Close();
             EditMode(false);
-            changeTextBoxesReadOnlyStatus(true); 
-            changeButtonsEnabled(true);
-            btnSubmitEdit.Enabled = false;
-            btnSearch.Enabled = true; 
-            showCancelButton(false);
+            clearComboBoxes();
+            emptyTextBoxes();
+            cmbResID.Items.Clear();
         }
 
         // "Delete" button clicked
@@ -563,9 +619,7 @@ namespace HotelApp_v1
         // "Cancel" button clicked
         private void button_cancel_Click(object sender, EventArgs e)
         {
-            changeButtonsEnabled(true); // delete this when above is filled out
-            emptyTextBoxes();
-            clearComboBoxes();            
+            changeButtonsEnabled(true); // delete this when above is filled out        
             showCreateButton(true);
             showDeleteButton(true);
             showEditButton(true);
@@ -575,6 +629,9 @@ namespace HotelApp_v1
 
             btnSearch.Enabled = true;
             dgvReservations.Visible = false;
+
+            emptyTextBoxes();
+            clearComboBoxes();
         }
         private void btnCancel2_Click(object sender, EventArgs e)
         {
@@ -667,6 +724,10 @@ namespace HotelApp_v1
             {
                 MessageBox.Show("Please enter a location and room type to view available rooms");
             }
+            else if (btnSubmitEdit.Visible == true)
+            {
+
+            }
             else
             {
                 LoadAvailableRooms();
@@ -719,8 +780,8 @@ namespace HotelApp_v1
         private int getCustID()
         {
             string[] name = cmbCustName.Text.Split(' ');
-            string custLname = name[0];
-            string custFname = name[1];
+            string custLname = name[1];
+            string custFname = name[0];
 
             sqlConnection1.Open();
             SqlCommand cmdGetCustID = sqlConnection1.CreateCommand();
@@ -781,17 +842,29 @@ namespace HotelApp_v1
 
         private void cmbResID_SelectedIndexChanged(object sender, EventArgs e)
         {
-            FillOutForm();
+            if (btnSubmitDelete.Visible == true)
+            {
+                FillOutForm(1);
+            }
+            if (btnSubmitEdit.Visible == true)
+            {
+                FillOutForm(2);
+            }
         }
 
-        private void FillOutForm()
+        private void FillOutForm(int fillType)
         {
+            LoadRooms();
+            LoadLocations();
+            LoadRoomTypes();
+
+            sqlConnection1.Open();
+
             if (cmbResID.SelectedIndex > -1)
             {
                 int res_id = Convert.ToInt32(cmbResID.Text);
                 try
                 {
-                    sqlConnection1.Open();
                     SqlCommand getInfo = sqlConnection1.CreateCommand();
                     getInfo.CommandText = @"SELECT RES_CUST_ID,
                                                RES_LOC_ID,
@@ -805,22 +878,56 @@ namespace HotelApp_v1
                                         WHERE RES_NO = @search";
                     getInfo.Parameters.AddWithValue("@search", res_id);
 
-                    SqlDataReader reader = getInfo.ExecuteReader();
-                    if (reader.Read())
+                    if (fillType == 1)
                     {
-                        txtRoomNoDeletion.Text = reader[2].ToString();
-                        txtRoomTypeDeletion.Text = reader[3].ToString();
-                        dtpResStart.Value = (DateTime)reader[4];
-                        dtpResEnd.Value = (DateTime)reader[5];
-                        int loc_id = Convert.ToInt32(reader[1]);
-                        int cust_id = Convert.ToInt32(reader[0]);
+                        SqlDataReader reader = getInfo.ExecuteReader();
+                        if (reader.Read())
+                        {
+                            txtRoomNoDeletion.Text = reader[2].ToString();
+                            txtRoomTypeDeletion.Text = reader[3].ToString();
+                            dtpResStart.Value = (DateTime)reader[4];
+                            dtpResEnd.Value = (DateTime)reader[5];
+                            int loc_id = Convert.ToInt32(reader[1]);
+                            int cust_id = Convert.ToInt32(reader[0]);
 
-                        sqlConnection1.Close();
-                        reader.Close();
-                        getInfo.Dispose();
+                            sqlConnection1.Close();
+                            reader.Close();
+                            getInfo.Dispose();
 
-                        txtLocNameDeletion.Text = GetLocName(loc_id).ToString(); ;
-                        cmbCustName.Text = GetCustName(cust_id).ToString(); ;
+                            txtLocNameDeletion.Text = GetLocName(loc_id).ToString(); 
+                            cmbCustName.Text = GetCustName(cust_id).ToString(); 
+                        }
+                    }
+                    if (fillType == 2)
+                    {
+                        SqlDataReader reader = getInfo.ExecuteReader();
+                        if (reader.Read())
+                        {
+                            string locname = reader[1].ToString();
+                            int roomno = Convert.ToInt32(reader[2].ToString());
+
+                            int typeindex = cmbRoomType.FindString(reader[3].ToString());
+                            cmbRoomType.SelectedIndex = typeindex;
+
+                            dtpResStart.Value = (DateTime)reader[4];
+                            dtpResEnd.Value = (DateTime)reader[5];
+                            int cust_id = Convert.ToInt32(reader[0]);
+
+                            sqlConnection1.Close();
+                            reader.Close();
+                            getInfo.Dispose();
+
+                            locname = GetLocName(Convert.ToInt32(locname));
+                            int locindex = cmbLocName.FindString(locname);
+                            cmbLocName.SelectedIndex = locindex;
+
+                            LoadAvailableRooms();
+                            cmbRoomNo.Items.Add(roomno);
+                            int roomindex = cmbRoomNo.FindString(roomno.ToString());
+                            cmbRoomNo.SelectedIndex = roomindex;
+
+                            cmbCustName.Text = GetCustName(cust_id).ToString();
+                        }
                     }
                 }
                 catch (Exception ex)
