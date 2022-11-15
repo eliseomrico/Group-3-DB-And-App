@@ -83,10 +83,11 @@
     <Compile Include="Form2.Designer.cs">
       <DependentUpon>Form2.cs</DependentUpon>
     </Compile>
-    <Compile Include="Locations.cs">
+    <Compile Include="Location\Location_Obj.cs" />
+    <Compile Include="Location\Locations.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Locations.Designer.cs">
+    <Compile Include="Location\Locations.Designer.cs">
       <DependentUpon>Locations.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -122,10 +123,10 @@
     <Compile Include="Customer\ViewCustomers.Designer.cs">
       <DependentUpon>ViewCustomers.cs</DependentUpon>
     </Compile>
-    <Compile Include="ViewLocations.cs">
+    <Compile Include="Location\ViewLocations.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ViewLocations.Designer.cs">
+    <Compile Include="Location\ViewLocations.Designer.cs">
       <DependentUpon>ViewLocations.cs</DependentUpon>
     </Compile>
     <Compile Include="ViewReservations.cs">
@@ -158,7 +159,7 @@
     <EmbeddedResource Include="Form2.resx">
       <DependentUpon>Form2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Locations.resx">
+    <EmbeddedResource Include="Location\Locations.resx">
       <DependentUpon>Locations.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -185,7 +186,7 @@
     <EmbeddedResource Include="Customer\ViewCustomers.resx">
       <DependentUpon>ViewCustomers.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ViewLocations.resx">
+    <EmbeddedResource Include="Location\ViewLocations.resx">
       <DependentUpon>ViewLocations.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ViewReservations.resx">

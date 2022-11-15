@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel2 = new System.Windows.Forms.Panel();
+            this.customerQueryForm1 = new HotelApp_v1.CustomerQueryForm();
             this.textBox_lname = new System.Windows.Forms.TextBox();
             this.button_manage_customers = new System.Windows.Forms.Button();
             this.button_home = new System.Windows.Forms.Button();
@@ -36,7 +37,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.sqlConnection1 = new System.Data.SqlClient.SqlConnection();
-            this.customerQueryForm1 = new HotelApp_v1.CustomerQueryForm();
             this.sqlConnection2 = new System.Data.SqlClient.SqlConnection();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid_Customers)).BeginInit();
@@ -57,6 +57,15 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1038, 852);
             this.panel2.TabIndex = 24;
+            // 
+            // customerQueryForm1
+            // 
+            this.customerQueryForm1.Location = new System.Drawing.Point(0, 0);
+            this.customerQueryForm1.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+            this.customerQueryForm1.Name = "customerQueryForm1";
+            this.customerQueryForm1.Size = new System.Drawing.Size(1038, 852);
+            this.customerQueryForm1.TabIndex = 28;
+            this.customerQueryForm1.Visible = false;
             // 
             // textBox_lname
             // 
@@ -139,15 +148,6 @@
             // 
             this.sqlConnection1.ConnectionString = "Data Source=ELISEORICOCE42;Initial Catalog=TestDatabase;Integrated Security=True";
             this.sqlConnection1.FireInfoMessageEventOnUserErrors = false;
-            // 
-            // customerQueryForm1
-            // 
-            this.customerQueryForm1.Location = new System.Drawing.Point(0, 0);
-            this.customerQueryForm1.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
-            this.customerQueryForm1.Name = "customerQueryForm1";
-            this.customerQueryForm1.Size = new System.Drawing.Size(1038, 852);
-            this.customerQueryForm1.TabIndex = 28;
-            this.customerQueryForm1.Visible = false;
             // 
             // sqlConnection2
             // 
