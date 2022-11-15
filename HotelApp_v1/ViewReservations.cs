@@ -63,8 +63,9 @@ namespace HotelApp_v1
             sqlConnection1.Open();
 
             SqlCommand cmdGetRooms = sqlConnection1.CreateCommand();
-            cmdGetRooms.CommandText = @"SELECT ROOM_NO, ROOM_TYPE
+            cmdGetRooms.CommandText = @"SELECT ROOM_NO, TYPE_DESCRIPTION
                                         FROM ROOM
+                                            JOIN ROOM_TYPE ON ROOM_TYPE = TYPE_CODE
                                         WHERE ROOM_LOC = @search1
                                         AND ROOM_NO NOT IN (SELECT ROOM_NO
                                                             FROM ROOM

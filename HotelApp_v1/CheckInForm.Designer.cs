@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel3 = new System.Windows.Forms.Panel();
+            this.reservationQueryForm1 = new HotelApp_v1.ReservationQueryForm();
             this.btnResSearch = new System.Windows.Forms.Button();
             this.btnSubmit = new System.Windows.Forms.Button();
             this.btnHome = new System.Windows.Forms.Button();
@@ -40,7 +41,6 @@
             this.lblResID = new System.Windows.Forms.Label();
             this.txtResID = new System.Windows.Forms.TextBox();
             this.sqlConnection1 = new System.Data.SqlClient.SqlConnection();
-            this.reservationQueryForm1 = new HotelApp_v1.ReservationQueryForm();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -62,6 +62,14 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(692, 545);
             this.panel3.TabIndex = 22;
+            // 
+            // reservationQueryForm1
+            // 
+            this.reservationQueryForm1.Location = new System.Drawing.Point(558, 0);
+            this.reservationQueryForm1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.reservationQueryForm1.Name = "reservationQueryForm1";
+            this.reservationQueryForm1.Size = new System.Drawing.Size(692, 545);
+            this.reservationQueryForm1.TabIndex = 30;
             // 
             // btnResSearch
             // 
@@ -181,14 +189,6 @@
             this.sqlConnection1.ConnectionString = "Data Source=ESCO-PC\\SQLEXPRESS01;Initial Catalog=HOTEL_TEST;Integrated Security=T" +
     "rue";
             this.sqlConnection1.FireInfoMessageEventOnUserErrors = false;
-            // 
-            // reservationQueryForm1
-            // 
-            this.reservationQueryForm1.Location = new System.Drawing.Point(0, 0);
-            this.reservationQueryForm1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.reservationQueryForm1.Name = "reservationQueryForm1";
-            this.reservationQueryForm1.Size = new System.Drawing.Size(692, 545);
-            this.reservationQueryForm1.TabIndex = 30;
             // 
             // CheckInForm
             // 

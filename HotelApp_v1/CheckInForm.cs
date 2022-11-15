@@ -23,10 +23,16 @@ namespace HotelApp_v1
             this.Visible = false;
         }
 
+        // Check In Customer
         private void btnSubmit_Click(object sender, EventArgs e)
         {
+            CheckIn();
+        }
+
+        private void CheckIn()
+        {
             sqlConnection1.Open();
-          
+
             string custLname = txtLname.Text;
             int resID = Convert.ToInt32(txtResID.Text);
             int secCode = Convert.ToInt32(txtSecCode);
@@ -38,18 +44,13 @@ namespace HotelApp_v1
                                                 JOIN RESERVATION ON RES_CUST_ID = CUST_ID
                                                 JOIN CREDIT_CARD ON CREDIT_CARD_NO = CUST_CREDIT_CARD_NO
                                             WHERE RES_NO = @search1
-                                            AND CUST_LNAME = 
+                                            AND CUST_LNAME = @search2
                                             AND CREDIT_SEC_CODE = @search3";
+            cmdValidCheckIn.Parameters.AddWithValue("@search1", resID);
+            cmdValidCheckIn.Parameters.AddWithValue("@search1", custLname);
+            cmdValidCheckIn.Parameters.AddWithValue("@search1", secCode);
 
-/*select cust_fname, cust_lname
-from customer
-	join reservation on RES_CUST_ID = cust_id
-	join CREDIT_CARD on credit_card_no = cust_credit_card_no
-where RES_NO = 1
-and cust_lname = 'smith'
-and credit_sec_code = 5*/
-
-            // Check the customer in
+            SqlDataReader reader = cmdValidCheckIn.ExecuteReader();
         }
 
         private void btnResSearch_Click(object sender, EventArgs e)
