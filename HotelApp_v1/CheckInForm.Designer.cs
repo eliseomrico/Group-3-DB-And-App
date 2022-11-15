@@ -65,11 +65,12 @@
             // 
             // reservationQueryForm1
             // 
-            this.reservationQueryForm1.Location = new System.Drawing.Point(558, 0);
+            this.reservationQueryForm1.Location = new System.Drawing.Point(0, 0);
             this.reservationQueryForm1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.reservationQueryForm1.Name = "reservationQueryForm1";
             this.reservationQueryForm1.Size = new System.Drawing.Size(692, 545);
             this.reservationQueryForm1.TabIndex = 30;
+            this.reservationQueryForm1.Visible = false;
             // 
             // btnResSearch
             // 

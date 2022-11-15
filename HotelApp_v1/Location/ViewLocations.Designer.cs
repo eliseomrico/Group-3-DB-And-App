@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel2 = new System.Windows.Forms.Panel();
+            this.locations1 = new HotelApp_v1.Locations();
             this.btnSearch = new System.Windows.Forms.Button();
             this.btnManageLocations = new System.Windows.Forms.Button();
             this.btnHome = new System.Windows.Forms.Button();
@@ -37,7 +38,6 @@
             this.lblRoomsHeader = new System.Windows.Forms.Label();
             this.textBox_location_name = new System.Windows.Forms.TextBox();
             this.sqlConnection1 = new System.Data.SqlClient.SqlConnection();
-            this.locations1 = new HotelApp_v1.Locations();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridLocations)).BeginInit();
             this.SuspendLayout();
@@ -54,10 +54,18 @@
             this.panel2.Controls.Add(this.lblRoomsHeader);
             this.panel2.Controls.Add(this.textBox_location_name);
             this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1038, 852);
+            this.panel2.Size = new System.Drawing.Size(692, 545);
             this.panel2.TabIndex = 25;
+            // 
+            // locations1
+            // 
+            this.locations1.Location = new System.Drawing.Point(0, 0);
+            this.locations1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.locations1.Name = "locations1";
+            this.locations1.Size = new System.Drawing.Size(692, 545);
+            this.locations1.TabIndex = 28;
+            this.locations1.Visible = false;
             // 
             // btnSearch
             // 
@@ -65,10 +73,9 @@
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSearch.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSearch.ForeColor = System.Drawing.Color.White;
-            this.btnSearch.Location = new System.Drawing.Point(720, 192);
-            this.btnSearch.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnSearch.Location = new System.Drawing.Point(480, 123);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(128, 47);
+            this.btnSearch.Size = new System.Drawing.Size(85, 30);
             this.btnSearch.TabIndex = 30;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = false;
@@ -80,10 +87,9 @@
             this.btnManageLocations.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnManageLocations.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnManageLocations.ForeColor = System.Drawing.Color.White;
-            this.btnManageLocations.Location = new System.Drawing.Point(519, 783);
-            this.btnManageLocations.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnManageLocations.Location = new System.Drawing.Point(346, 501);
             this.btnManageLocations.Name = "btnManageLocations";
-            this.btnManageLocations.Size = new System.Drawing.Size(519, 69);
+            this.btnManageLocations.Size = new System.Drawing.Size(346, 44);
             this.btnManageLocations.TabIndex = 26;
             this.btnManageLocations.Text = "Manage Locations";
             this.btnManageLocations.UseVisualStyleBackColor = false;
@@ -96,10 +102,9 @@
             this.btnHome.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnHome.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHome.ForeColor = System.Drawing.Color.White;
-            this.btnHome.Location = new System.Drawing.Point(0, 783);
-            this.btnHome.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnHome.Location = new System.Drawing.Point(0, 501);
             this.btnHome.Name = "btnHome";
-            this.btnHome.Size = new System.Drawing.Size(519, 69);
+            this.btnHome.Size = new System.Drawing.Size(346, 44);
             this.btnHome.TabIndex = 24;
             this.btnHome.Text = "Home";
             this.btnHome.UseVisualStyleBackColor = false;
@@ -108,12 +113,11 @@
             // dataGridLocations
             // 
             this.dataGridLocations.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridLocations.Location = new System.Drawing.Point(0, 278);
-            this.dataGridLocations.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dataGridLocations.Location = new System.Drawing.Point(0, 178);
             this.dataGridLocations.Name = "dataGridLocations";
             this.dataGridLocations.RowHeadersWidth = 51;
             this.dataGridLocations.RowTemplate.Height = 24;
-            this.dataGridLocations.Size = new System.Drawing.Size(1038, 508);
+            this.dataGridLocations.Size = new System.Drawing.Size(692, 325);
             this.dataGridLocations.TabIndex = 15;
             // 
             // lblLocName
@@ -121,10 +125,9 @@
             this.lblLocName.AutoSize = true;
             this.lblLocName.BackColor = System.Drawing.Color.White;
             this.lblLocName.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLocName.Location = new System.Drawing.Point(169, 199);
-            this.lblLocName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblLocName.Location = new System.Drawing.Point(113, 127);
             this.lblLocName.Name = "lblLocName";
-            this.lblLocName.Size = new System.Drawing.Size(180, 32);
+            this.lblLocName.Size = new System.Drawing.Size(113, 20);
             this.lblLocName.TabIndex = 0;
             this.lblLocName.Text = "Location Name:";
             // 
@@ -133,43 +136,34 @@
             this.lblRoomsHeader.AutoSize = true;
             this.lblRoomsHeader.BackColor = System.Drawing.Color.White;
             this.lblRoomsHeader.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRoomsHeader.Location = new System.Drawing.Point(123, 59);
-            this.lblRoomsHeader.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblRoomsHeader.Location = new System.Drawing.Point(82, 38);
             this.lblRoomsHeader.Name = "lblRoomsHeader";
-            this.lblRoomsHeader.Size = new System.Drawing.Size(808, 45);
+            this.lblRoomsHeader.Size = new System.Drawing.Size(494, 28);
             this.lblRoomsHeader.TabIndex = 14;
             this.lblRoomsHeader.Text = "Choose desired location to view rooms and room types";
             // 
             // textBox_location_name
             // 
-            this.textBox_location_name.Location = new System.Drawing.Point(383, 207);
+            this.textBox_location_name.Location = new System.Drawing.Point(255, 132);
+            this.textBox_location_name.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBox_location_name.Name = "textBox_location_name";
-            this.textBox_location_name.Size = new System.Drawing.Size(301, 31);
+            this.textBox_location_name.Size = new System.Drawing.Size(202, 22);
             this.textBox_location_name.TabIndex = 31;
             this.textBox_location_name.TextChanged += new System.EventHandler(this.textBox_location_name_TextChanged);
             // 
             // sqlConnection1
             // 
-            this.sqlConnection1.ConnectionString = "Data Source=ELISEORICOCE42;Initial Catalog=TestDatabase;Integrated Security=True";
+            this.sqlConnection1.ConnectionString = "Data Source=ESCO-PC\\SQLEXPRESS01;Initial Catalog=HOTEL_TEST;Integrated Security=T" +
+    "rue";
             this.sqlConnection1.FireInfoMessageEventOnUserErrors = false;
-            // 
-            // locations1
-            // 
-            this.locations1.Location = new System.Drawing.Point(0, 0);
-            this.locations1.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
-            this.locations1.Name = "locations1";
-            this.locations1.Size = new System.Drawing.Size(1038, 852);
-            this.locations1.TabIndex = 28;
-            this.locations1.Visible = false;
             // 
             // ViewLocations
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panel2);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "ViewLocations";
-            this.Size = new System.Drawing.Size(1038, 852);
+            this.Size = new System.Drawing.Size(692, 545);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridLocations)).EndInit();
