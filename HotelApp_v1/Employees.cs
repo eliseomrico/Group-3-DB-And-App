@@ -217,12 +217,12 @@ namespace HotelApp_v1
             cmbEmpFname.Visible = false;
             txtEmpFname.Focus();
 
+            FillCmbFields();
+
             txtEmpFname.Text = cmbEmpFname.Text;
             cmbEmpLoc.Text = txtEmpLoc.Text;
             cmbEmpSup.Text = txtEmpSup.Text;
             cmbEmpTitle.Text = txtEmpTitle.Text;
-
-            FillCmbFields();
         }
 
         // "Submit Edit" button click
