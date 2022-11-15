@@ -22,6 +22,7 @@ namespace HotelApp_v1
         // Action Methods
         private void addLocationIdToComboBox()
         {
+            comboBox_loc_id.Items.Clear();   
             sqlConnection1.Open();
             SqlCommand cmd = sqlConnection1.CreateCommand();
             cmd.CommandText = "SELECT loc_id,loc_name FROM LOCATION";
@@ -48,7 +49,6 @@ namespace HotelApp_v1
         {
             // Authored By: Marcel Rico
             string locID = "";
-
 
             try
             {
@@ -105,6 +105,10 @@ namespace HotelApp_v1
             button_submit_create.Enabled = enable;
             button_submit_create.Visible = enable;
         }
+        private void deleteButtonIsEnabled(bool enable)
+        {
+            button_delete.Enabled = enable;
+        }
         private void cancelButtonIsEnabled(bool enable)
         {
             button_cancel.Enabled = enable;
@@ -113,7 +117,7 @@ namespace HotelApp_v1
 
         // ============= Button Actions Below =============
 
-
+ 
         // Home Button
         private void button_home_Click(object sender, EventArgs e)
         {
@@ -132,10 +136,30 @@ namespace HotelApp_v1
             textBox_loc_id.Text = getLocationID();
             textBox_loc_name.Focus();
         }
-
         private void button_submit_create_Click(object sender, EventArgs e)
         {
-            // Edit Me Here
+
+            string name = textBox_loc_name.Text;
+            string phone = textBox_loc_phone_num.Text;
+            string hours = textBox_loc_open_time.Text + " - " + textBox_loc_close_time.Text;
+            string supervisor_id = textBox_loc_super_id.Text;
+            string address = textBox_loc_address.Text;
+
+            sqlConnection1.Open();
+
+            SqlCommand cmd = sqlConnection1.CreateCommand();
+            cmd.CommandText = "INSERT INTO LOCATION (LOC_NAME,LOC_PHONE,LOC_HOURS,LOC_SUPER_ID,LOC_ADDRESS) VALUES (@name,@phone,@hours,@super_id,@address)";
+            cmd.Parameters.AddWithValue("@name",name);
+            cmd.Parameters.AddWithValue("@phone",phone);
+            cmd.Parameters.AddWithValue("@hours",hours);
+            cmd.Parameters.AddWithValue("@super_id",supervisor_id);
+            cmd.Parameters.AddWithValue("@address",address);
+            cmd.ExecuteNonQuery();
+
+            MessageBox.Show("1 Location has been added.");
+            button_cancel_Click(sender, e);
+            sqlConnection1.Close();
+            addLocationIdToComboBox();
         }
 
 
@@ -145,16 +169,60 @@ namespace HotelApp_v1
             allTextboxesReadOnly(false);
             submitEditButtonIsVisible(true);
             cancelButtonIsEnabled(true);
+            deleteButtonIsEnabled(true);
         }
         private void button_submit_edit_Click(object sender, EventArgs e)
-        {  
+        {
+            string id = comboBox_loc_id.Text[0].ToString();
+            string name = textBox_loc_name.Text;
+            string phone = textBox_loc_phone_num.Text;
+            string hours = textBox_loc_open_time.Text + " - " + textBox_loc_close_time.Text;
+            string super_id = textBox_loc_super_id.Text;
+            string address = textBox_loc_address.Text;
+
+
+            sqlConnection1.Open();
+
+            try
+            {
+                SqlCommand cmd = sqlConnection1.CreateCommand();
+                cmd.CommandText = @"UPDATE LOCATION
+                                SET LOC_NAME = @name,
+                                    LOC_PHONE = @phone,
+                                    LOC_HOURS = @hours,
+                                    LOC_SUPER_ID = @super_id,
+                                    LOC_ADDRESS = @address
+                                    WHERE LOC_ID = @id";
+
+                cmd.Parameters.AddWithValue("@name", name);
+                cmd.Parameters.AddWithValue("@phone", phone);
+                cmd.Parameters.AddWithValue("@hours", hours);
+                cmd.Parameters.AddWithValue("@super_id", super_id);
+                cmd.Parameters.AddWithValue("@address", address);
+                cmd.Parameters.AddWithValue("@id", id);
+
+                cmd.ExecuteNonQuery();
+                sqlConnection1.Close();
+
+
+                allTextboxesReadOnly(true);
+                addLocationIdToComboBox();
+
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
 
 
         // Delete Button
         private void button_delete_Click(object sender, EventArgs e)
         {
+            string id = comboBox_loc_id.Text[0].ToString();
+
         }
+
 
         // Cancel Button
         private void button_cancel_Click(object sender, EventArgs e)
@@ -170,6 +238,8 @@ namespace HotelApp_v1
             comboBox_loc_id.Focus();
         }
 
+
+        // Combobox Selection Change
         private void comboBox_loc_id_SelectedIndexChanged(object sender, EventArgs e)
         {
 
