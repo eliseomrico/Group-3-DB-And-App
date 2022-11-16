@@ -17,12 +17,13 @@ namespace HotelApp_v1
         {
             InitializeComponent();
             addLocationIdToComboBox();
+            addSupervisorNameToComboBox();
         }
-        
+
         // Action Methods
         private void addLocationIdToComboBox()
         {
-            comboBox_loc_id.Items.Clear();   
+            comboBox_loc_id.Items.Clear();
             sqlConnection1.Open();
             SqlCommand cmd = sqlConnection1.CreateCommand();
             cmd.CommandText = "SELECT loc_id,loc_name FROM LOCATION";
@@ -35,15 +36,33 @@ namespace HotelApp_v1
 
             sqlConnection1.Close();
         }
+        private void addSupervisorNameToComboBox()
+        {
+            comboBox_loc_super_id.Items.Clear();
+            sqlConnection1.Open();
+            SqlCommand cmd = sqlConnection1.CreateCommand();
+            cmd.CommandText = @"SELECT a.EMP_FNAME, a.EMP_LNAME
+                                FROM EMPLOYEE a
+                                WHERE a.EMP_ID IN (SELECT b.Super_ID
+                                                   FROM EMPLOYEE b)";
+            SqlDataReader rd = cmd.ExecuteReader();
+
+            while (rd.Read())
+            {
+                comboBox_loc_super_id.Items.Add(rd[0].ToString() + " " + rd[1].ToString());
+            }
+
+            sqlConnection1.Close();
+        }
         private void clearAllTextboxes()
         {
             textBox_loc_name.Clear();
             textBox_loc_address.Clear();
             textBox_loc_close_time.Clear();
             textBox_loc_open_time.Clear();
-            textBox_loc_super_id.Clear();
             textBox_loc_phone_num.Clear();
             textBox_loc_id.Clear();
+            comboBox_loc_super_id.Text = "";
         }
         private string getLocationID()
         {
@@ -81,6 +100,7 @@ namespace HotelApp_v1
             return locID;
         }
 
+
         // Policy Methods
         private void editButtonEnabled(bool enable)
         {
@@ -93,7 +113,7 @@ namespace HotelApp_v1
             textBox_loc_open_time.ReadOnly = enable;
             textBox_loc_close_time.ReadOnly = enable;
             textBox_loc_phone_num.ReadOnly = enable;
-            textBox_loc_super_id.ReadOnly = enable;
+            comboBox_loc_super_id.Enabled = enable;
         }
         private void submitEditButtonIsVisible(bool enable)
         {
@@ -113,11 +133,15 @@ namespace HotelApp_v1
         {
             button_cancel.Enabled = enable;
         }
+        private void comboBoxSuperIDEnabled(bool enable)
+        {
+            comboBox_loc_super_id.Enabled = enable;
+        }
 
 
         // ============= Button Actions Below =============
 
- 
+
         // Home Button
         private void button_home_Click(object sender, EventArgs e)
         {
@@ -142,18 +166,18 @@ namespace HotelApp_v1
             string name = textBox_loc_name.Text;
             string phone = textBox_loc_phone_num.Text;
             string hours = textBox_loc_open_time.Text + " - " + textBox_loc_close_time.Text;
-            string supervisor_id = textBox_loc_super_id.Text;
+            string supervisor_id = comboBox_loc_super_id.Text[0].ToString();
             string address = textBox_loc_address.Text;
 
             sqlConnection1.Open();
 
             SqlCommand cmd = sqlConnection1.CreateCommand();
             cmd.CommandText = "INSERT INTO LOCATION (LOC_NAME,LOC_PHONE,LOC_HOURS,LOC_SUPER_ID,LOC_ADDRESS) VALUES (@name,@phone,@hours,@super_id,@address)";
-            cmd.Parameters.AddWithValue("@name",name);
-            cmd.Parameters.AddWithValue("@phone",phone);
-            cmd.Parameters.AddWithValue("@hours",hours);
-            cmd.Parameters.AddWithValue("@super_id",supervisor_id);
-            cmd.Parameters.AddWithValue("@address",address);
+            cmd.Parameters.AddWithValue("@name", name);
+            cmd.Parameters.AddWithValue("@phone", phone);
+            cmd.Parameters.AddWithValue("@hours", hours);
+            cmd.Parameters.AddWithValue("@super_id", supervisor_id);
+            cmd.Parameters.AddWithValue("@address", address);
             cmd.ExecuteNonQuery();
 
             MessageBox.Show("1 Location has been added.");
@@ -170,6 +194,7 @@ namespace HotelApp_v1
             submitEditButtonIsVisible(true);
             cancelButtonIsEnabled(true);
             deleteButtonIsEnabled(true);
+            comboBoxSuperIDEnabled(false);
         }
         private void button_submit_edit_Click(object sender, EventArgs e)
         {
@@ -177,7 +202,7 @@ namespace HotelApp_v1
             string name = textBox_loc_name.Text;
             string phone = textBox_loc_phone_num.Text;
             string hours = textBox_loc_open_time.Text + " - " + textBox_loc_close_time.Text;
-            string super_id = textBox_loc_super_id.Text;
+            string super_id = comboBox_loc_super_id.Text[0].ToString();
             string address = textBox_loc_address.Text;
 
 
@@ -209,7 +234,7 @@ namespace HotelApp_v1
                 addLocationIdToComboBox();
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
@@ -221,6 +246,33 @@ namespace HotelApp_v1
         {
             string id = comboBox_loc_id.Text[0].ToString();
 
+            var confirmResult = MessageBox.Show("Are you sure to delete this Location?",
+                                     "Location Delete",
+                                     MessageBoxButtons.YesNo);
+            if (confirmResult == DialogResult.Yes)
+            {
+
+                sqlConnection1.Open();
+
+                SqlCommand cmd = sqlConnection1.CreateCommand();
+                cmd.CommandText = @"DELETE FROM LOCATION WHERE LOC_ID = @id";
+                cmd.Parameters.AddWithValue("@id", id);
+
+
+
+                cmd.ExecuteNonQuery();
+
+                MessageBox.Show("1 Location has been deleted.");
+
+                sqlConnection1.Close();
+                addLocationIdToComboBox();
+            }
+            else
+            {
+                button_cancel.PerformClick();
+            }
+
+            button_cancel.PerformClick();
         }
 
 
@@ -230,6 +282,7 @@ namespace HotelApp_v1
             clearAllTextboxes();
             allTextboxesReadOnly(true);
             cancelButtonIsEnabled(false);
+            deleteButtonIsEnabled(false);
             submitEditButtonIsVisible(false);
             editButtonEnabled(false);
             submitCreateButtonIsVisible(false);
@@ -250,16 +303,17 @@ namespace HotelApp_v1
             string loc_id = comboBox_loc_id.Text[0].ToString();
 
             SqlCommand cmd = sqlConnection1.CreateCommand();
-            cmd.CommandText = @"SELECT * FROM LOCATION
+            cmd.CommandText = @"SELECT * 
+                                FROM LOCATION 
                                 WHERE loc_id = @loc_id";
-            cmd.Parameters.AddWithValue("@loc_id",loc_id);
+            cmd.Parameters.AddWithValue("@loc_id", loc_id);
             SqlDataReader rd = cmd.ExecuteReader();
 
             if (rd.Read())
             {
                 textBox_loc_name.Text = rd["LOC_NAME"].ToString();
                 textBox_loc_phone_num.Text = rd["LOC_PHONE"].ToString();
-                textBox_loc_super_id.Text = rd["LOC_SUPER_ID"].ToString();
+                comboBox_loc_super_id.Text = rd["LOC_SUPER_ID"].ToString();
                 textBox_loc_address.Text = rd["LOC_ADDRESS"].ToString();
                 textBox_loc_open_time.Text = rd["LOC_HOURS"].ToString().Substring(0, 8).Trim();
                 textBox_loc_close_time.Text = rd["LOC_HOURS"].ToString().Substring(10).Trim();

@@ -56,15 +56,17 @@
             this.panel2.Controls.Add(this.dgvTransactionsList);
             this.panel2.Controls.Add(this.label8);
             this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(692, 545);
+            this.panel2.Size = new System.Drawing.Size(1038, 852);
             this.panel2.TabIndex = 26;
             // 
             // pnlManageTransactions
             // 
             this.pnlManageTransactions.Location = new System.Drawing.Point(0, 0);
+            this.pnlManageTransactions.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.pnlManageTransactions.Name = "pnlManageTransactions";
-            this.pnlManageTransactions.Size = new System.Drawing.Size(692, 545);
+            this.pnlManageTransactions.Size = new System.Drawing.Size(1038, 852);
             this.pnlManageTransactions.TabIndex = 33;
             this.pnlManageTransactions.Visible = false;
             // 
@@ -73,9 +75,10 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.White;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(346, 108);
+            this.label1.Location = new System.Drawing.Point(519, 169);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(73, 20);
+            this.label1.Size = new System.Drawing.Size(116, 32);
             this.label1.TabIndex = 32;
             this.label1.Text = "End Date:";
             // 
@@ -84,9 +87,10 @@
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.White;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(23, 108);
+            this.label6.Location = new System.Drawing.Point(34, 169);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(79, 20);
+            this.label6.Size = new System.Drawing.Size(124, 32);
             this.label6.TabIndex = 31;
             this.label6.Text = "Start Date:";
             // 
@@ -96,9 +100,10 @@
             this.dtpEndDate.CustomFormat = "ddd, MMMM dd yyyy";
             this.dtpEndDate.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpEndDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpEndDate.Location = new System.Drawing.Point(425, 101);
+            this.dtpEndDate.Location = new System.Drawing.Point(638, 158);
+            this.dtpEndDate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dtpEndDate.Name = "dtpEndDate";
-            this.dtpEndDate.Size = new System.Drawing.Size(232, 27);
+            this.dtpEndDate.Size = new System.Drawing.Size(346, 39);
             this.dtpEndDate.TabIndex = 30;
             this.dtpEndDate.ValueChanged += new System.EventHandler(this.dtpEndDate_ValueChanged);
             // 
@@ -108,9 +113,10 @@
             this.dtpStartDate.CustomFormat = "ddd, MMMM dd yyyy";
             this.dtpStartDate.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpStartDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpStartDate.Location = new System.Drawing.Point(108, 101);
+            this.dtpStartDate.Location = new System.Drawing.Point(162, 158);
+            this.dtpStartDate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dtpStartDate.Name = "dtpStartDate";
-            this.dtpStartDate.Size = new System.Drawing.Size(232, 27);
+            this.dtpStartDate.Size = new System.Drawing.Size(346, 39);
             this.dtpStartDate.TabIndex = 29;
             this.dtpStartDate.ValueChanged += new System.EventHandler(this.dtpStartDate_ValueChanged);
             // 
@@ -121,9 +127,10 @@
             this.button_manage_locations.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_manage_locations.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_manage_locations.ForeColor = System.Drawing.Color.White;
-            this.button_manage_locations.Location = new System.Drawing.Point(346, 501);
+            this.button_manage_locations.Location = new System.Drawing.Point(519, 783);
+            this.button_manage_locations.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button_manage_locations.Name = "button_manage_locations";
-            this.button_manage_locations.Size = new System.Drawing.Size(346, 44);
+            this.button_manage_locations.Size = new System.Drawing.Size(519, 69);
             this.button_manage_locations.TabIndex = 26;
             this.button_manage_locations.Text = "Manage Transactions";
             this.button_manage_locations.UseVisualStyleBackColor = false;
@@ -136,9 +143,10 @@
             this.button_home.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_home.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_home.ForeColor = System.Drawing.Color.White;
-            this.button_home.Location = new System.Drawing.Point(0, 501);
+            this.button_home.Location = new System.Drawing.Point(0, 783);
+            this.button_home.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button_home.Name = "button_home";
-            this.button_home.Size = new System.Drawing.Size(346, 44);
+            this.button_home.Size = new System.Drawing.Size(519, 69);
             this.button_home.TabIndex = 24;
             this.button_home.Text = "Home";
             this.button_home.UseVisualStyleBackColor = false;
@@ -147,11 +155,12 @@
             // dgvTransactionsList
             // 
             this.dgvTransactionsList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvTransactionsList.Location = new System.Drawing.Point(0, 178);
+            this.dgvTransactionsList.Location = new System.Drawing.Point(0, 278);
+            this.dgvTransactionsList.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dgvTransactionsList.Name = "dgvTransactionsList";
             this.dgvTransactionsList.RowHeadersWidth = 51;
             this.dgvTransactionsList.RowTemplate.Height = 24;
-            this.dgvTransactionsList.Size = new System.Drawing.Size(692, 325);
+            this.dgvTransactionsList.Size = new System.Drawing.Size(1038, 508);
             this.dgvTransactionsList.TabIndex = 15;
             // 
             // label8
@@ -159,25 +168,26 @@
             this.label8.AutoSize = true;
             this.label8.BackColor = System.Drawing.Color.White;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(154, 39);
+            this.label8.Location = new System.Drawing.Point(231, 61);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(354, 28);
+            this.label8.Size = new System.Drawing.Size(580, 45);
             this.label8.TabIndex = 14;
             this.label8.Text = "Choose date range to view transactions";
             // 
             // sqlConnection1
             // 
-            this.sqlConnection1.ConnectionString = "Data Source=ESCO-PC\\SQLEXPRESS01;Initial Catalog=HOTEL_TEST;Integrated Security=T" +
-    "rue";
+            this.sqlConnection1.ConnectionString = "Data Source=ELISEORICOCE42;Initial Catalog=TestDatabase;Integrated Security=True";
             this.sqlConnection1.FireInfoMessageEventOnUserErrors = false;
             // 
             // ViewTransactions
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panel2);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "ViewTransactions";
-            this.Size = new System.Drawing.Size(692, 545);
+            this.Size = new System.Drawing.Size(1038, 852);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTransactionsList)).EndInit();

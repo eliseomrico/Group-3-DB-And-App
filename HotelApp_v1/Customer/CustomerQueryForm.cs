@@ -285,7 +285,7 @@ namespace HotelApp_v1
             }
             else
             {
-                button_cancel_Click(sender, e);
+                button_cancel.PerformClick();
             }
             
         }

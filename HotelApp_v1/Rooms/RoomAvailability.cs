@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,7 +16,7 @@ namespace HotelApp_v1
         public RoomAvailability()
         {
             InitializeComponent();
-            dataGridView_room.DataSource = getRooms();
+            fillRoomDataGrid();
             AddRoomComboBoxItems();
         }
 
@@ -29,20 +29,19 @@ namespace HotelApp_v1
                 sqlConnection1.Open();
                 SqlCommand cmd = sqlConnection1.CreateCommand();
 
-                cmd.CommandText = "SELECT * FROM CUSTOMER";
+                cmd.CommandText = "SELECT * FROM ROOM";
 
                 SqlDataReader dr = cmd.ExecuteReader();
 
-                int idx = 1;
-                while (dr.Read() && idx < 3)
+                while (dr.Read())
                 {
+
                     rooms.Add(new Room_Obj()
                     {
                         room_no = dr["ROOM_NO"].ToString(),
-                        room_location = dr["ROOM_LOCATION"].ToString(),
+                        room_location = dr["ROOM_LOC"].ToString(),
                         room_type = dr["ROOM_TYPE"].ToString(),
                         room_available = dr["ROOM_AVAILABLE"].ToString(),
-
                     });
 
                 }
@@ -53,8 +52,21 @@ namespace HotelApp_v1
                 Console.WriteLine(ex.ToString());
             }
 
+            Console.WriteLine(rooms);
+
             return rooms;
         }
+
+        public void fillRoomDataGrid()
+        {
+            dataGridView_room.DataSource = getRooms();
+            dataGridView_room.Columns[0].HeaderText = "Room ID";
+            dataGridView_room.Columns[1].HeaderText = "Room Loc";
+            dataGridView_room.Columns[2].HeaderText = "Room Type";
+            dataGridView_room.Columns[3].HeaderText = "Available";
+
+        }
+
         private void AddRoomComboBoxItems()
         {
             comboBox_location_name.Items.Clear();

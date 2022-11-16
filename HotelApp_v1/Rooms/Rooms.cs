@@ -17,23 +17,44 @@ namespace HotelApp_v1
         {
             InitializeComponent();
             AddRoomComboBoxItems();
+            AddLocComboBoxItems();
         }
+
+
         private void AddRoomComboBoxItems()
         {
             comboBox_loc_id.Items.Clear();
             sqlConnection1.Open();
 
             SqlCommand cmd = sqlConnection1.CreateCommand();
-            cmd.CommandText = "SELECT * FROM LOCATION";
+            cmd.CommandText = "SELECT ROOM_NO FROM ROOM";
             SqlDataReader rd = cmd.ExecuteReader();
 
             while (rd.Read())
             {
-                comboBox_loc_id.Items.Add(rd["LOC_ID"] + " - " + rd["LOC_NAME"]);
+                comboBox_room_num.Items.Add(rd["ROOM_NO"]);
             }
 
             sqlConnection1.Close();
         }
+        private void AddLocComboBoxItems()
+        {
+            comboBox_loc_id.Items.Clear();
+            sqlConnection1.Open();
+
+            SqlCommand cmd = sqlConnection1.CreateCommand();
+            cmd.CommandText = "SELECT LOC_ID FROM LOCATION";
+            SqlDataReader rd = cmd.ExecuteReader();
+
+            while (rd.Read())
+            {
+                comboBox_loc_id.Items.Add(rd["LOC_ID"]);
+            }
+
+            sqlConnection1.Close();
+        }
+
+
         private void textBoxesAreReadOnly(bool enable)
         {
             textBox_room_type.ReadOnly = enable;
@@ -81,7 +102,6 @@ namespace HotelApp_v1
             textBox_room_type_description.Clear();
             textBox_room_price.Clear();
             textBox_room_available.Clear();
-            textBox_room_no.Clear();
         }
         private void changeButtonsEnabled(bool enable)
         {
@@ -98,10 +118,6 @@ namespace HotelApp_v1
             changeButtonsEnabled(false);
             this.Visible = false;
         }
-        private void button_search_Click(object sender, EventArgs e)
-        {
-            changeButtonsEnabled(true);
-        }
 
 
         // Room Create Buttons
@@ -109,17 +125,14 @@ namespace HotelApp_v1
         {
             textBoxesAreReadOnly(false);
             clearAllTextBoxes();
-            textBox_room_no.Visible = true;
             
             cancelButtonVisible(true);
             submitCreateButtonVisible(true);
-            textBox_room_no.Focus();
-            textBox_room_no.ReadOnly = false;
 
         }
         private void button_submit_create_Click(object sender, EventArgs e)
         {
-            string room_no = textBox_room_no.Text;
+            string room_no = comboBox_room_num.Text;
             string room_location = comboBox_loc_id.Text[0].ToString();
             string room_type = textBox_room_type.Text;
             string room_description = textBox_room_type_description.Text;
@@ -154,7 +167,6 @@ namespace HotelApp_v1
             clearAllTextBoxes(); // clears texts from text boxes
             changeCreateButtonsVisibility(true);
             changeButtonsEnabled(true);
-            button_search.Enabled = true;
             button_submit_create.Enabled = false;
             changeCancelButton(false);
         }
@@ -166,8 +178,9 @@ namespace HotelApp_v1
             changeTextBoxesReadOnlyStatus(false); // make text boxes non-'editable' or read-only
             changeButtonsEnabled(false);
             button_submit_edit.Enabled = true;
-            button_search.Enabled = false; // disable search button
             changeCancelButton(true);
+
+
         }
         private void button_submit_edit_Click(object sender, EventArgs e)
         {
@@ -175,7 +188,6 @@ namespace HotelApp_v1
             changeTextBoxesReadOnlyStatus(true); // make text boxes non-'editable' or read-only
             changeButtonsEnabled(true);
             button_submit_edit.Enabled = false;
-            button_search.Enabled = true; // enable search button
             changeCancelButton(false);
         }
 
@@ -183,9 +195,6 @@ namespace HotelApp_v1
         // Room Delete Button
         private void button_delete_Click(object sender, EventArgs e)
         {
-            clearAllTextBoxes(); // clears texts from text boxes
-            changeButtonsEnabled(false); // hide edit and delete buttons
-            changeTextBoxesReadOnlyStatus(true); // make text boxes read-only
         }
 
 
@@ -196,10 +205,40 @@ namespace HotelApp_v1
             clearAllTextBoxes(); // clear text boxes
             changeEditButtonsVisibility(true);
             changeCreateButtonsVisibility(true);
-            changeCancelButton(false);
+            button_cancel.Enabled = false;
             button_submit_edit.Enabled = false;
             button_submit_create.Enabled = false;
-            button_search.Enabled = true; // enable search button
+            button_create.Enabled = true;
+            comboBox_room_num.Focus();
+            
+        }
+
+        private void comboBox_room_num_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            button_edit.Enabled = true;
+            string room_no = comboBox_room_num.Text;
+
+            sqlConnection1.Open();
+
+            SqlCommand cmd = sqlConnection1.CreateCommand();
+            cmd.CommandText = @"SELECT * 
+                                FROM ROOM JOIN ROOM_TYPE ON ROOM_TYPE = TYPE_CODE
+                                WHERE ROOM_NO = @room_no;";
+            cmd.Parameters.AddWithValue("@room_no",room_no);
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            if (dr.Read())
+            {
+                comboBox_loc_id.Text = dr["ROOM_LOC"].ToString();
+                textBox_room_price.Text = dr["TYPE_PRICE"].ToString();
+                textBox_room_type.Text = dr["ROOM_TYPE"].ToString();
+                textBox_room_available.Text = dr["ROOM_AVAILABLE"].ToString();
+                textBox_room_type_description.Text = dr["TYPE_DESCRIPTION"].ToString();
+            }
+
+            sqlConnection1.Close();
+
         }
     }
 }
