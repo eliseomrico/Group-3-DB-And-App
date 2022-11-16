@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace HotelApp_v1
 {
@@ -19,6 +20,10 @@ namespace HotelApp_v1
             InitializeComponent();
         }
 
+        ///////////////////////////////////////////////////////////////
+        //                     GENERAL METHODS                       //
+        ///////////////////////////////////////////////////////////////
+
         // Toggles read-only status of text boxes
         private void changeTextBoxesReadOnlyStatus(bool status)
         {
@@ -26,7 +31,6 @@ namespace HotelApp_v1
             txtEmpLoc.ReadOnly = status;
             txtEmpSSN.ReadOnly = status;
             txtEmpSup.ReadOnly = status;
-            txtSearchBox.ReadOnly = !status;
             txtEmpLname.ReadOnly = status;
             txtEmpTitle.ReadOnly = status;
         }
@@ -57,7 +61,7 @@ namespace HotelApp_v1
         }
 
         // Show/Hide Button Functions
-        private void showEditButton(bool status) // after search is clicked, show edit and delete buttons
+        private void showEditButton(bool status) 
         {
             btnEdit.Visible       = status;
             btnSubmitEdit.Visible = !status;
@@ -99,6 +103,16 @@ namespace HotelApp_v1
             btnDelete.Enabled = status;
         }
 
+        // Enables new supervisor checkbox
+        private void EnableSuperCheckbox(bool status)
+        {
+            chkNewSuper.Enabled = status;
+        }
+
+        ///////////////////////////////////////////////////////////////
+        //                       BUTTON CLICKS                       //
+        ///////////////////////////////////////////////////////////////
+
         // "Home" button click 
         private void button_home_Click(object sender, EventArgs e)
         {
@@ -122,15 +136,12 @@ namespace HotelApp_v1
             btnSubmitEdit.Enabled = false;
             btnSubmitCreate.Enabled = false;
             txtEmpFname.Visible = false;
-            txtSearchBox.Enabled = true;
             cmbEmpFname.Visible = true;
-            btnSearch.Enabled = true;
-            txtSearchBox.Focus();
         }
 
-        ///////////
-        // Create functions
-        ///////////
+        ///////////////////////////////////////////////////////////////
+        //                          CREATE                           //
+        ///////////////////////////////////////////////////////////////
 
         // Prep the form for creating/stopping creating
         private void CreateModeToggle(bool status)
@@ -144,8 +155,7 @@ namespace HotelApp_v1
             txtEmpFname.Visible = status;
             cmbEmpFname.Visible = !status;
             changeTextBoxesReadOnlyStatus(!status);
-            txtSearchBox.Enabled = !status;
-            btnSearch.Enabled = !status;
+            EnableSuperCheckbox(status);
         }
 
         // "Create" button click  
@@ -196,13 +206,12 @@ namespace HotelApp_v1
 
             CreateModeToggle(false);
             btnSubmitCreate.Enabled = false;
-            txtSearchBox.Focus();
         }
 
-        ///////////
-        // Edit functions
-        ///////////
-        
+        ///////////////////////////////////////////////////////////////
+        //                            EDIT                           //
+        ///////////////////////////////////////////////////////////////
+
         // "Edit" button click
         private void button_edit_Click(object sender, EventArgs e)
         {
@@ -216,6 +225,7 @@ namespace HotelApp_v1
             txtEmpFname.Visible = true;
             cmbEmpFname.Visible = false;
             txtEmpFname.Focus();
+            EnableSuperCheckbox(true);
 
             FillCmbFields();
 
@@ -276,13 +286,12 @@ namespace HotelApp_v1
             cmbEmpFname.Visible = true;
             clearTextBoxes();
             clearCmbBoxes();
-
-            // RefreshTextBoxes();
+            EnableSuperCheckbox(false);
         }
 
-        ///////////
-        // Delete function
-        ///////////
+        ///////////////////////////////////////////////////////////////
+        //                          DELETE                           //
+        ///////////////////////////////////////////////////////////////
 
         // "Delete" button click
         private void button_delete_Click(object sender, EventArgs e)
@@ -305,46 +314,6 @@ namespace HotelApp_v1
 
             cmbEmpFname.Items.RemoveAt(cmbEmpFname.SelectedIndex);
             cmbEmpFname.SelectedIndex = -1;
-        }
-
-        ///////////
-        // Search functions
-        ///////////
-
-        // "Search" button click - Populates "First Name" combo box based on search criteria from search box
-        private void btnSearch_MouseClick_1(object sender, MouseEventArgs e)
-        {
-            // Empty combo box and revert selected index
-            cmbEmpFname.SelectedIndex = -1;
-            cmbEmpFname.Items.Clear();
-
-            // Clear all text boxes and enable lower menu
-            clearTextBoxes();
-
-            sqlConnection1.Open();
-
-            SqlCommand cmdEmpSearch = sqlConnection1.CreateCommand();
-            cmdEmpSearch.CommandText = @"SELECT EMP_FNAME
-                                         FROM EMPLOYEE
-                                         WHERE EMP_FNAME LIKE @search";
-
-            cmdEmpSearch.Parameters.AddWithValue("@search", "%" + txtSearchBox.Text + "%");
-            SqlDataReader reader = cmdEmpSearch.ExecuteReader();
-
-            while (reader.Read())
-            {
-                cmbEmpFname.Items.Add(reader[0].ToString());
-            }
-
-            reader.Close();
-            sqlConnection1.Close();
-
-            //else
-            //{
-            //    reader.Close();
-            //    sqlConnection1.Close();
-            //    MessageBox.Show("Error");
-            //}
         }
 
         // "First Name" combo box selection - Populates all fields on employee form based on selection
@@ -384,7 +353,9 @@ namespace HotelApp_v1
             sqlConnection1.Close();
         }
 
-        ///////////////////////////////////// General Methods /////////////////////////////////////
+        ///////////////////////////////////////////////////////////////
+        //                       GET METHODS                         //
+        ///////////////////////////////////////////////////////////////
 
         private string GetLocationName(int id)
         {
@@ -535,14 +506,48 @@ namespace HotelApp_v1
             }
         }
 
+        ///////////////////////////////////////////////////////////////
+        //                      FILL METHODS                         //
+        ///////////////////////////////////////////////////////////////
+
+        // Fill employee by typing
+        private void FillEmployees()
+        {
+            sqlConnection1.Open();
+
+            SqlCommand cmdEmpSearch = sqlConnection1.CreateCommand();
+            cmdEmpSearch.CommandText = @"SELECT EMP_FNAME
+                                         FROM EMPLOYEE";
+
+            SqlDataReader reader = cmdEmpSearch.ExecuteReader();
+
+            while (reader.Read())
+            {
+                cmbEmpFname.Items.Add(reader[0].ToString());
+            }
+
+            reader.Close();
+            sqlConnection1.Close();
+        }
+
         // Populate combo boxes used in create/edit with available options in DB
         private void FillCmbFields()
         {
-            cmbEmpLoc.Items.Clear();
-            cmbEmpSup.Items.Clear();
-            cmbEmpTitle.Items.Clear();
+            // Fill Locations
+            FillLocations();
 
-            // Locations
+            // Supervisors
+            FillSupervisors();
+
+            // Job Titles
+            FillJobTitles();
+        }
+        
+        // Populate locations dropdown
+        private void FillLocations()
+        {
+            cmbEmpLoc.Items.Clear();
+
             sqlConnection2.Open();
 
             SqlCommand cmdFillLocations = sqlConnection2.CreateCommand();
@@ -553,36 +558,84 @@ namespace HotelApp_v1
             while (reader.Read())
             {
                 cmbEmpLoc.Items.Add(reader[0].ToString());
-            }          
-            reader.Close();
-
-            // Supervisors
-
-            // int sup_id = Convert.ToInt32(txtHiddenID.Text);
-
-            SqlCommand cmdFillSupervisors = sqlConnection2.CreateCommand();
-            cmdFillSupervisors.CommandText = @"SELECT a.EMP_FNAME, a.EMP_LNAME
-                                               FROM EMPLOYEE a
-                                               WHERE a.EMP_ID IN (SELECT b.SUPER_ID
-                                                                  FROM EMPLOYEE b)";
-                                               // AND EMP_ID != @search";
-            // cmdFillSupervisors.Parameters.AddWithValue("@search", sup_id);
-
-            SqlDataReader reader2 = cmdFillSupervisors.ExecuteReader();
-
-            while (reader2.Read())
-            {
-                cmbEmpSup.Items.Add(reader2[0].ToString() + " " + reader2[1].ToString());
-            }
-
-            // Titles
-            for (int i = 10; i <= 40; i+=10)
-            {
-                cmbEmpTitle.Items.Add(GetEmployeeTitle(i));
             }
 
             sqlConnection2.Close();
-            reader2.Close();
+            reader.Close();
+            cmdFillLocations.Dispose();
+        }
+
+        // Populate supervisors dropdown
+        private void FillSupervisors()
+        {
+            cmbEmpSup.Items.Clear();
+
+            sqlConnection2.Open();
+
+            if (chkNewSuper.Checked == false)
+            {
+                SqlCommand cmdFillSupervisors = sqlConnection2.CreateCommand();
+                cmdFillSupervisors.CommandText = @"SELECT a.EMP_FNAME, a.EMP_LNAME
+                                               FROM EMPLOYEE a
+                                               WHERE a.EMP_ID IN (SELECT b.SUPER_ID
+                                                                  FROM EMPLOYEE b)";
+                SqlDataReader reader = cmdFillSupervisors.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    cmbEmpSup.Items.Add(reader[0].ToString() + " " + reader[1].ToString());
+                }
+
+                reader.Close();
+                cmdFillSupervisors.Dispose();
+            }
+            else // New supervisor is checked
+            {
+                SqlCommand cmdFillSupervisors = sqlConnection2.CreateCommand();
+                cmdFillSupervisors.CommandText = @"SELECT EMP_FNAME, EMP_LNAME
+                                                   FROM EMPLOYEE";
+                SqlDataReader reader = cmdFillSupervisors.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    cmbEmpSup.Items.Add(reader[0].ToString() + " " + reader[1].ToString());
+                }
+
+                reader.Close();
+                cmdFillSupervisors.Dispose();
+            }
+
+            sqlConnection2.Close();
+        }
+
+        // Populate job title dropdown
+        private void FillJobTitles()
+        {
+            cmbEmpTitle.Items.Clear();
+
+            for (int i = 10; i <= 40; i += 10)
+            {
+                cmbEmpTitle.Items.Add(GetEmployeeTitle(i));
+            }
+        }
+
+        private void cmbEmpFname_Click(object sender, EventArgs e)
+        {
+            FillEmployees();
+        }
+
+        private void chkNewSuper_Click(object sender, EventArgs e)
+        {
+            FillSupervisors();
+        }
+
+        private void txtEmpSSN_Leave(object sender, EventArgs e)
+        {
+            if (txtEmpSSN.Text.Length < 9)
+            {
+                MessageBox.Show("Please enter a full SSN");
+                txtEmpSSN.Focus();
+            }
         }
     }
 }

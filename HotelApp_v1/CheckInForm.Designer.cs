@@ -33,7 +33,6 @@
             this.btnResSearch = new System.Windows.Forms.Button();
             this.btnSubmit = new System.Windows.Forms.Button();
             this.btnHome = new System.Windows.Forms.Button();
-            this.txtLname = new System.Windows.Forms.TextBox();
             this.txtSecCode = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.lblLname = new System.Windows.Forms.Label();
@@ -41,6 +40,7 @@
             this.lblResID = new System.Windows.Forms.Label();
             this.txtResID = new System.Windows.Forms.TextBox();
             this.sqlConnection1 = new System.Data.SqlClient.SqlConnection();
+            this.cmbCustName = new System.Windows.Forms.ComboBox();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -48,10 +48,10 @@
             // 
             this.panel3.BackColor = System.Drawing.Color.White;
             this.panel3.Controls.Add(this.reservationQueryForm1);
+            this.panel3.Controls.Add(this.cmbCustName);
             this.panel3.Controls.Add(this.btnResSearch);
             this.panel3.Controls.Add(this.btnSubmit);
             this.panel3.Controls.Add(this.btnHome);
-            this.panel3.Controls.Add(this.txtLname);
             this.panel3.Controls.Add(this.txtSecCode);
             this.panel3.Controls.Add(this.label6);
             this.panel3.Controls.Add(this.lblLname);
@@ -116,14 +116,6 @@
             this.btnHome.Text = "Home";
             this.btnHome.UseVisualStyleBackColor = false;
             this.btnHome.Click += new System.EventHandler(this.button_home_Click);
-            // 
-            // txtLname
-            // 
-            this.txtLname.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLname.Location = new System.Drawing.Point(238, 190);
-            this.txtLname.Name = "txtLname";
-            this.txtLname.Size = new System.Drawing.Size(227, 27);
-            this.txtLname.TabIndex = 9;
             // 
             // txtSecCode
             // 
@@ -191,6 +183,16 @@
     "rue";
             this.sqlConnection1.FireInfoMessageEventOnUserErrors = false;
             // 
+            // cmbCustName
+            // 
+            this.cmbCustName.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbCustName.FormattingEnabled = true;
+            this.cmbCustName.Location = new System.Drawing.Point(238, 200);
+            this.cmbCustName.Name = "cmbCustName";
+            this.cmbCustName.Size = new System.Drawing.Size(226, 28);
+            this.cmbCustName.TabIndex = 31;
+            this.cmbCustName.Click += new System.EventHandler(this.cmbCustName_Click);
+            // 
             // CheckInForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -207,7 +209,6 @@
         #endregion
 
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.TextBox txtLname;
         private System.Windows.Forms.TextBox txtSecCode;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label lblLname;
@@ -219,5 +220,6 @@
         private System.Windows.Forms.Button btnResSearch;
         private System.Data.SqlClient.SqlConnection sqlConnection1;
         private ReservationQueryForm reservationQueryForm1;
+        private System.Windows.Forms.ComboBox cmbCustName;
     }
 }

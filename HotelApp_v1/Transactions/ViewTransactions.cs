@@ -27,23 +27,39 @@ namespace HotelApp_v1
 
         private void button_manage_locations_Click(object sender, EventArgs e)
         {
-            pnlManageTransactions.Visible = true;
+            pnlManageTransactions.Visible = true; 
         }
 
         private void dtpStartDate_ValueChanged(object sender, EventArgs e)
+        {
+            dtpEndDate.MinDate = dtpStartDate.Value;
+            UpdateSearch();
+        }
+
+        private void dtpEndDate_ValueChanged(object sender, EventArgs e)
+        {
+            dtpStartDate.MaxDate = dtpEndDate.Value;
+            UpdateSearch();
+        }
+
+        private void UpdateSearch()
         {
             sqlConnection1.Open();
 
             DateTime SDate = dtpStartDate.Value;
             string sqlFormattedSDate = SDate.ToString("yyyy-MM-dd HH:mm:ss.fff");
+            DateTime EDate = dtpEndDate.Value;
+            string sqlFormattedEDate = EDate.ToString("yyyy-MM-dd HH:mm:ss.fff");
 
             DataTable transactionsResults = new DataTable();
 
             SqlCommand cmdGetTransactions = sqlConnection1.CreateCommand();
             cmdGetTransactions.CommandText = @"SELECT *
                                                FROM TRANSACTIONS
-                                               WHERE TRANS_DATE >= @search";
-            cmdGetTransactions.Parameters.AddWithValue("@search", sqlFormattedSDate);
+                                               WHERE TRANS_DATE >= @search1
+                                               AND TRANS_DATE <= @search2";
+            cmdGetTransactions.Parameters.AddWithValue("@search1", sqlFormattedSDate);
+            cmdGetTransactions.Parameters.AddWithValue("@search2", sqlFormattedEDate);
 
             SqlDataReader reader = cmdGetTransactions.ExecuteReader();
 
@@ -61,33 +77,5 @@ namespace HotelApp_v1
             sqlConnection1.Close();
             cmdGetTransactions.Dispose();
         }
-
-        private void dtpEndDate_ValueChanged(object sender, EventArgs e)
-        {
-            sqlConnection1.Open();
-
-            DateTime SDate = dtpEndDate.Value;
-            string sqlFormattedSDate = SDate.ToString("yyyy-MM-dd HH:mm:ss.fff");
-
-            DataTable transactionsResults = new DataTable();
-
-            SqlCommand cmdGetTransactions = sqlConnection1.CreateCommand();
-            cmdGetTransactions.CommandText = @"SELECT *
-                                               FROM TRANSACTIONS
-                                               WHERE TRANS_DATE <= @search";
-            cmdGetTransactions.Parameters.AddWithValue("@search", sqlFormattedSDate);
-
-            SqlDataReader reader = cmdGetTransactions.ExecuteReader();
-
-            transactionsResults.Load(reader);
-            dgvTransactionsList.DataSource = transactionsResults;
-
-            dgvTransactionsList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
-            reader.Close();
-            sqlConnection1.Close();
-            cmdGetTransactions.Dispose();
-        }
-
     }
 }
