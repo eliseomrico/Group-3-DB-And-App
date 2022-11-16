@@ -152,7 +152,7 @@
             // txtEmpFname
             // 
             this.txtEmpFname.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmpFname.Location = new System.Drawing.Point(83, 177);
+            this.txtEmpFname.Location = new System.Drawing.Point(83, 172);
             this.txtEmpFname.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtEmpFname.MaxLength = 20;
             this.txtEmpFname.Name = "txtEmpFname";
@@ -206,7 +206,7 @@
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.ForeColor = System.Drawing.Color.White;
-            this.btnCancel.Location = new System.Drawing.Point(519, 501);
+            this.btnCancel.Location = new System.Drawing.Point(0, 501);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(173, 44);
@@ -242,7 +242,7 @@
             this.btnSubmitCreate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSubmitCreate.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSubmitCreate.ForeColor = System.Drawing.Color.White;
-            this.btnSubmitCreate.Location = new System.Drawing.Point(170, 501);
+            this.btnSubmitCreate.Location = new System.Drawing.Point(519, 501);
             this.btnSubmitCreate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSubmitCreate.Name = "btnSubmitCreate";
             this.btnSubmitCreate.Size = new System.Drawing.Size(173, 44);
@@ -260,7 +260,7 @@
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelete.ForeColor = System.Drawing.Color.White;
-            this.btnDelete.Location = new System.Drawing.Point(519, 501);
+            this.btnDelete.Location = new System.Drawing.Point(170, 501);
             this.btnDelete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(173, 44);
@@ -293,7 +293,7 @@
             this.btnCreate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCreate.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCreate.ForeColor = System.Drawing.Color.White;
-            this.btnCreate.Location = new System.Drawing.Point(170, 501);
+            this.btnCreate.Location = new System.Drawing.Point(519, 501);
             this.btnCreate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.Size = new System.Drawing.Size(173, 44);

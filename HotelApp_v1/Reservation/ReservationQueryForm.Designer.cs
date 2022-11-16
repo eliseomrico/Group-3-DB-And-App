@@ -126,7 +126,7 @@
             // 
             this.txtRoomTypeDeletion.Enabled = false;
             this.txtRoomTypeDeletion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRoomTypeDeletion.Location = new System.Drawing.Point(70, 233);
+            this.txtRoomTypeDeletion.Location = new System.Drawing.Point(71, 233);
             this.txtRoomTypeDeletion.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.txtRoomTypeDeletion.Name = "txtRoomTypeDeletion";
             this.txtRoomTypeDeletion.ReadOnly = true;
