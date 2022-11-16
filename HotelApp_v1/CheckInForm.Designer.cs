@@ -120,15 +120,7 @@
             this.btnHome.Text = "Home";
             this.btnHome.UseVisualStyleBackColor = false;
             this.btnHome.Click += new System.EventHandler(this.button_home_Click);
-            // 
-            // txtLname
-            // 
-            this.txtLname.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLname.Location = new System.Drawing.Point(357, 297);
-            this.txtLname.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtLname.Name = "txtLname";
-            this.txtLname.Size = new System.Drawing.Size(338, 39);
-            this.txtLname.TabIndex = 9;
+
             // 
             // txtSecCode
             // 
