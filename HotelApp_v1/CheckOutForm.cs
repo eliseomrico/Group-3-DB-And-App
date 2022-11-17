@@ -86,7 +86,7 @@ namespace HotelApp_v1
 
             int transNo = GetTransactionNumber();
 
-            MessageBox.Show("You have been successfully checked out!\n\tYour transaction number is " + transNo + "\n\tYou have been charged " + totalCost,
+            MessageBox.Show("You have been successfully checked out!\n   Your transaction number is " + transNo + "\n   You have been charged " + totalCost,
                             "Check Out", MessageBoxButtons.OK);
 
         }

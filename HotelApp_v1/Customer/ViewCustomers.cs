@@ -17,6 +17,12 @@ namespace HotelApp_v1
         {
             InitializeComponent();
             dataGrid_Customers.DataSource = GetCustomers("");
+            dataGrid_Customers.Columns[0].HeaderText = "ID";
+            dataGrid_Customers.Columns[1].HeaderText = "First Name";
+            dataGrid_Customers.Columns[2].HeaderText = "Last Name";
+            dataGrid_Customers.Columns[3].HeaderText = "Balance";
+            dataGrid_Customers.Columns[4].HeaderText = "Phone";
+            dataGrid_Customers.Columns[5].HeaderText = "Card Number";
         }
 
         private List<Customer_Obj> GetCustomers(string lname)
@@ -67,6 +73,12 @@ namespace HotelApp_v1
         public void fillCustomerDataGrid(string lname)
         {
             dataGrid_Customers.DataSource = GetCustomers(lname);
+            dataGrid_Customers.Columns[0].HeaderText = "ID";
+            dataGrid_Customers.Columns[1].HeaderText = "First Name";
+            dataGrid_Customers.Columns[2].HeaderText = "Last Name";
+            dataGrid_Customers.Columns[3].HeaderText = "Balance";
+            dataGrid_Customers.Columns[4].HeaderText = "Phone";
+            dataGrid_Customers.Columns[5].HeaderText = "Card Number";
         }
 
         private void button_home_Click(object sender, EventArgs e)

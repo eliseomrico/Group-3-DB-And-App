@@ -37,7 +37,8 @@
             this.lblPassword = new System.Windows.Forms.Label();
             this.lblUsername = new System.Windows.Forms.Label();
             this.txtPassword = new System.Windows.Forms.TextBox();
-            this.txtUsername = new System.Windows.Forms.TextBox();
+            this.sqlConnection1 = new System.Data.SqlClient.SqlConnection();
+            this.cmbUsername = new System.Windows.Forms.ComboBox();
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -53,13 +54,13 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.cmbUsername);
             this.panel1.Controls.Add(this.panelChildForm);
             this.panel1.Controls.Add(this.button_login);
             this.panel1.Controls.Add(this.button_home);
             this.panel1.Controls.Add(this.lblPassword);
             this.panel1.Controls.Add(this.lblUsername);
             this.panel1.Controls.Add(this.txtPassword);
-            this.panel1.Controls.Add(this.txtUsername);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
@@ -113,7 +114,7 @@
             this.lblPassword.AutoSize = true;
             this.lblPassword.BackColor = System.Drawing.Color.White;
             this.lblPassword.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPassword.Location = new System.Drawing.Point(191, 365);
+            this.lblPassword.Location = new System.Drawing.Point(191, 372);
             this.lblPassword.Name = "lblPassword";
             this.lblPassword.Size = new System.Drawing.Size(70, 20);
             this.lblPassword.TabIndex = 22;
@@ -124,30 +125,40 @@
             this.lblUsername.AutoSize = true;
             this.lblUsername.BackColor = System.Drawing.Color.White;
             this.lblUsername.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsername.Location = new System.Drawing.Point(191, 280);
+            this.lblUsername.Location = new System.Drawing.Point(191, 289);
             this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(75, 20);
+            this.lblUsername.Size = new System.Drawing.Size(79, 20);
             this.lblUsername.TabIndex = 21;
-            this.lblUsername.Text = "Username";
+            this.lblUsername.Text = "Last Name";
             // 
             // txtPassword
             // 
             this.txtPassword.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPassword.Location = new System.Drawing.Point(195, 404);
             this.txtPassword.Margin = new System.Windows.Forms.Padding(2);
+            this.txtPassword.MaxLength = 9;
             this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(304, 27);
-            this.txtPassword.TabIndex = 3;
+            this.txtPassword.TabIndex = 33;
             // 
-            // txtUsername
+            // sqlConnection1
             // 
-            this.txtUsername.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtUsername.Location = new System.Drawing.Point(195, 320);
-            this.txtUsername.Margin = new System.Windows.Forms.Padding(2);
-            this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(304, 27);
-            this.txtUsername.TabIndex = 2;
-            this.txtUsername.UseWaitCursor = true;
+            this.sqlConnection1.ConnectionString = "Data Source=ESCO-PC\\SQLEXPRESS01;Initial Catalog=HOTEL_TEST;Integrated Security=T" +
+    "rue";
+            this.sqlConnection1.FireInfoMessageEventOnUserErrors = false;
+            // 
+            // cmbUsername
+            // 
+            this.cmbUsername.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbUsername.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbUsername.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbUsername.FormattingEnabled = true;
+            this.cmbUsername.Location = new System.Drawing.Point(195, 322);
+            this.cmbUsername.Name = "cmbUsername";
+            this.cmbUsername.Size = new System.Drawing.Size(304, 28);
+            this.cmbUsername.TabIndex = 32;
+            this.cmbUsername.Click += new System.EventHandler(this.cmbUsername_Click);
             // 
             // EmployeeLoginForm
             // 
@@ -173,6 +184,7 @@
         private System.Windows.Forms.Button button_login;
         private System.Windows.Forms.Button button_home;
         private System.Windows.Forms.Panel panelChildForm;
-        private System.Windows.Forms.TextBox txtUsername;
+        private System.Data.SqlClient.SqlConnection sqlConnection1;
+        private System.Windows.Forms.ComboBox cmbUsername;
     }
 }

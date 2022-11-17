@@ -22,6 +22,12 @@ namespace HotelApp_v1
         public void fillLocationDataGrid(string lname)
         {
             dataGridLocations.DataSource = GetLocations(lname);
+            dataGridLocations.Columns[0].HeaderText = "ID";
+            dataGridLocations.Columns[1].HeaderText = "Name";
+            dataGridLocations.Columns[2].HeaderText = "Hours";
+            dataGridLocations.Columns[3].HeaderText = "Address";
+            dataGridLocations.Columns[4].HeaderText = "Phone";
+            dataGridLocations.Columns[5].HeaderText = "Supervisor ID";
         }
 
         private List<Location_Obj> GetLocations(string loc_name)

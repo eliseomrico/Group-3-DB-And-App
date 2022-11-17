@@ -63,8 +63,9 @@ namespace HotelApp_v1
             sqlConnection1.Open();
 
             SqlCommand cmdGetRooms = sqlConnection1.CreateCommand();
-            cmdGetRooms.CommandText = @"SELECT ROOM_NO, ROOM_TYPE
+            cmdGetRooms.CommandText = @"SELECT ROOM_NO, TYPE_DESCRIPTION
                                         FROM ROOM
+                                            JOIN ROOM_TYPE ON TYPE_CODE = ROOM_TYPE
                                         WHERE ROOM_NO NOT IN (SELECT RES_ROOM_NO
                                                               FROM RESERVATION
                                                               WHERE @search BETWEEN RES_START_DATE AND RES_END_DATE
