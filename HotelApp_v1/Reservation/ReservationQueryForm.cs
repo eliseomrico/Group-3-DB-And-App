@@ -36,6 +36,7 @@ namespace HotelApp_v1
 
             btnSearch.Enabled = true;
             dgvReservations.Visible = false;
+            cmbCustName.SelectedIndex = -1;
 
             emptyTextBoxes();
             clearComboBoxes();
@@ -62,7 +63,8 @@ namespace HotelApp_v1
         {
             if ((cmbLocName.SelectedIndex == -1) || (cmbRoomType.SelectedIndex == -1))
             {
-                MessageBox.Show("Please enter a location and room type to view available rooms");
+                MessageBox.Show("Please enter a location and room type to view available rooms", "Missing Information",
+                            MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else if (btnSubmitEdit.Visible == true)
             {
@@ -84,19 +86,25 @@ namespace HotelApp_v1
             double priceOfStay = price * stayLength;
 
             txtPrice.Text = priceOfStay.ToString();
-
         }
 
         private void cmbResID_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (btnSubmitDelete.Visible == true)
-            {
-                FillOutForm(1);
-            }
-            if (btnSubmitEdit.Visible == true)
-            {
-                FillOutForm(2);
-            }
+            //if (HasResPassed())
+            //{
+            //    MessageBox.Show("Cannot edit or delete completed reservations");
+            //}
+            //else
+            //{
+                if (btnSubmitDelete.Visible == true)
+                {
+                    FillOutForm(1);
+                }
+                if (btnSubmitEdit.Visible == true)
+                {
+                    FillOutForm(2);
+                }
+            //}
         }
 
         // "Home" button clicked
@@ -130,6 +138,45 @@ namespace HotelApp_v1
         ///////////////////////////////////////////////////////////////
         //                     GENERAL METHODS                       //
         ///////////////////////////////////////////////////////////////
+
+        //// Checks if reservation has passed or not
+        //private bool HasResPassed()
+        //{
+        //    int resID = Convert.ToInt32(cmbResID.Text);
+
+        //    sqlConnection1.Open();
+        //    SqlCommand cmdCheckResDate = sqlConnection1.CreateCommand();
+        //    cmdCheckResDate.CommandText = @"SELECT RES_START_DATE
+        //                                    FROM RESERVATION
+        //                                    WHERE RES_NO = @search1";
+        //    cmdCheckResDate.Parameters.AddWithValue("@search1", resID);
+        //    SqlDataReader reader = cmdCheckResDate.ExecuteReader();
+
+        //    if (reader.Read())
+        //    {
+        //        DateTime startDate = Convert.ToDateTime(reader[0]);
+
+        //        if (startDate < DateTime.Now)
+        //        {
+        //            sqlConnection1.Close();
+        //            cmdCheckResDate.Dispose();
+        //            reader.Close();
+        //            return true;
+        //        }
+        //        else
+        //        {
+        //            sqlConnection1.Close();
+        //            cmdCheckResDate.Dispose();
+        //            reader.Close();
+        //            return false;
+        //        }
+                    
+        //    }
+        //    sqlConnection1.Close();
+        //    cmdCheckResDate.Dispose();
+        //    reader.Close();
+        //    return false;
+        //}
 
         // Toggle enabled status of combo boxes
         private void enableComboBoxes(bool status)
@@ -244,18 +291,18 @@ namespace HotelApp_v1
             sqlConnection1.Open();
 
             SqlCommand cmdGetAvailableRooms = sqlConnection1.CreateCommand();
-            cmdGetAvailableRooms.CommandText = @"SELECT ROOM_NO
+            cmdGetAvailableRooms.CommandText = @"SELECT ROOM_NO, ROOM_TYPE
                                                  FROM ROOM
-                                                 WHERE ROOM_LOC = @search1
-	                                                 AND ROOM_TYPE = @search2
-	                                                 AND ROOM_NO NOT IN (SELECT RES_ROOM_NO
-						                                                 FROM RESERVATION
-						                                                 WHERE RES_START_DATE >= @search3
-						                                                 AND RES_END_DATE <= @search4)";
-            cmdGetAvailableRooms.Parameters.AddWithValue("@search1", locationID);
-            cmdGetAvailableRooms.Parameters.AddWithValue("@search2", roomType);
-            cmdGetAvailableRooms.Parameters.AddWithValue("@search3", sqlFormatStartDate);
-            cmdGetAvailableRooms.Parameters.AddWithValue("@search4", sqlFormatEndDate);
+                                                 WHERE ROOM_NO NOT IN (SELECT RES_ROOM_NO
+                                                                         FROM RESERVATION
+                                                                         WHERE @search BETWEEN RES_START_DATE AND RES_END_DATE
+                                                                         AND @search1 BETWEEN RES_START_DATE AND RES_END_DATE)
+                                                 AND ROOM_LOC = @search2
+                                                 AND ROOM_TYPE = @search3";
+            cmdGetAvailableRooms.Parameters.AddWithValue("@search", sqlFormatStartDate);
+            cmdGetAvailableRooms.Parameters.AddWithValue("@search1", sqlFormatEndDate);
+            cmdGetAvailableRooms.Parameters.AddWithValue("@search2", locationID);
+            cmdGetAvailableRooms.Parameters.AddWithValue("@search3", roomType);
             SqlDataReader reader = cmdGetAvailableRooms.ExecuteReader();
 
             while (reader.Read())
@@ -325,7 +372,7 @@ namespace HotelApp_v1
                 SqlDataReader reader = cmdFillCustomers.ExecuteReader();
                 while (reader.Read())
                 {
-                    cmbCustName.Items.Add(reader[0].ToString() + " " + reader[1].ToString());
+                    cmbCustName.Items.Add(reader[0].ToString() + ", " + reader[1].ToString());
                 }
                 reader.Close();
                 cmdFillCustomers.Dispose();
@@ -410,9 +457,9 @@ namespace HotelApp_v1
             // Search by customer name
             if (cmbCustName.SelectedIndex > -1 && cmbLocName.SelectedIndex == -1)
             {
-                string[] name = cmbCustName.Text.Split(' ');
-                string custLname = name[0];
-                string custFname = name[1];
+                string[] name = cmbCustName.Text.Split(',');
+                string custLname = name[0].Trim();
+                string custFname = name[1].Trim();
 
                 sqlConnection1.Open();
 
@@ -446,9 +493,9 @@ namespace HotelApp_v1
             // Search by location and name
             if (cmbCustName.SelectedIndex > -1 && cmbLocName.SelectedIndex > -1)
             {
-                string[] name = cmbCustName.Text.Split(' ');
-                string custLname = name[0];
-                string custFname = name[1];
+                string[] name = cmbCustName.Text.Split(',');
+                string custLname = name[0].Trim();
+                string custFname = name[1].Trim();
                 int location = Convert.ToInt32(GetLocationID(cmbLocName.Text));
 
                 sqlConnection1.Open();
@@ -488,12 +535,15 @@ namespace HotelApp_v1
         private void FillReservationIDs()
         {
             cmbResID.Items.Clear();
+            DateTime now = DateTime.Now;
             try
             {
                 sqlConnection1.Open();
                 SqlCommand getResIDs = sqlConnection1.CreateCommand();
                 getResIDs.CommandText = @"SELECT RES_NO
-                                          FROM RESERVATION";
+                                          FROM RESERVATION
+                                          WHERE RES_START_DATE > @search";
+                getResIDs.Parameters.AddWithValue("@search", now);
                 SqlDataReader reader = getResIDs.ExecuteReader();
                 while (reader.Read())
                 {
@@ -505,7 +555,8 @@ namespace HotelApp_v1
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "Error",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -592,7 +643,8 @@ namespace HotelApp_v1
                 catch (Exception ex)
                 {
                     sqlConnection1.Close();
-                    MessageBox.Show(ex.Message + " in fill out form");
+                    MessageBox.Show(ex.Message + ": FillOutForm() function", "Error",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -661,7 +713,8 @@ namespace HotelApp_v1
                 }
                 else
                 {
-                    MessageBox.Show("Error fetching room type code");
+                    MessageBox.Show("Error fetching room type code", "Error",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
                     sqlConnection1.Close();
                     reader.Close();
                     return -1;
@@ -670,7 +723,8 @@ namespace HotelApp_v1
             catch (Exception ex)
             {
                 sqlConnection1.Close();
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message + ": GetRoomTypeCode() function", "Error",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return -1;
             }
         }
@@ -698,7 +752,8 @@ namespace HotelApp_v1
             }
             else
             {
-                MessageBox.Show("Error retrieving type price");
+                MessageBox.Show("Error retrieving type price", "Error",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
                 sqlConnection1.Close();
                 reader.Close();
                 cmdGetPrice.Dispose();
@@ -734,17 +789,17 @@ namespace HotelApp_v1
             catch (Exception ex)
             {
                 sqlConnection1.Close();
-                MessageBox.Show(ex.Message + " in retrieving customer name");
+                MessageBox.Show(ex.Message + ": GetCustName() function");
                 return "Error";
             }
         }
 
-        // Retrives customer ID for name in Last, First format
+        // Retrieves customer ID for name in Last, First format
         private int getCustID()
         {
-            string[] name = cmbCustName.Text.Split(' ');
-            string custLname = name[0];
-            string custFname = name[1];
+            string[] name = cmbCustName.Text.Split(',');
+            string custLname = name[0].Trim();
+            string custFname = name[1].Trim();
 
             sqlConnection1.Open();
             SqlCommand cmdGetCustID = sqlConnection1.CreateCommand();
@@ -796,7 +851,8 @@ namespace HotelApp_v1
             }
             else
             {
-                MessageBox.Show("Error fetching location ID");
+                MessageBox.Show("Error fetching location ID", "Error",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
                 sqlConnection1.Close();
                 reader.Close();
                 return -1;
@@ -831,7 +887,8 @@ namespace HotelApp_v1
             catch (Exception ex)
             {
                 sqlConnection1.Close();
-                MessageBox.Show(ex.Message + " in retrieving loaction name");
+                MessageBox.Show(ex.Message + ": GetLocName() function", "Error",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return "Error";
             }
         }
@@ -897,7 +954,8 @@ namespace HotelApp_v1
 
                 cmdUpdateRes.ExecuteNonQuery();
                 cmdUpdateRes.Dispose();
-                MessageBox.Show("Reservation Updated");
+                MessageBox.Show("Reservation Updated", "Confirmation Message",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
@@ -979,7 +1037,8 @@ namespace HotelApp_v1
                 sqlConnection1.Close();
                 cmdInsertReservation.Dispose();
 
-                MessageBox.Show("Reservation created\n" + "Your reservation ID is " + getReservationID());
+                MessageBox.Show("Reservation created\n" + "Your reservation ID is " + getReservationID(), "Confirmation Message",
+                            MessageBoxButtons.OK);
             }
             catch (Exception ex)
             {
@@ -1022,35 +1081,47 @@ namespace HotelApp_v1
 
         private void btnSubmitDelete_Click(object sender, EventArgs e)
         {
-            if (TransactionExists())
+            var confirmMessage = MessageBox.Show("Are you sure you want to cancel this reservation?", "Reservation Cancellation",
+                                                  MessageBoxButtons.YesNo);
+
+            if (confirmMessage == DialogResult.Yes)
             {
-                MessageBox.Show("Cannot delete a reservation that has been completed.");
+                if (TransactionExists())
+                {
+                    MessageBox.Show("Cannot delete a reservation that has been paid for.", "Informational Message",
+                                MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+
+                    int res_id = Convert.ToInt32(cmbResID.Text);
+                    try
+                    {
+                        sqlConnection1.Open();
+                        SqlCommand cmdDeleteReservation = sqlConnection1.CreateCommand();
+                        cmdDeleteReservation.CommandText = @"DELETE FROM RESERVATION
+                                                     WHERE RES_NO = @search";
+                        cmdDeleteReservation.Parameters.AddWithValue("@search", res_id);
+
+                        cmdDeleteReservation.ExecuteNonQuery();
+                        MessageBox.Show("Reservation cancelled", "Confirmation Message",
+                                MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        sqlConnection1.Close();
+                        cmdDeleteReservation.Dispose();
+                    }
+                    catch (Exception ex)
+                    {
+                        sqlConnection1.Close();
+                        MessageBox.Show(ex.Message + " in deletion submission");
+                    }
+                    sqlConnection1.Close();
+                    DeleteMode(false);
+                    cmbCustName.Text = " ";
+                }
             }
             else
             {
-
-                int res_id = Convert.ToInt32(cmbResID.Text);
-                try
-                {
-                    sqlConnection1.Open();
-                    SqlCommand cmdDeleteReservation = sqlConnection1.CreateCommand();
-                    cmdDeleteReservation.CommandText = @"DELETE FROM RESERVATION
-                                                     WHERE RES_NO = @search";
-                    cmdDeleteReservation.Parameters.AddWithValue("@search", res_id);
-
-                    cmdDeleteReservation.ExecuteNonQuery();
-                    MessageBox.Show("Reservation cancelled");
-                    sqlConnection1.Close();
-                    cmdDeleteReservation.Dispose();
-                }
-                catch (Exception ex)
-                {
-                    sqlConnection1.Close();
-                    MessageBox.Show(ex.Message + " in deletion submission");
-                }
-                sqlConnection1.Close();
-                DeleteMode(false);
-                cmbCustName.Text = " ";
+                // Do nothing
             }
         }
 
@@ -1067,19 +1138,19 @@ namespace HotelApp_v1
             cmdGetTransaction.Parameters.AddWithValue("@search", res_id);
             SqlDataReader reader = cmdGetTransaction.ExecuteReader();
 
-            if (reader.IsDBNull(0))
+            if (reader.Read())
             {
                 sqlConnection1.Close();
                 cmdGetTransaction.Dispose();
                 reader.Close();
-                return false;
+                return true; 
             }
             else
             {
                 sqlConnection1.Close();
                 cmdGetTransaction.Dispose();
                 reader.Close();
-                return true;
+                return false; 
             }
         }
     }

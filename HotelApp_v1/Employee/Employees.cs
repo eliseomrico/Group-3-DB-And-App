@@ -141,17 +141,26 @@ namespace HotelApp_v1
         // "Submit Create" button click
         private void button_submit_create_Click(object sender, EventArgs e)
         {
-            string[] sup_name = cmbEmpSup.Text.Split(' ');
-            int location = GetLocationID(cmbEmpLoc.Text);
+            if (txtEmpFname.Text == "" || txtEmpLname.Text == "" || 
+                cmbEmpLoc.SelectedIndex == -1 || cmbEmpTitle.SelectedIndex == -1 || 
+                txtEmpSSN.Text == "" || cmbEmpSup.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please enter all fields", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+                string[] sup_name = cmbEmpSup.Text.Split(' ');
+                int location = GetLocationID(cmbEmpLoc.Text);
                 // if (location == -1) { }
-            int title = GetTitleCode(cmbEmpTitle.Text);
+                int title = GetTitleCode(cmbEmpTitle.Text);
                 // if (title == -1) { }
-            int ssn = Convert.ToInt32(txtEmpSSN.Text);
-            int supervisor = GetSupervisorID(sup_name[0], sup_name[1]);
+                int ssn = Convert.ToInt32(txtEmpSSN.Text);
+                int supervisor = GetSupervisorID(sup_name[0], sup_name[1]);
 
-            sqlConnection1.Open();
-            SqlCommand cmdInsertUser = sqlConnection1.CreateCommand();
-            cmdInsertUser.CommandText = @"INSERT INTO EMPLOYEE
+
+                sqlConnection1.Open();
+                SqlCommand cmdInsertUser = sqlConnection1.CreateCommand();
+                cmdInsertUser.CommandText = @"INSERT INTO EMPLOYEE
                                           (EMP_FNAME,
                                            EMP_LNAME,
                                            EMP_LOC_ID,
@@ -160,22 +169,24 @@ namespace HotelApp_v1
                                            EMP_SSN)
                                            VALUES(@bind1, @bind2, @bind3, @bind4, @bind5, @bind6)";
 
-            cmdInsertUser.Parameters.AddWithValue("@bind1", txtEmpFname.Text);
-            cmdInsertUser.Parameters.AddWithValue("@bind2", txtEmpLname.Text);
-            cmdInsertUser.Parameters.AddWithValue("@bind3", location);
-            cmdInsertUser.Parameters.AddWithValue("@bind4", title);
-            cmdInsertUser.Parameters.AddWithValue("@bind5", supervisor);
-            cmdInsertUser.Parameters.AddWithValue("@bind6", ssn);
+                cmdInsertUser.Parameters.AddWithValue("@bind1", txtEmpFname.Text);
+                cmdInsertUser.Parameters.AddWithValue("@bind2", txtEmpLname.Text);
+                cmdInsertUser.Parameters.AddWithValue("@bind3", location);
+                cmdInsertUser.Parameters.AddWithValue("@bind4", title);
+                cmdInsertUser.Parameters.AddWithValue("@bind5", supervisor);
+                cmdInsertUser.Parameters.AddWithValue("@bind6", ssn);
 
-            cmdInsertUser.ExecuteNonQuery();
-            cmdInsertUser.Dispose();
+                cmdInsertUser.ExecuteNonQuery();
+                cmdInsertUser.Dispose();
 
-            sqlConnection1.Close();
+                sqlConnection1.Close();
 
-            MessageBox.Show("Employee Added");
+                MessageBox.Show("Employee Added", "Confirmation Message",
+                                MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            CreateModeToggle(false);
-            btnSubmitCreate.Enabled = false;
+                CreateModeToggle(false);
+                btnSubmitCreate.Enabled = false;
+            }
         }
 
         ///////////////////////////////////////////////////////////////
@@ -267,7 +278,8 @@ namespace HotelApp_v1
 
             sqlConnection1.Close();
 
-            MessageBox.Show("Employee Updated");
+            MessageBox.Show("Employee Updated", "Confirmation Message", 
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             EditMode(false);
             showCreateButton(true);
@@ -283,24 +295,59 @@ namespace HotelApp_v1
         // "Delete" button click
         private void button_delete_Click(object sender, EventArgs e)
         {
-            sqlConnection1.Open();
+            var confirmResult = MessageBox.Show("Are you sure you want to delete this employee?", 
+                                                "Employee Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (confirmResult == DialogResult.Yes)
+            {
+                sqlConnection2.Open();
 
-            SqlCommand cmdDeleteUser = sqlConnection1.CreateCommand();
-            cmdDeleteUser.CommandText = @"DELETE FROM EMPLOYEE
+                SqlCommand cmdIsSupervisor = sqlConnection2.CreateCommand();
+                cmdIsSupervisor.CommandText = @"SELECT a.EMP_ID
+                                               FROM EMPLOYEE a
+                                               WHERE a.EMP_ID IN (SELECT b.SUPER_ID
+                                                                  FROM EMPLOYEE b)
+                                               AND a.EMP_ID = @search1";
+                cmdIsSupervisor.Parameters.AddWithValue("@search1", Convert.ToInt32(txtHiddenID.Text));
+                SqlDataReader reader = cmdIsSupervisor.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    MessageBox.Show("Cannot delete a supervisor", "Informational Message",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    cmdIsSupervisor.Dispose();
+                    reader.Close();
+                    sqlConnection2.Close();
+                }
+                else
+                {
+                    sqlConnection1.Open();
+
+                    // If not a supervisor, continue with deletion
+
+                    SqlCommand cmdDeleteUser = sqlConnection1.CreateCommand();
+                    cmdDeleteUser.CommandText = @"DELETE FROM EMPLOYEE
                                           WHERE EMP_SSN = @search";
-            cmdDeleteUser.Parameters.AddWithValue("@search", Convert.ToInt32(txtEmpSSN.Text));
-            cmdDeleteUser.ExecuteNonQuery();
+                    cmdDeleteUser.Parameters.AddWithValue("@search", Convert.ToInt32(txtEmpSSN.Text));
+                    cmdDeleteUser.ExecuteNonQuery();
 
-            sqlConnection1.Close();
+                    sqlConnection1.Close();
+                    sqlConnection2.Close();
 
-            MessageBox.Show("User deleted");
-            
-            clearTextBoxes();
-            enableEditDeleteButtons(false); 
-            changeTextBoxesReadOnlyStatus(true);
+                    MessageBox.Show("User deleted", "Confirmation Message",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            cmbEmpFname.Items.RemoveAt(cmbEmpFname.SelectedIndex);
-            cmbEmpFname.SelectedIndex = -1;
+                    clearTextBoxes();
+                    enableEditDeleteButtons(false);
+                    changeTextBoxesReadOnlyStatus(true);
+
+                    cmbEmpFname.Items.RemoveAt(cmbEmpFname.SelectedIndex);
+                    cmbEmpFname.SelectedIndex = -1;
+                }
+            }
+            else
+            {
+                // Do nothing
+            }
         }
 
 
@@ -330,7 +377,8 @@ namespace HotelApp_v1
             }
             else
             {
-                MessageBox.Show("Error fetching location name");
+                MessageBox.Show("Error fetching location name", "Error",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
                 sqlConnection2.Close();
                 reader.Close();
                 return null;
@@ -359,7 +407,8 @@ namespace HotelApp_v1
             }
             else
             {
-                MessageBox.Show("Error fetching location ID");
+                MessageBox.Show("Error fetching location ID", "Error",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
                 sqlConnection2.Close();
                 reader.Close();
                 return -1;
@@ -388,7 +437,8 @@ namespace HotelApp_v1
             }
             else
             {
-                MessageBox.Show("Error fetching supervisor name");
+                MessageBox.Show("Error fetching supervisor name", "Error",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
                 sqlConnection2.Close();
                 reader.Close();
                 return null;
@@ -419,7 +469,8 @@ namespace HotelApp_v1
             }
             else
             {
-                MessageBox.Show("Error fetching supervisor ID");
+                MessageBox.Show("Error fetching supervisor ID", "Error",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
                 sqlConnection2.Close();
                 reader.Close();
                 return -1;
@@ -644,7 +695,8 @@ namespace HotelApp_v1
         {
             if (txtEmpSSN.Text.Length < 9)
             {
-                MessageBox.Show("Please enter a full SSN");
+                MessageBox.Show("Please enter a full SSN", "Informational Message",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtEmpSSN.Focus();
             }
         }
@@ -673,6 +725,7 @@ namespace HotelApp_v1
             showCreateButton(true);
             btnCreate.Enabled = true;
             cmbEmpFname.SelectedIndex = -1;
+            txtEmpFname.Text = "";
             showCancelButton(false);
             enableEditDeleteButtons(false);
 

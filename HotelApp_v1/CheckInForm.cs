@@ -144,7 +144,7 @@ namespace HotelApp_v1
             }
         }
 
-        // Fill customers combo box
+        // Fill customers combo box with customers who have check-in today
         private void LoadCustomers()
         {
             cmbCustName.Items.Clear();
@@ -158,10 +158,10 @@ namespace HotelApp_v1
             SqlCommand cmdLoadCust = sqlConnection1.CreateCommand();
             cmdLoadCust.CommandText = @"SELECT CUST_LNAME
                                         FROM CUSTOMER
-                                           JOIN RESERVATION ON RES_CUST_ID = CUST_ID
-                                           JOIN ROOM ON (RES_ROOM_NO = ROOM_NO
-                                                            AND RES_LOC_ID = ROOM_LOC)
-                                        WHERE ROOM_AVAILABLE = 'Y'";
+                                        WHERE CUST_ID IN (SELECT RES_CUST_ID
+                                                          FROM RESERVATION
+                                                          WHERE RES_START_DATE = @search)";
+
             cmdLoadCust.Parameters.AddWithValue("@search", sqlFormattedDate);
 
             SqlDataReader reader = cmdLoadCust.ExecuteReader();

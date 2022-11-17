@@ -63,18 +63,17 @@ namespace HotelApp_v1
             sqlConnection1.Open();
 
             SqlCommand cmdGetRooms = sqlConnection1.CreateCommand();
-            cmdGetRooms.CommandText = @"SELECT ROOM_NO, TYPE_DESCRIPTION
+            cmdGetRooms.CommandText = @"SELECT ROOM_NO, ROOM_TYPE
                                         FROM ROOM
-                                            JOIN ROOM_TYPE ON ROOM_TYPE = TYPE_CODE
-                                        WHERE ROOM_LOC = @search1
-                                        AND ROOM_NO NOT IN (SELECT ROOM_NO
-                                                            FROM ROOM
-						                                        JOIN RESERVATION ON RES_ROOM_NO = ROOM_NO
-                                                            WHERE RES_START_DATE >= @search2
-                                                            AND RES_END_DATE <= @search3)";
-            cmdGetRooms.Parameters.AddWithValue("@search1", location_id);
-            cmdGetRooms.Parameters.AddWithValue("@search2", sqlFormatStartDate);
-            cmdGetRooms.Parameters.AddWithValue("@search3", sqlFormatEndDate);
+                                        WHERE ROOM_NO NOT IN (SELECT RES_ROOM_NO
+                                                              FROM RESERVATION
+                                                              WHERE @search BETWEEN RES_START_DATE AND RES_END_DATE
+                                                              AND @search1 BETWEEN RES_START_DATE AND RES_END_DATE)
+                                        AND ROOM_LOC = @search2";
+
+            cmdGetRooms.Parameters.AddWithValue("@search", sqlFormatStartDate);
+            cmdGetRooms.Parameters.AddWithValue("@search1", sqlFormatEndDate);
+            cmdGetRooms.Parameters.AddWithValue("@search2", location_id);
 
             SqlDataReader reader = cmdGetRooms.ExecuteReader();
             DataTable availableRooms = new DataTable();
@@ -114,7 +113,8 @@ namespace HotelApp_v1
             }
             else
             {
-                MessageBox.Show("Error fetching location ID");
+                MessageBox.Show("Error fetching location ID", "Error Message",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
                 sqlConnection1.Close();
                 reader.Close();
                 return -1;
@@ -132,7 +132,8 @@ namespace HotelApp_v1
         {
             if(cmbLocName.SelectedIndex == -1)
             {
-                MessageBox.Show("Please select a location");
+                MessageBox.Show("Please select a location", "Informational Message",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {

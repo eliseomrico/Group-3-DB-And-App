@@ -76,7 +76,8 @@ namespace HotelApp_v1
             }
             else
             {
-                MessageBox.Show("Transaction not found");
+                MessageBox.Show("Transaction not found", "Error Message",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
                 clearTextBoxes();
             }
 
@@ -105,7 +106,8 @@ namespace HotelApp_v1
             }
             else
             {
-                MessageBox.Show("Error retrieving customer name");
+                MessageBox.Show("Error retrieving customer name", "Error Message",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             sqlConnection2.Close();
@@ -133,7 +135,8 @@ namespace HotelApp_v1
             }
             else
             {
-                MessageBox.Show("Error retrieving employee name");
+                MessageBox.Show("Error retrieving employee name", "Confirmation Message",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             sqlConnection2.Close();
